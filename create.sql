@@ -1,0 +1,160 @@
+CREATE DATABASE QuanLyTiemBanhMi
+GO
+
+USE QuanLyTiemBanhMi
+GO
+
+CREATE TABLE LoaiKH(
+	MaLoaiKH INT NOT NULL PRIMARY KEY, 
+	TenLoaiKH NVARCHAR(100), 
+	SoDiemTichLuy INT 
+)
+
+CREATE TABLE KhachHang(
+	MaKH INT NOT NULL PRIMARY KEY, 
+	MaLoaiKH INT NOT NULL, 
+	HoTen NVARCHAR(100), 
+	DiaChi NVARCHAR(100), 
+	SDT VARCHAR(10), 
+	FOREIGN KEY (MaLoaiKH) REFERENCES dbo.LoaiKH(MaLoaiKH)
+)
+
+CREATE TABLE NhanVien(
+	MaNV INT NOT NULL PRIMARY KEY, 
+	TenNV NVARCHAR(100), 
+	UserName VARCHAR(40), 
+	PassWord VARCHAR(40), 
+	NamSinh DATE, 
+	DiaChi NVARCHAR(100), 
+	ChucVu NVARCHAR(100), 
+	GioiTinh VARCHAR(10)
+)
+
+--NhanHieu (MaNH, TenNH, XuatXu)
+CREATE TABLE NhanHieu(
+	MaNH INT NOT NULL PRIMARY KEY, 
+	TenNH NVARCHAR(100), 
+	XuatXu NVARCHAR(100)
+)
+
+--DanhMucSanPham (MaDM, TenDanhMuc)
+CREATE TABLE DanhMucSanPham(
+	MaDM INT NOT NULL PRIMARY KEY, 
+	TenDanhMuc NVARCHAR(100)
+)
+
+
+--SanPham (MaSP, TenSP, MoTa, MaNH, MaDM, AnhSP).
+CREATE TABLE SanPham(
+	MaSP INT NOT NULL PRIMARY KEY, 
+	TenSP NVARCHAR(100), 
+	MoTa NVARCHAR(100), 
+	MaNH INT NOT NULL, 
+	MaDM INT NOT NULL, 
+	AnhSP NVARCHAR(100), 
+	FOREIGN KEY(MaNH) REFERENCES dbo.NhanHieu(MaNH),
+	FOREIGN KEY(MaDM) REFERENCES dbo.DanhMucSanPham(MaDM)
+)
+
+
+--NhaCungCap (MaNCC, TenNCC, DiaChi, MaSoThue, SoTaiKhoan, TenNH, SDT, Email).
+CREATE TABLE NhaCungCap(
+	MaNCC INT NOT NULL PRIMARY KEY, 
+	TenNCC NVARCHAR(100), 
+	DiaChi NVARCHAR(100), 
+	MaSoThua NVARCHAR(40), 
+	SoTaiKhoan NVARCHAR(20), 
+	TenNH NVARCHAR(40), 
+	SDT VARCHAR(10), 
+	Email NVARCHAR(40)
+)
+
+-- PhieuNhapHang (MaPhieuNhap, NgayTao, MaNCC, MaNV).
+CREATE TABLE PhieuNhapHang(
+	MaPhieuNhap INT NOT NULL PRIMARY KEY, 
+	NgayTao DATE, 
+	MaNCC INT NOT NULL, 
+	MaNV INT NOT NULL,
+	FOREIGN KEY(MaNCC) REFERENCES dbo.NhaCungCap(MaNCC), 
+	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV)
+)
+
+CREATE TABLE CaLam(
+	MaCaLam INT NOT NULL PRIMARY KEY, 
+	BatDau TIME, 
+	KetThuc TIME
+)
+
+--LichLamViec (MaCaLam, MaNV, NgayLamViec)
+CREATE TABLE LichLamViec (
+	MaCaLam INT	NOT NULL, 
+	MaNV INT NOT NULL,
+	NgayLamViec DATE,
+	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV), 
+	FOREIGN KEY(MaCaLam) REFERENCES dbo.CaLam(MaCaLam), 
+	CONSTRAINT PK_LichLamViec PRIMARY KEY(MaCaLam, MaNV)
+)
+
+--HinhThucThanhToan (MaThanhToan, TenLoaiHinhThucThanhToan)
+CREATE TABLE HinhThucThanhToan(
+	MaThanhToan INT NOT NULL PRIMARY KEY, 
+	TenLoaiHinhThucThanhToan NVARCHAR(100)
+)
+
+--HoaDon (MaHD, MaNV, NgayTao, MaKH, MaThanhToan)
+CREATE TABLE HoaDon (
+	MaHD INT NOT NULL PRIMARY KEY, 
+	MaNV INT NOT NULL, 
+	NgayTao DATE, 
+	MaKH INT NOT NULL, 
+	MaThanhToan INT NOT NULL, 
+	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV), 
+	FOREIGN KEY(MaKH) REFERENCES dbo.KhachHang(MaKH), 
+	FOREIGN KEY(MaThanhToan) REFERENCES dbo.HinhThucThanhToan(MaThanhToan)
+)
+
+--ChuongTrinhKhuyenMai (MaKM,TenKM,PhanTramGiamGia, AnhKMQR)
+
+CREATE TABLE ChuongTrinhKhuyenMai(
+	MaKM INT NOT NULL PRIMARY KEY, 
+	TenKM NVARCHAR(100), 
+	PhanTramGiamGia INT, 
+	AnhKMQR NVARCHAR(100)
+)
+
+--ChiTietPhieuNhapHang (MaPhieuNhap, MaSP, MoTa, SL)
+CREATE TABLE ChiTietPhieuNhapHang(
+	MaPhieuNhap INT NOT NULL, 
+	MaSP INT NOT NULL, 
+	MoTa NVARCHAR(100), 
+	SL INT, 
+	CONSTRAINT PK_ChiTietPhieuNhapHang PRIMARY KEY(MaPhieuNhap, MaSP), 
+	FOREIGN KEY(MaPhieuNhap) REFERENCES dbo.PhieuNhapHang(MaPhieuNhap), 
+	FOREIGN KEY(MaSP) REFERENCES dbo.SanPham(MaSP)
+)
+
+--ChiTietKhuyenMai (MaKM, MaHD, MaKH)
+CREATE TABLE ChiTietKhuyenMai(
+	MaKM INT NOT NULL, 
+	MaHD INT NOT NULL, 
+	MAKH INT NOT NULL, 
+	FOREIGN KEY(MaKM) REFERENCES dbo.ChuongTrinhKhuyenMai(MaKM), 
+	FOREIGN KEY(MaHD) REFERENCES dbo.HoaDon(MaHD), 
+	FOREIGN KEY(MAKH) REFERENCES dbo.KhachHang(MaKH), 
+	CONSTRAINT PK_ChiTietKhuyenMai PRIMARY KEY(MaKM, MaHD, MAKH)
+)
+
+
+--ChiTietHoaDon (MaHD, MaSP, MoTa, SL, TenNH)
+CREATE TABLE ChiTietHoaDon(
+	MaHD INT NOT NULL, 
+	MaSP INT NOT NULL, 
+	MoTa NVARCHAR(100), 
+	SL INT, 
+	TenNH NVARCHAR(100), 
+	FOREIGN KEY(MaHD) REFERENCES dbo.HoaDon(MaHD), 
+	FOREIGN KEY(MaSP) REFERENCES dbo.SanPham(MaSP), 
+	CONSTRAINT PL_ChiTietHoaDon PRIMARY KEY(MaHD, MaSP)
+)
+
+
