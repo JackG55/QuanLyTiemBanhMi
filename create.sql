@@ -1,4 +1,5 @@
-CREATE DATABASE QuanLyTiemBanhMi
+﻿CREATE DATABASE QuanLyTiemBanhMi
+GO
 USE QuanLyTiemBanhMi
 GO
 
@@ -7,6 +8,8 @@ CREATE TABLE LoaiKH(
 	TenLoaiKH NVARCHAR(100), 
 	SoDiemTichLuy INT 
 )
+
+
 
 CREATE TABLE KhachHang(
 	MaKH INT NOT NULL PRIMARY KEY, 
@@ -17,6 +20,8 @@ CREATE TABLE KhachHang(
 	SDT CHAR(10), 
 	FOREIGN KEY (MaLoaiKH) REFERENCES dbo.LoaiKH(MaLoaiKH)
 )
+
+
 
 CREATE TABLE NhanVien(
 	MaNV INT NOT NULL PRIMARY KEY, 
