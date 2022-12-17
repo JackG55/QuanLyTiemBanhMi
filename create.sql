@@ -121,12 +121,12 @@ CREATE TABLE ChuongTrinhKhuyenMai(
 --ChiTietPhieuNhapHang (MaPhieuNhap, MaSP, MoTa, SL)
 CREATE TABLE ChiTietPhieuNhapHang(
 	MaPhieuNhap INT NOT NULL, 
-	MaSP INT NOT NULL, 
+	MSNVL INT NOT NULL, 
 	DonGia INT NOT NULL, 
 	SL INT NOT NULL, 
-	CONSTRAINT PK_ChiTietPhieuNhapHang PRIMARY KEY(MaPhieuNhap, MaSP), 
+	CONSTRAINT PK_ChiTietPhieuNhapHang PRIMARY KEY(MaPhieuNhap, MSNVL), 
 	FOREIGN KEY(MaPhieuNhap) REFERENCES dbo.PhieuNhapHang(MaPhieuNhap), 
-	FOREIGN KEY(MaSP) REFERENCES dbo.SanPham(MaSP)
+	FOREIGN KEY(MSNVL) REFERENCES dbo.NguyenVatLieu(MSNVL)
 )
 
 --ChiTietKhuyenMai (MaKM, MaHD, MaKH)
