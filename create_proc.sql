@@ -34,3 +34,44 @@ BEGIN
 	WHERE MaNCC = @MaNCC
 END
 GO
+
+--Nguyên Vật Liệu
+
+CREATE OR ALTER PROC Them_NVL (@MaNVL INT, @TenNVL NVARCHAR(100), @Mota NVARCHAR(200), @DVT VARCHAR(3), @SLTon INT)
+AS
+BEGIN
+	INSERT dbo.NguyenVatLieu
+	(
+	    MSNVL,
+	    TenNVL,
+	    MoTa,
+	    DVT,
+	    SLTon,
+	    Xoa
+	)
+	VALUES
+	(  @MaNVL, @TenNVL, @Mota, @DVT, @SLTon, 0
+	    )
+END
+GO
+
+CREATE OR ALTER PROC Sua_NVL (@MaNVL INT, @TenNVL NVARCHAR(100), @Mota NVARCHAR(200), @DVT VARCHAR(3), @SLTon INT)
+AS
+BEGIN
+	UPDATE dbo.NguyenVatLieu SET
+		TenNVL = @TenNVL, 
+		MoTa = @Mota, 
+		DVT = @DVT, 
+		SLTon = @SLTon
+		WHERE MSNVL = @MaNVL
+END
+GO
+
+CREATE OR ALTER PROC Xoa_NVL (@MaNVL INT)
+AS
+BEGIN
+	UPDATE dbo.NguyenVatLieu SET 
+		Xoa = 1
+	WHERE MSNVL = @MaNVL
+END
+GO
