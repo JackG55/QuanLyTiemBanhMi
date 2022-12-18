@@ -5,6 +5,7 @@ INSERT dbo.LoaiKH(MaLoaiKH,TenLoaiKH,SoDiemTichLuy) VALUES(1,  N'Kim cương', 1
 INSERT dbo.LoaiKH(MaLoaiKH,TenLoaiKH,SoDiemTichLuy) VALUES(2,  N'Vàng', 800)
 INSERT dbo.LoaiKH(MaLoaiKH,TenLoaiKH,SoDiemTichLuy) VALUES(3,  N'Bạc', 500)
 INSERT dbo.LoaiKH(MaLoaiKH,TenLoaiKH,SoDiemTichLuy) VALUES(4,  N'Đồng', 100)
+INSERT dbo.LoaiKH(MaLoaiKH,TenLoaiKH,SoDiemTichLuy) VALUES(5,  N'Tân Binh', 0)
 
 INSERT dbo.KhachHang(MaKH,MaLoaiKH,HoTen,NgaySinh,GioiTinh,SDT)VALUES(1,2,N'Nguyễn Văn Nam','02-03-2000','Nam','0938837654')
 INSERT dbo.KhachHang(MaKH,MaLoaiKH,HoTen,NgaySinh,GioiTinh,SDT)VALUES(2,1,N'Nguyễn Văn Khánh','03-03-2001','Nam','0939287654')
@@ -22,14 +23,14 @@ INSERT dbo.NhanVien(MaNV,TenNV,UserName,Pass,NamSinh,DiaChi,ChucVu,GioiTinh)VALU
 INSERT dbo.NhanVien(MaNV,TenNV,UserName,Pass,NamSinh,DiaChi,ChucVu,GioiTinh)VALUES(3,N'Trần Đình Phái','ad01','123','12-12-2000',N'Hà Nam','Quan Ly','Nam')
 INSERT dbo.NhanVien(MaNV,TenNV,UserName,Pass,NamSinh,DiaChi,ChucVu,GioiTinh)VALUES(4,N'Lê Thị Linh','nvbh02','123','02-18-1999',N'Bắc Kạn','Ban Hang','Nu')
 
-INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(1,'Kinh Do',N'Hà Nội','0987638467')
-INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(2,'Truong An',N'Bắc Ninh','0927836734')
-INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(3,'KingBread',N'Hà Nội','0987612312')
+INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(1,N'Kinh Đô',N'Hà Nội','0987638467')
+INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(2,N'Trường An',N'Bắc Ninh','0927836734')
+INSERT dbo.NhaCungCap(MaNCC,TenNCC,DiaChi,SDT)VALUES(3,N'KingBread',N'Hà Nội','0987612312')
 
-INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(1,'Bot',N'Bột làm bánh mì','kg',50)
-INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(2,'Bo',N'Bơ làm bánh mì','kg',20)
-INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(3,'Sua',N'Sữa tươi không đường','lit',80)
-INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(4,'Duong',N'Đường','kg',20)
+INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(1,N'Bột',N'Bột làm bánh mì','kg',50)
+INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(2,N'Bơ',N'Bơ làm bánh mì','kg',20)
+INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(3,N'Sữa',N'Sữa tươi không đường','lit',80)
+INSERT dbo.NguyenVatLieu(MSNVL,TenNVL,MoTa,DVT,SLTon)VALUES(4,N'Đường',N'Đường','kg',20)
 
 INSERT dbo.PhieuNhapHang(MaPhieuNhap,NgayTao,MaNCC,MaNV,TongTien)VALUES(1,'12-14-2022',1,3,1000000)
 INSERT dbo.PhieuNhapHang(MaPhieuNhap,NgayTao,MaNCC,MaNV,TongTien)VALUES(2,'12-15-2022',2,3,5000000)
