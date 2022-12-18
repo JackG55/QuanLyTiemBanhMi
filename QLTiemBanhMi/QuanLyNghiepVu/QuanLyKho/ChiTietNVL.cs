@@ -32,115 +32,19 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             UpdateEventArgs args = new UpdateEventArgs();
             UpdateEventHandler.Invoke(this, args);
         }
-
-        public void setThongTinVaoFormDeSua()
+        private void ChiTietNVL_Load(object sender, EventArgs e)
         {
-            //tb_msnvl.Text = Program.chiTietLoaiNV.Id;
-            //tb_tennvl.Text = Program.chiTietLoaiNV.Tenloai ;
-            //tb_mota.Text = Program.chiTietLoaiNV.Ghichu;
-
-            //HienThongTinLenEditValue(gluegiaovien, list_magv, Quanlysv.ma_gv);
-        }
-       
-        //public bool KiemTra()
-        //{
-        //    if (tb_msnvl.Text == "" || tb_tennvl.Text == "")
-        //    {
-        //        DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-        //    List<string> list_tenloainv = Program.Quanlynhanviensql.LayDSTenLoaiNV();
-        //    if (Program.opt == 1)
-        //    {
-        //        if (list_tenloainv.Contains(tb_tennvl.Text))
-        //        {
-        //            DialogResult result = MessageBox.Show("Tên loại nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return false;
-        //        }
-     
-        //    }
-        //    if (Program.opt == 2)
-        //    {
-
-        //        list_tenloainv.Remove(Program.chiTietLoaiNV.Tenloai);
-        //        if (list_tenloainv.Contains(tb_tennvl.Text))
-        //        {
-        //            DialogResult result = MessageBox.Show("Tên loại nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return false;
-        //        }
-        //    }
-
-        //    return true;
-        //}
-
-        private void buttonLưu_Click(object sender, EventArgs e)
-        {
-            //if (!KiemTra())
-            //    return;
-            //else
-            //{
-            //    if (Program.opt == 1) //them
-            //    {
-            //        string sql = "Them_Loai_NV";
-            //        string[] para = { "@tenloai", "@ghichu" };
-            //        object[] values = { tb_tennvl.Text, Convert.ToString(tb_mota.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-
-            //    }
-            //    if (Program.opt == 2) //sua
-            //    {
-            //        string sql = "Sua_Loai_NV";
-            //        string[] para = {"@id", "@tenloai", "@ghichu" };
-            //        object[] values = { Int32.Parse(tb_msnvl.Text), tb_tennvl.Text, Convert.ToString(tb_mota.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-
-            //}
-        }
-
-        private void buttonHuy_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void ChiTietLoaiNV_Load(object sender, EventArgs e)
-        {
-
             if (Program.opt == 1) //them
             {
-               
+
                 tb_tennvl.Text = "";
                 tb_mota.Text = "";
-               
+                tb_dvt.Text = "";
+                tb_slt.Text = "";
+
                 tb_msnvl.ReadOnly = true;
 
-                tb_msnvl.Text = Program.Quanlynhanviensql.TaoMaLoaiNhanVien().ToString();
+                tb_msnvl.Text = Program.FillData.SinhMaTuDong("MSNVL", "NguyenVatLieu").ToString();
             }
             if (Program.opt == 2) // sua
             {
@@ -149,5 +53,102 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             }
         }
 
+
+        public void setThongTinVaoFormDeSua()
+        {
+            tb_msnvl.Text = Program.nguyenVatLieu.Msnvl;
+            tb_tennvl.Text = Program.nguyenVatLieu.Tennvl; 
+            tb_mota.Text = Program.nguyenVatLieu.Mota; 
+            tb_dvt.Text = Program.nguyenVatLieu.Dvt; 
+            tb_slt.Text = Program.nguyenVatLieu.Slton; 
+
+        }
+
+        public bool KiemTra()
+        {
+            if (tb_msnvl.Text == "" || tb_tennvl.Text == "")
+            {
+                DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            List<string> list_tenNVL = Program.FillData.LayDSTen("TenNVL", "NguyenVatLieu");
+            if (Program.opt == 1)
+            {
+                if (list_tenNVL.Contains(tb_tennvl.Text))
+                {
+                    DialogResult result = MessageBox.Show("Tên loại nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+            if (Program.opt == 2)
+            {
+
+                list_tenNVL.Remove(Program.nguyenVatLieu.Tennvl);
+                if (list_tenNVL.Contains(tb_tennvl.Text))
+                {
+                    DialogResult result = MessageBox.Show("Tên loại nhân viên đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void buttonLưu_Click(object sender, EventArgs e)
+        {
+            if (!KiemTra())
+                return;
+            else
+            {
+                string[] para = { "@MaNVL", "@TenNVL", "@Mota", "@DVT", "@SLTon" };
+                object[] values = { Int32.Parse(tb_msnvl.Text), tb_tennvl.Text, tb_mota.Text, tb_dvt.Text, Int32.Parse(tb_slt.Text) };
+                if (Program.opt == 1) //them
+                {
+                    string sql = "Them_NVL";
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                if (Program.opt == 2) //sua
+                {
+                    string sql = "Sua_NVL";
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+        }
+
+        private void buttonHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+     
     }
 }

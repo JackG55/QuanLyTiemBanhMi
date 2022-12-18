@@ -25,23 +25,25 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
             
             //load lên datagridView Nhà cung cấp
-            string sql1 = "SELECT * FROM dbo.NhaCungCap";
+            string sql1 = "SELECT * FROM dbo.NhaCungCap WHERE Xoa = 0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSNCC, sql1);
 
             //load lên datagridView Danh sách phiếu nhập hàng
-            string sql2 = "SELECT MaPhieuNhap, TenNCC, TenNV, NgayTao, TongTien FROM dbo.PhieuNhapHang " +
+            string sql2 = "SELECT MaPhieuNhap, TenNCC, TenNV, NgayTao, TongTien, NhaCungCap.MaNCC, NhanVien.MaNV FROM dbo.PhieuNhapHang " +
                           "JOIN dbo.NhaCungCap ON NhaCungCap.MaNCC = PhieuNhapHang.MaNCC " +
-                          "JOIN dbo.NhanVien ON NhanVien.MaNV = PhieuNhapHang.MaNV";
+                          "JOIN dbo.NhanVien ON NhanVien.MaNV = PhieuNhapHang.MaNV " +
+                          "WHERE PhieuNhapHang.Xoa = 0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSPNH, sql2);
 
             //load lên datagridView Nguyên Vật Liệu           
-            string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+            string sql3 = "SELECT * FROM dbo.NguyenVatLieu WHERE Xoa = 0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
 
             //load lên datagridView Chi tiết phiếu nhập hàng
             string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
-            string sql4 = "SELECT ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
-                           "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL WHERE MaPhieuNhap = " + maPhieuNhap;
+            string sql4 = "SELECT MaPhieuNhap, dbo.ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia FROM dbo.ChiTietPhieuNhapHang " +
+                           "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL " +
+                           "WHERE MaPhieuNhap = " + maPhieuNhap;
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
         }
 
@@ -57,92 +59,40 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             Program.nhaCungCap = new Object.NhaCungCap(mancc, tenncc, diachi, sdt);
         }
 
+        private void dgv_DSNVL_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //Lấy các trường thông tin để nếu mà sửa thì sửa
+            string msnvl = dgv_DSNVL.CurrentRow.Cells["MSNVL"].Value.ToString();
+            string tennvl = dgv_DSNVL.CurrentRow.Cells["TenNVL"].Value.ToString();
+            string mota = dgv_DSNVL.CurrentRow.Cells["MoTa"].Value.ToString();
+            string slton = dgv_DSNVL.CurrentRow.Cells["SLTon"].Value.ToString();
+            string dvt = dgv_DSNVL.CurrentRow.Cells["DVT"].Value.ToString();
+
+            //Tạo 1 Object để phục vụ cho thêm sửa xoá
+            Program.nguyenVatLieu = new Object.NguyenVatLieu(msnvl, tennvl, mota, slton, dvt);
+        }
+
         private void dataGridViewPhieuNhapHang_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
 
-            //load lại cái chi tiết hoá đơn
+            //load lại cái chi tiết phiếu nhập hàng
             string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
             string sql4 = "SELECT ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
                            "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL WHERE MaPhieuNhap = " + maPhieuNhap;
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
 
+            //Lấy các trường thông tin để nếu mà sửa thì sửa
+            string maphieunhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+            string mancc = dgv_DSPNH.CurrentRow.Cells["MaNhaCC"].Value.ToString();
+            string manv = dgv_DSPNH.CurrentRow.Cells["MaNV"].Value.ToString();
+            string tongtien = dgv_DSPNH.CurrentRow.Cells["TongTien"].Value.ToString();
+            string ngaytao = dgv_DSPNH.CurrentRow.Cells["NgayTao"].Value.ToString();
+
             //Tạo 1 Object để phục vụ cho thêm sửa xoá
-            
+            Program.phieuNhapHang = new Object.PhieuNhapHang(maphieunhap, mancc, manv, tongtien,Convert.ToDateTime(ngaytao));
+
         }
-
-        private void dataGridViewDSHoaDon_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //string nhanvienid, congtyid, nguoinhanhoahongid = "";
-            //tb_id.Text = dataGridViewDSHoaDon.CurrentRow.Cells["ID"].Value.ToString();
-            //tb_hoadon.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenHoaDon"].Value.ToString();
-            //tb_congty.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenCongTy"].Value.ToString();
-            //tb_nhanvien.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenNV"].Value.ToString();
-            //tb_tienthanhtoan.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TongTienDaThanhToan"].Value.ToString();
-            //tb_ngayhenthanhtoan.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NgayHenThanhToan"].Value.ToString();
-            //tb_nguoinhanhoahong.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NguoiNhanHH"].Value.ToString();
-            //tb_ngaylap.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NgayLap"].Value.ToString();
-            //tb_tienloi.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TienLoi"].Value.ToString();
-            //tb_tongtien.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TongTien"].Value.ToString();
-            //tb_hoahong.Text = dataGridViewDSHoaDon.CurrentRow.Cells["HoaHong"].Value.ToString();
-            //tb_ghichu.Text = dataGridViewDSHoaDon.CurrentRow.Cells["GhiChu"].Value.ToString();
-            //nhanvienid = dataGridViewDSHoaDon.CurrentRow.Cells["NhanVienID"].Value.ToString();
-            //congtyid = dataGridViewDSHoaDon.CurrentRow.Cells["CongTyID"].Value.ToString();
-            //nguoinhanhoahongid = dataGridViewDSHoaDon.CurrentRow.Cells["NguoiNhanHoaHongID"].Value.ToString();
-
-
-            //Program.hoaDon = new Object.HoaDon(tb_id.Text, tb_hoadon.Text, congtyid, nhanvienid, Convert.ToDateTime(tb_ngaylap.Text),
-            //    tb_tongtien.Text, tb_tienthanhtoan.Text, Convert.ToDateTime(tb_ngayhenthanhtoan.Text), tb_tienloi.Text,
-            //    tb_hoahong.Text, nguoinhanhoahongid, tb_ghichu.Text);
-            //Program.Quanlyhoadonsql.LayDSChiTietHoaDon(dtgv_DSChiTietHoaDon, tb_id.Text);
-        }
-        //private void chiTietHD_UpdateEventHandler1(object sender, ThongTinHD.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-        //}
-
-        //private void ThanhToanHD_UpdateEventHandler1(object sender, ThanhToanHD.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-        //}
-
-        //private void chiTietHD_SP_UpdateEventHandler1(object sender, ChiTietHD_SP.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-
-        //    int id_hd = Int32.Parse(tb_id.Text);
-        //    sql = @"SELECT  dbo.ChiTietHoaDon.* , TenSanPham
-        //                    FROM dbo.HoaDon JOIN dbo.ChiTietHoaDon ON ChiTietHoaDon.HoaDonID = HoaDon.ID
-        //                    JOIN dbo.SanPham ON SanPham.ID = ChiTietHoaDon.SanPhamID
-        //                    WHERE dbo.HoaDon.ID = '" + id_hd + "' AND dbo.ChiTietHoaDon.Xoa = 0";
-        //    DataTable dataTable1 = new DataTable();
-        //    dataTable1 = connection.FillDataSet(sql, CommandType.Text);
-        //    dtgv_DSChiTietHoaDon.AutoGenerateColumns = false;
-        //    dtgv_DSChiTietHoaDon.DataSource = dataTable1;
-        //}
+      
         private void btn_suahoadon_Click(object sender, EventArgs e)
         {
             //Program.opt = 2;
@@ -261,7 +211,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
 
             //load lên datagridView Nguyên Vật Liệu           
-            string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+            string sql3 = "SELECT * FROM dbo.NguyenVatLieu WHERE Xoa = 0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
         }
         private void btn_themnvl_Click(object sender, EventArgs e)
@@ -285,7 +235,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             string sql = "Xoa_NVL";
             string[] para = { "@MaNVL" };
 
-            string manvl = dgv_DSNVL.CurrentRow.Cells["MaNVL"].Value.ToString();
+            string manvl = dgv_DSNVL.CurrentRow.Cells["MSNVL"].Value.ToString();
             object[] values = { Int32.Parse(manvl) };
             int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
             if (a != 0)
@@ -303,6 +253,40 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
                 MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
+
+
+        #region ThemSuaXoa_PhieuNhapHang
+
+        private void PhieuNhapHang_UpdateEventHandler1(object sender, ThongTinPhieuNhapHang.UpdateEventArgs args)
+        {
+
+            //load lên datagridView Danh sách phiếu nhập hàng
+            string sql2 = "SELECT MaPhieuNhap, TenNCC, TenNV, NgayTao, TongTien, NhaCungCap.MaNCC, NhanVien.MaNV FROM dbo.PhieuNhapHang " +
+                          "JOIN dbo.NhaCungCap ON NhaCungCap.MaNCC = PhieuNhapHang.MaNCC " +
+                          "JOIN dbo.NhanVien ON NhanVien.MaNV = PhieuNhapHang.MaNV " +
+                          "WHERE PhieuNhapHang.Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSPNH, sql2);
+        }
+
+        private void btn_themPhieuNhapHang_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang();
+            phieuNhapHang.UpdateEventHandler += PhieuNhapHang_UpdateEventHandler1;
+            phieuNhapHang.ShowDialog();
+        }
+
+        private void btn_suaPhieuNhapHang_Click(object sender, EventArgs e)
+        {
+            Program.opt = 2;
+            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang();
+            phieuNhapHang.UpdateEventHandler += PhieuNhapHang_UpdateEventHandler1;
+            phieuNhapHang.ShowDialog();
+        }
+
+       
         #endregion
     }
 }

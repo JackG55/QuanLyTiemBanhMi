@@ -20,8 +20,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
             InitializeComponent();
         }
-        string congtyid = "";
-        string hoahongid="";
+        string nccid = "";
+        string nhanvienid="";
+
         public delegate void UpdateDelegate(object sender, UpdateEventArgs args);
         public event UpdateDelegate UpdateEventHandler;
         public class UpdateEventArgs : EventArgs
@@ -37,72 +38,43 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
 
   
 
-        private void ThongTinHD_Load(object sender, EventArgs e)
+        private void ThongTinPhieuNhapHang_Load(object sender, EventArgs e)
         {
-            ////load danh sach công ty
-            //List<string> list_congtyid = Program.Quanlyhoadonsql.LayDS_CongTy(glue_ncc);
-            ////load danh sach nhân viên
-            //List<string> list_nhanvienid = Program.Quanlyhoadonsql.LayDS_NhanVien(glue_nhanvien);
-            ////load danh sach nguoi nhan hoa hong
-            //List<string> list_nguoinhanhoahongid = Program.Quanlyhoadonsql.LayDS_NguoiNhanHoaHong(glue_nguoinhanhoahong);
+            //load danh sach nhà cung cấp
+            List<string> list_NhaCungCapId = Program.FillData.LayDS_Len_GridLookUpEdit(glue_ncc, "NhaCungCap", "TenNCC", "MaNCC");
+            //load danh sach nhân viên
+            List<string> list_NhanVienid = Program.FillData.LayDS_Len_GridLookUpEdit(glue_nhanvien, "NhanVien", "TenNV", "MaNV");
 
-            //if (Program.opt == 1) //them
-            //{
-            //    dtp_ngayhenthanhtoan.Enabled = true;
-            //    tb_tienloi.Text = "0";
-            //    tb_tongtien.Text = "0";
-            //    tb_tienthanhtoan.Text = "0";
-            //    tb_hoahong.Text = "0";
-  
-            //    tb_maphieunhap.Text = Program.Quanlyhoadonsql.TaoMaHoaDon().ToString();
-            //    HienThongTinLenEditValue(list_nhanvienid, Program.user.Id, glue_nhanvien);
-               
-             
+            if (Program.opt == 1) //them
+            {
+                tb_ngaytao.Text = "";
+                tb_tongtien.Text = "";
 
-            //}
-            //if (Program.opt == 2) // sua
-            //{
-            //    dtp_ngayhenthanhtoan.Enabled = false;
-            //    tb_tienloi.ReadOnly = false;
-            //    tb_tienthanhtoan.ReadOnly = false;
-            //    tb_hoahong.ReadOnly = false;
-            //    glue_nguoinhanhoahong.ReadOnly = false;
-               
-            //    setThongTinVaoFormDeSua(list_congtyid, list_nhanvienid, list_nguoinhanhoahongid);
-            //}
+                tb_maphieunhap.ReadOnly = true;
+                tb_maphieunhap.Text = Program.FillData.SinhMaTuDong("MaPhieuNhap", "PhieuNhapHang").ToString();
+
+                HienThongTinLenEditValue(list_NhaCungCapId, Program.phieuNhapHang.Mancc, glue_ncc);
+                HienThongTinLenEditValue(list_NhanVienid, Program.phieuNhapHang.Manv, glue_nhanvien);
+
+
+            }
+            if (Program.opt == 2) // sua
+            {
+                tb_maphieunhap.ReadOnly = true;
+
+                setThongTinVaoFormDeSua(list_NhaCungCapId, list_NhanVienid);
+            }
         }
 
-        public void setThongTinVaoFormDeSua(List<string> list_congtyid, List<string> list_nhanvienid, List<string> list_nguoinhanhoahongid)
+        public void setThongTinVaoFormDeSua(List<string> list_NhaCungCapId, List<string> list_NhanVienid)
         {
+            tb_maphieunhap.Text = Program.phieuNhapHang.Maphieunhap;
+            tb_ngaytao.Text = Program.phieuNhapHang.Ngaytao.ToString();
+            tb_tongtien.Text = Program.phieuNhapHang.Tongtien;
 
-            //tb_maphieunhap.Text = Program.hoaDon.Id;
-            //tb_tenhoadon.Text = Program.hoaDon.Tenhoadon;
-            //tb_tongtien.Text = Program.hoaDon.Tongtien;
-            //tb_tienthanhtoan.Text = Program.hoaDon.Tongtiendathanhtoan;
-            //tb_tienloi.Text = Program.hoaDon.Tienloi;
-            //tb_hoahong.Text = Program.hoaDon.Hoahong;
-            //tb_ghichu.Text = Program.hoaDon.Ghichu;
-           
-            //if(Program.hoaDon.Ngayhenthanhtoan == null)
-            //{
-            //    dtp_ngayhenthanhtoan.Value = System.DateTime.Now;
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        dtp_ngayhenthanhtoan.Value = Convert.ToDateTime(Program.hoaDon.Ngayhenthanhtoan);
-            //    }
-            //    catch
-            //    {
-            //        dtp_ngayhenthanhtoan.Value = System.DateTime.Now;
-            //    }
-
-            //}
-       
-            //HienThongTinLenEditValue(list_congtyid, Program.hoaDon.Congtyid, glue_ncc);
-            //HienThongTinLenEditValue(list_nguoinhanhoahongid, Program.hoaDon.Nguoinhanhoahongid, glue_nguoinhanhoahong);
-            //HienThongTinLenEditValue(list_nhanvienid, Program.user.Id, glue_nhanvien);
+            HienThongTinLenEditValue(list_NhaCungCapId, Program.phieuNhapHang.Mancc, glue_ncc);
+            HienThongTinLenEditValue(list_NhanVienid, Program.phieuNhapHang.Manv, glue_nhanvien);
+            
 
         }
 
@@ -242,6 +214,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
             //lấy gia tri mã nhân viên
             //Program.hoaDon.Nhanvienid = glue_nhanvien.EditValue.ToString();
+            nhanvienid = glue_nhanvien.EditValue.ToString();
         }
 
      
@@ -256,27 +229,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             }
         }
 
-        private void tb_tienloi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void glue_congty_EditValueChanged_1(object sender, EventArgs e)
         {
-            congtyid = glue_ncc.EditValue.ToString();
+            nccid = glue_ncc.EditValue.ToString();
         }
 
-        private void tb_hoahong_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        
     }
 }

@@ -61,5 +61,43 @@ namespace QLTiemBanhMi.Connector
             }
             return list_tenloainv;
         }
+
+
+
+        /// <summary>
+        /// Hàm này để truyền thông tin lên grid lookup edit và trả lại 1 list chứa mảng
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="tenBang">Tên Bảng</param>
+        /// <param name="tenHienThi">Tên hiển thị lên</param>
+        /// <param name="maCanLay">Mã tương ứng với Tên</param>
+        /// <returns>Trả về một list các mã </returns>
+        public List<string> LayDS_Len_GridLookUpEdit(GridLookUpEdit grid, string tenBang, string tenHienThi, string maCanLay)
+        {
+            List<string> list = new List<string>();
+            string query = $"SELECT * FROM dbo.{tenBang} WHERE Xoa = 0";
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+
+            grid.Properties.DataSource = null;
+            grid.Properties.DataSource = dataTable;
+            grid.Properties.DisplayMember = tenHienThi;
+            grid.Properties.ValueMember = maCanLay;
+            grid.Properties.BestFitMode = BestFitMode.BestFitResizePopup;
+
+            //tu động mở popup khi co ket qua
+            grid.Properties.ImmediatePopup = true;
+
+            //setup co the nhap vao grid
+            grid.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+
+            string field = maCanLay;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(row[field].ToString());
+            }
+            return list;
+
+        }
     }
 }

@@ -226,7 +226,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.Name = "ThongTinPhieuNhapHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông Tin Phiếu Nhập";
-            this.Load += new System.EventHandler(this.ThongTinHD_Load);
+            this.Load += new System.EventHandler(this.ThongTinPhieuNhapHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glue_nhanvien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glue_ncc.Properties)).EndInit();
