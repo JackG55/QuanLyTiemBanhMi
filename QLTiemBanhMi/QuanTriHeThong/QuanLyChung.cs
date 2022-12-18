@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien;
-using QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham;
-using QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon;
 using System.Diagnostics;
 using System.IO;
 using QLTiemBanhMi.Object;
@@ -75,18 +72,7 @@ namespace QLTiemBanhMi.QuanTriHeThong
         }
 
         
-        private void barButtonItemphanquyen_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Phanquyen phanquyen = new Phanquyen();
-
-            phanquyen.TopLevel = false;
-            panelMain.Controls.Clear();
-            panelMain.Dock = DockStyle.Fill;
-            panelMain.Controls.Add(phanquyen);
-            phanquyen.Dock = DockStyle.Fill;
-            phanquyen.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            phanquyen.Show();
-        }
+        
 
         public void barButtonItemQLSanPham_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -103,7 +89,7 @@ namespace QLTiemBanhMi.QuanTriHeThong
       
         private void barButtonItem_qlhoadon_ItemClick(object sender, ItemClickEventArgs e)
         {
-            QuanLyNghiepVu.QuanLyHoaDon.HoaDon hoaDon = new QuanLyNghiepVu.QuanLyHoaDon.HoaDon();
+            QuanLyNghiepVu.QuanLyBanHang.BanHang hoaDon = new QuanLyNghiepVu.QuanLyBanHang.BanHang();
             hoaDon.TopLevel = false;
             panelMain.Controls.Clear();
             panelMain.Dock = DockStyle.Fill;
@@ -125,24 +111,24 @@ namespace QLTiemBanhMi.QuanTriHeThong
         
         private void QuanLyChung_Load(object sender, EventArgs e)
         {
-            List<string> tenquyenlist = Program.PhanQuyenList.Select(o => o.Tenquyen).ToList();
+           // List<string> tenquyenlist = Program.PhanQuyenList.Select(o => o.Tenquyen).ToList();
         
-            if (KiemTraQuyen(tenquyen_hethong,tenquyenlist))
-            {
-                ribbonPageGroup_Phanquyen.Visible = true;
-            }
-            if (KiemTraQuyen(tenquyen_sanpham, tenquyenlist))
-            {
-                ribbonPageGroup_SanPham.Visible = true;
-            }
-            if (KiemTraQuyen(tenquyen_hoadon, tenquyenlist))
-            {
-                ribbonPageGroup_HoaDon.Visible = true;
-            }
-            if (KiemTraQuyen(tenquyen_nhanvien, tenquyenlist))
-            {
-                ribbonPageGroup_NhanVien.Visible = true;
-            }
+            //if (KiemTraQuyen(tenquyen_hethong,tenquyenlist))
+            //{
+               
+            //}
+            //if (KiemTraQuyen(tenquyen_sanpham, tenquyenlist))
+            //{
+            //    ribbonPageGroup_SanPham.Visible = true;
+            //}
+            //if (KiemTraQuyen(tenquyen_hoadon, tenquyenlist))
+            //{
+            //    ribbonPageGroup_HoaDon.Visible = true;
+            //}
+            //if (KiemTraQuyen(tenquyen_nhanvien, tenquyenlist))
+            //{
+            //    ribbonPageGroup_NhanVien.Visible = true;
+            //}
 
            
 
@@ -163,6 +149,18 @@ namespace QLTiemBanhMi.QuanTriHeThong
         private void panelMain_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void bbi_quanlykho_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            QuanLyNghiepVu.QuanLyKho.Kho kho = new QuanLyNghiepVu.QuanLyKho.Kho();
+            kho.TopLevel = false;
+            panelMain.Controls.Clear();
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Controls.Add(kho);
+            kho.Dock = DockStyle.Fill;
+            kho.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            kho.Show();
         }
     }
 }

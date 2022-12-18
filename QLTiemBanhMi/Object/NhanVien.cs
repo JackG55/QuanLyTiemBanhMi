@@ -8,28 +8,38 @@ namespace QLTiemBanhMi.Object
 {
     class NhanVien
     {
-        private string id;
-        private string tendangnhap;
-        private string matkhau;
-        private string tendaydu;
-        private string diachi;
-        private DateTime ngaytao;
+        private int manv;
+        private string tennv;
+        private string username;
+        private string pass;
+        private string namsinh;
+       
         private bool xoa;
-        private string ghichu;
-        private string loainhanvienid;
-        private string tenloai;
+        private string diachi;
+        private string chucvu;
+        private string gioitinh;
+
+        public int Manv { get => manv; set => manv = value; }
+        public string Tennv { get => tennv; set => tennv = value; }
+        public string Username { get => username; set => username = value; }
+        public string Pass { get => pass; set => pass = value; }
+        public string Namsinh { get => namsinh; set => namsinh = value; }
+        public bool Xoa { get => xoa; set => xoa = value; }
+        public string Diachi { get => diachi; set => diachi = value; }
+        public string Chucvu { get => chucvu; set => chucvu = value; }
+        public string Gioitinh { get => gioitinh; set => gioitinh = value; }
+
         public enum NhanVienFields
         {
-            ID,
-            TenDangNhap,
-            MatKhau,
-            TenDayDu,
+            MaNV,
+            TenNV,
+            UserName,
+            Pass,
+            NamSinh,
             DiaChi,
-            NgayTao,
             Xoa,
-            GhiChu,
-            LoaiNhanVienID,
-            TenLoai
+            ChucVu,
+            GioiTinh
         }
 
         public NhanVien()
@@ -37,27 +47,19 @@ namespace QLTiemBanhMi.Object
 
         }
 
-        public NhanVien(string id, string tendangnhap, string matkhau, string tendaydu, string diachi, DateTime ngaytao, string ghichu, string loainhanvienid)
-        {
-            this.id = id;
-            this.tendangnhap = tendangnhap;
-            this.matkhau = matkhau;
-            this.tendaydu = tendaydu;
-            this.diachi = diachi;
-            this.ngaytao = ngaytao;
-            this.ghichu = ghichu;
-            this.loainhanvienid = loainhanvienid;
-        }
 
-        public string Id { get => id; set => id = value; }
-        public string Tendangnhap { get => tendangnhap; set => tendangnhap = value; }
-        public string Matkhau { get => matkhau; set => matkhau = value; }
-        public string Tendaydu { get => tendaydu; set => tendaydu = value; }
-        public string Diachi { get => diachi; set => diachi = value; }
-        public DateTime Ngaytao { get => ngaytao; set => ngaytao = value; }
-        public bool Xoa { get => xoa; set => xoa = value; }
-        public string Ghichu { get => ghichu; set => ghichu = value; }
-        public string Loainhanvienid { get => loainhanvienid; set => loainhanvienid = value; }
-        public string Tenloai { get => tenloai; set => tenloai = value; }
+        //public NhanVien(string id, string tendangnhap, string matkhau, string tendaydu, string diachi, DateTime ngaytao, string ghichu, string loainhanvienid)
+        //{
+        //    this.id = id;
+        //    this.tendangnhap = tendangnhap;
+        //    this.matkhau = matkhau;
+        //    this.tendaydu = tendaydu;
+        //    this.diachi = diachi;
+        //    this.ngaytao = ngaytao;
+        //    this.ghichu = ghichu;
+        //    this.loainhanvienid = loainhanvienid;
+        //}
+
+     
     }
 }

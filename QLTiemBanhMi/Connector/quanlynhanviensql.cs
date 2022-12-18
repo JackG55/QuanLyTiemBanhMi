@@ -46,26 +46,26 @@ namespace QLTiemBanhMi.Connector
 
         internal void PopulatePlayerFromReader(NhanVien nhanvien, IDataReader data)
         {
-            nhanvien.Tendangnhap = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenDangNhap.ToString()));
+            //nhanvien.Tendangnhap = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenDangNhap.ToString()));
 
-            if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.MatKhau.ToString())))
-            {
-                nhanvien.Matkhau = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.MatKhau.ToString()));
-            }
-            if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.ID.ToString())))
-            {
-                nhanvien.Id = data.GetInt32(data.GetOrdinal(NhanVien.NhanVienFields.ID.ToString())).ToString();
-            }
+            //if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.MatKhau.ToString())))
+            //{
+            //    nhanvien.Matkhau = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.MatKhau.ToString()));
+            //}
+            //if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.ID.ToString())))
+            //{
+            //    nhanvien.Id = data.GetInt32(data.GetOrdinal(NhanVien.NhanVienFields.ID.ToString())).ToString();
+            //}
 
-            if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.TenLoai.ToString())))
-            {
-                nhanvien.Tenloai = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenLoai.ToString())).ToString();
-            }
+            //if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.TenLoai.ToString())))
+            //{
+            //    nhanvien.Tenloai = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenLoai.ToString())).ToString();
+            //}
 
-            if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.TenDayDu.ToString())))
-            {
-                nhanvien.Tendaydu = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenDayDu.ToString())).ToString();
-            }
+            //if (!data.IsDBNull(data.GetOrdinal(NhanVien.NhanVienFields.TenDayDu.ToString())))
+            //{
+            //    nhanvien.Tendaydu = data.GetString(data.GetOrdinal(NhanVien.NhanVienFields.TenDayDu.ToString())).ToString();
+            //}
 
         }
 

@@ -160,6 +160,8 @@
             // 
             // DoiMatKhau
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Bisque;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 233);

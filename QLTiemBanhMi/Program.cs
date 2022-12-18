@@ -16,7 +16,6 @@ namespace QLTiemBanhMi
         /// The main entry point for the application.
         /// </summary>
         public static int opt;
-        public static QuanLyChung quanlychung;
         
         public static DangNhap dangnhap;
         public static User user;
@@ -25,15 +24,15 @@ namespace QLTiemBanhMi
         public static quantrihethongsql Quantrihethongsql;
         public static quanlyhoadonsql Quanlyhoadonsql;
 
-        public static List<QuyenThaoTac> PhanQuyenList;
+       
         public static NhanVien nhanvien;
-        public static LoaiNhanVien chiTietLoaiNV;
+        public static LoaiKH chiTietLoaiNV;
 
         public static HoaDon hoaDon;
         public static ChiTietHoaDon chiTietHoaDon;
         public static SanPham sanpham;
-        public static DonVi chiTietDonVi;
-        public static GiaBanSanPham giabanSanPham;
+        public static DanhMucSanPham chiTietDonVi;
+        public static HinhThucThanhToan giabanSanPham;
 
 
         [STAThread]
@@ -54,16 +53,16 @@ namespace QLTiemBanhMi
             chiTietHoaDon = new ChiTietHoaDon();
 
             nhanvien = new NhanVien();
-            chiTietLoaiNV = new LoaiNhanVien();
+            chiTietLoaiNV = new LoaiKH();
 
             sanpham = new SanPham();
-            chiTietDonVi = new DonVi();
-            giabanSanPham = new GiaBanSanPham();
+            chiTietDonVi = new DanhMucSanPham();
+            giabanSanPham = new HinhThucThanhToan();
             user = new User();
 
-            PhanQuyenList = new List<QuyenThaoTac>();
+          
 
-            Application.Run(new );
+            Application.Run(new QuanTriHeThong.QuanLyChung());
         }
     }
 }

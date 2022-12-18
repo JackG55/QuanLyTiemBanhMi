@@ -93,9 +93,29 @@ namespace QLTiemBanhMi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boproductgroup_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("boproductgroup_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boproductgroup_32x32 {
             get {
                 object obj = ResourceManager.GetObject("boproductgroup_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boproductgroup_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("boproductgroup_32x321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +166,26 @@ namespace QLTiemBanhMi.Properties {
         internal static System.Drawing.Bitmap customer_16x16 {
             get {
                 object obj = ResourceManager.GetObject("customer_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("database_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("database_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

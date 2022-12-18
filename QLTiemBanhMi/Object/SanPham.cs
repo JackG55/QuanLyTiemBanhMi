@@ -8,41 +8,38 @@ namespace QLTiemBanhMi.Object
 {
     class SanPham
     {
-        private string id;
-        private string tensanpham;
-        private string quycach;
-        private string donviid;
-        private string soluongton;
-        private DateTime ngaytao;
+        private int masp;
+        private string tensp;
+        private string mota;
+        private int madm;
+        private string anhsp;
+        
         private bool xoa;
-        private string ghichu;
-        private string nguonnhap;
 
         public SanPham()
         {
 
         }
 
-        public SanPham(string id, string tensanpham, string quycach, string donviid, string soluongton, DateTime ngaytao, string ghichu, string nguonnhap)
-        {
-            this.id = id;
-            this.tensanpham = tensanpham;
-            this.quycach = quycach;
-            this.donviid = donviid;
-            this.soluongton = soluongton;
-            this.ngaytao = ngaytao;
-            this.ghichu = ghichu;
-            this.nguonnhap = nguonnhap;
-        }
-
-        public string Id { get => id; set => id = value; }
-        public string Tensanpham { get => tensanpham; set => tensanpham = value; }
-        public string Quycach { get => quycach; set => quycach = value; }
-        public string Donviid { get => donviid; set => donviid = value; }
-        public string Soluongton { get => soluongton; set => soluongton = value; }
-        public DateTime Ngaytao { get => ngaytao; set => ngaytao = value; }
+        public int Masp { get => masp; set => masp = value; }
+        public string Tensp { get => tensp; set => tensp = value; }
+        public string Mota { get => mota; set => mota = value; }
+        public int Madm { get => madm; set => madm = value; }
+        public string Anhsp { get => anhsp; set => anhsp = value; }
         public bool Xoa { get => xoa; set => xoa = value; }
-        public string Ghichu { get => ghichu; set => ghichu = value; }
-        public string Nguonnhap { get => nguonnhap; set => nguonnhap = value; }
+
+        //public SanPham(string id, string tensanpham, string quycach, string donviid, string soluongton, DateTime ngaytao, string ghichu, string nguonnhap)
+        //{
+        //    this.id = id;
+        //    this.tensanpham = tensanpham;
+        //    this.quycach = quycach;
+        //    this.donviid = donviid;
+        //    this.soluongton = soluongton;
+        //    this.ngaytao = ngaytao;
+        //    this.ghichu = ghichu;
+        //    this.nguonnhap = nguonnhap;
+        //}
+
+
     }
 }
