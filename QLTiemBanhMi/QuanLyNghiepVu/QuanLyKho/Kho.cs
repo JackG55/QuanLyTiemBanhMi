@@ -20,37 +20,54 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             InitializeComponent();
         }
 
-        private void HoaDon_Load(object sender, EventArgs e)
+
+        private void Kho_Load(object sender, EventArgs e)
         {
-            //foreach (QuyenThaoTac q in Program.PhanQuyenList)
-            //{
-            //    if (q.Tenquyen == tenquyen_hoadon[0])
-            //    {
-            //        btn_themhoadon.Visible = true;
-            //        btn_thanhtoanhd.Visible = true;
-            //        btn_chitietthanhtoan.Visible = true;
-            //        btn_themchitiethoadon.Visible = true;
+            
+            //load lên datagridView Nhà cung cấp
+            string sql1 = "SELECT * FROM dbo.NhaCungCap";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSNCC, sql1);
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[1])
-            //    {
+            //load lên datagridView Danh sách phiếu nhập hàng
+            string sql2 = "SELECT MaPhieuNhap, TenNCC, TenNV, NgayTao, TongTien FROM dbo.PhieuNhapHang " +
+                          "JOIN dbo.NhaCungCap ON NhaCungCap.MaNCC = PhieuNhapHang.MaNCC " +
+                          "JOIN dbo.NhanVien ON NhanVien.MaNV = PhieuNhapHang.MaNV";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSPNH, sql2);
 
+            //load lên datagridView Nguyên Vật Liệu           
+            string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[2])
-            //    {
-            //        btn_suahoadon.Visible = true;
+            //load lên datagridView Chi tiết phiếu nhập hàng
+            string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+            string sql4 = "SELECT ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
+                           "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL WHERE MaPhieuNhap = " + maPhieuNhap;
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
+        }
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[3])
-            //    {
-            //        btn_suachitiethoadon.Visible = true;
-                 
+        private void dgv_DSNCC_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //Lấy các trường thông tin để nếu mà sửa thì sửa
+            string mancc = dgv_DSNCC.CurrentRow.Cells["MaNCC"].Value.ToString();
+            string tenncc = dgv_DSNCC.CurrentRow.Cells["TenNCC"].Value.ToString();
+            string diachi = dgv_DSNCC.CurrentRow.Cells["DiaChi"].Value.ToString();
+            string sdt = dgv_DSNCC.CurrentRow.Cells["SDT"].Value.ToString();
 
-            //    }
+            //Tạo 1 Object để phục vụ cho thêm sửa xoá
+            Program.nhaCungCap = new Object.NhaCungCap(mancc, tenncc, diachi, sdt);
+        }
 
-            //}
-            //Program.Quanlyhoadonsql.LayDSHoaDon(dataGridViewDSHoaDon);
+        private void dataGridViewPhieuNhapHang_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //load lại cái chi tiết hoá đơn
+            string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+            string sql4 = "SELECT ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
+                           "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL WHERE MaPhieuNhap = " + maPhieuNhap;
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
+
+            //Tạo 1 Object để phục vụ cho thêm sửa xoá
+            
         }
 
         private void dataGridViewDSHoaDon_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -187,19 +204,105 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             //chiTietThanhToan.ShowDialog();
         }
 
-        private void btn_themncc_Click(object sender, EventArgs e)
+
+        #region ThemSuaXoa_NhaCungCap
+        private void chiTietNCC_UpdateEventHandler1(object sender, ChiTietNCC.UpdateEventArgs args)
         {
 
+            //load lên datagridView Nhà cung cấp
+            string sql1 = "SELECT * FROM dbo.NhaCungCap WHERE Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSNCC, sql1);
+        }
+
+        private void btn_themncc_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ChiTietNCC chiTietNCC = new ChiTietNCC();
+            chiTietNCC.UpdateEventHandler += chiTietNCC_UpdateEventHandler1;
+            chiTietNCC.ShowDialog();
         }
 
         private void btn_suancc_Click(object sender, EventArgs e)
         {
-
+            Program.opt = 2;
+            ChiTietNCC chiTietNCC = new ChiTietNCC();
+            chiTietNCC.UpdateEventHandler += chiTietNCC_UpdateEventHandler1;
+            chiTietNCC.ShowDialog();
         }
 
         private void btn_xoancc_Click(object sender, EventArgs e)
         {
+            string sql = "Xoa_NCC";
+            string[] para = { "@MaNCC" };
 
+            string mancc = dgv_DSNCC.CurrentRow.Cells["MaNCC"].Value.ToString();
+            object[] values = { Int32.Parse(mancc) };
+            int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+            if (a != 0)
+            {
+                DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result2 == DialogResult.OK)
+                {
+                    //load lên datagridView Nhà cung cấp
+                    string sql1 = "SELECT * FROM dbo.NhaCungCap WHERE Xoa = 0";
+                    Program.FillData.LoadDS_Len_DataGridView(dgv_DSNCC, sql1);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        #endregion
+
+
+        #region ThemSuaXoa_NguyenVatLieu
+        private void chiTietNVL_UpdateEventHandler1(object sender, ChiTietNVL.UpdateEventArgs args)
+        {
+
+            //load lên datagridView Nguyên Vật Liệu           
+            string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
+        }
+        private void btn_themnvl_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ChiTietNVL chiTietNVL = new ChiTietNVL();
+            chiTietNVL.UpdateEventHandler += chiTietNVL_UpdateEventHandler1;
+            chiTietNVL.ShowDialog();
+        }
+
+        private void btn_suanvl_Click(object sender, EventArgs e)
+        {
+            Program.opt = 2;
+            ChiTietNVL chiTietNVL = new ChiTietNVL();
+            chiTietNVL.UpdateEventHandler += chiTietNVL_UpdateEventHandler1;
+            chiTietNVL.ShowDialog();
+        }
+
+        private void btn_xoanvl_Click(object sender, EventArgs e)
+        {
+            string sql = "Xoa_NVL";
+            string[] para = { "@MaNVL" };
+
+            string manvl = dgv_DSNVL.CurrentRow.Cells["MaNVL"].Value.ToString();
+            object[] values = { Int32.Parse(manvl) };
+            int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+            if (a != 0)
+            {
+                DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result2 == DialogResult.OK)
+                {
+                    //load lên datagridView Nguyên Vật Liệu           
+                    string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+                    Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
     }
 }

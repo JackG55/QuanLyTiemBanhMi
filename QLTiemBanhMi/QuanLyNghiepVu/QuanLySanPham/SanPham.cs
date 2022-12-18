@@ -22,50 +22,14 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 
         private void SanPham_Load(object sender, EventArgs e)
         {
-            //tim kiem cac quyen ma nguoi dung duoc phep
-            //foreach (QuyenThaoTac q in Program.PhanQuyenList)
-            //{
-            //    if (q.Tenquyen == tenquyen_sanpham[0])
-            //    {
-                    
-            //        btn_themsanpham.Visible = true;
-                    
+            //load lên datagridView Danh Sach San Pham
+            string sql1 = "SELECT * FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM ";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_sanpham[1])
-            //    {
-                    
+            //load lên datagridView Chuong trinh Khuyen Mai
+            string sql2 = "SELECT * FROM dbo.ChuongTrinhKhuyenMai";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSKhuyenMai, sql2);
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_sanpham[2])
-            //    {
-            //        btn_themgiaban.Visible = true;
-            //        btn_xoagiaban.Visible = true;
-
-            //    }
-            //    if (q.Tenquyen == tenquyen_sanpham[3])
-            //    {
-            //        btnSuaDonVi.Visible = true;
-            //        btnThemDonVi.Visible = true;
-            //        btnXoaDonVi.Visible = true;
-
-            //    }
-            //    if (q.Tenquyen == tenquyen_sanpham[4])
-            //    {
-            //        btn_suasanpham.Visible = true;
-
-            //    }
-            //    if (q.Tenquyen == tenquyen_sanpham[5])
-            //    {
-            //        btn_xoasanpham.Visible = true;
-
-            //    }
-
-            //}
-
-          
-            //Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham);
-            //Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
         }
 
         private void dataGridViewDSSanPham_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -91,7 +55,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void chiTietSP_UpdateEventHandler1(object sender, ChiTietSP.UpdateEventArgs args)
         {
 
-            Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham);
+            Program.Quanlysanphamsql.LayDSSanPham(dgv_DSSanPham);
 
         }
 

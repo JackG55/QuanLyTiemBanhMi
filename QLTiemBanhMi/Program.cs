@@ -19,10 +19,21 @@ namespace QLTiemBanhMi
         
         public static DangNhap dangnhap;
         public static User user;
+
         public static quanlynhanviensql Quanlynhanviensql;
         public static quanlysanphamsql Quanlysanphamsql;
         public static quantrihethongsql Quantrihethongsql;
         public static quanlyhoadonsql Quanlyhoadonsql;
+        public static fillData FillData;
+
+
+        /// <summary>
+        /// Khai báo các biến static liên quan đến Kho
+        /// </summary>
+        public static NhaCungCap nhaCungCap;
+        public static NguyenVatLieu nguyenVatLieu;
+        public static PhieuNhapHang phieuNhapHang;
+        public static ChiTietPhieuNhapHang chiTietPhieuNhapHang;
 
        
         public static NhanVien nhanvien;
@@ -47,6 +58,7 @@ namespace QLTiemBanhMi
             Quanlyhoadonsql = new quanlyhoadonsql();
             Quanlysanphamsql = new quanlysanphamsql();
             Quantrihethongsql = new quantrihethongsql();
+            FillData = new fillData();
 
             //khai báo object để sử dụng
             hoaDon = new HoaDon();
@@ -59,6 +71,19 @@ namespace QLTiemBanhMi
             chiTietDonVi = new DanhMucSanPham();
             giabanSanPham = new HinhThucThanhToan();
             user = new User();
+
+            //KHO
+            //Nhà cung cấp
+            nhaCungCap = new NhaCungCap();
+
+            //Nguyên vật liệu
+            nguyenVatLieu = new NguyenVatLieu();
+
+            //Phiếu nhập hàng
+            phieuNhapHang = new PhieuNhapHang();
+
+            //Chi tiết phiếu nhập hàng
+            chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
 
           
 

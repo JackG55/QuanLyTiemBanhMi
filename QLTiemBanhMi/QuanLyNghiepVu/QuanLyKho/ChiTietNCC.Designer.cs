@@ -170,7 +170,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.Name = "ChiTietNCC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Nhà Cung Cấp";
-            this.Load += new System.EventHandler(this.ChiTietLoaiNV_Load);
+            this.Load += new System.EventHandler(this.ChiTietNCC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

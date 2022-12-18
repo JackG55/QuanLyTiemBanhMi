@@ -1,0 +1,36 @@
+﻿--Nhà Cung Cấp
+CREATE OR ALTER PROC Them_NCC (@MaNCC INT, @TenNCC NVARCHAR(100), @DiaChi NVARCHAR(200), @SDT CHAR(10))
+AS
+BEGIN
+	INSERT dbo.NhaCungCap
+	(
+	    MaNCC,
+	    TenNCC,
+	    DiaChi,
+	    SDT,
+	    Xoa
+	)
+	VALUES
+	(  @MaNCC, @TenNCC, @DiaChi, @SDT, 0 )
+END
+GO
+
+CREATE OR ALTER PROC Sua_NCC (@MaNCC INT, @TenNCC NVARCHAR(100), @DiaChi NVARCHAR(200), @SDT CHAR(10))
+AS
+BEGIN
+	UPDATE dbo.NhaCungCap SET 
+		TenNCC = @TenNCC,
+		DiaChi = @DiaChi, 
+		SDT = @SDT
+	WHERE MaNCC = @MaNCC
+END
+GO
+
+CREATE OR ALTER PROC Xoa_NCC (@MaNCC INT)
+AS
+BEGIN
+	UPDATE dbo.NhaCungCap SET 
+		Xoa = 1
+	WHERE MaNCC = @MaNCC
+END
+GO

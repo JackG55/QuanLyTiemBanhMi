@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connector\connection.cs" />
+    <Compile Include="Connector\FillData.cs" />
     <Compile Include="Connector\quanlyhoadonsql.cs" />
     <Compile Include="Connector\quanlynhanviensql.cs" />
     <Compile Include="Connector\quanlysanphamsql.cs" />
