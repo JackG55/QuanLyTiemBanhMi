@@ -6,7 +6,8 @@ GO
 CREATE TABLE LoaiKH(
 	MaLoaiKH INT NOT NULL PRIMARY KEY, 
 	TenLoaiKH NVARCHAR(100), 
-	SoDiemTichLuy INT 
+	SoDiemTichLuy INT,
+	Xoa BIT DEFAULT(0)
 )
 
 
@@ -18,11 +19,11 @@ CREATE TABLE KhachHang(
 	NgaySinh DATE, 
 	GioiTinh CHAR(3),
 	SDT CHAR(10), 
-	FOREIGN KEY (MaLoaiKH) REFERENCES dbo.LoaiKH(MaLoaiKH)
+	DiemTichLuy INT DEFAULT(0),
+	FOREIGN KEY (MaLoaiKH) REFERENCES dbo.LoaiKH(MaLoaiKH),
+	Xoa BIT DEFAULT(0)
+
 )
-
-
-
 CREATE TABLE NhanVien(
 	MaNV INT NOT NULL PRIMARY KEY, 
 	TenNV NVARCHAR(100), 
@@ -31,21 +32,24 @@ CREATE TABLE NhanVien(
 	NamSinh DATE, 
 	DiaChi NVARCHAR(100), 
 	ChucVu VARCHAR(100), 
-	GioiTinh VARCHAR(3)
+	GioiTinh VARCHAR(3),
+	Xoa BIT DEFAULT(0)
 )
 CREATE TABLE NhaCungCap(
 	MaNCC int PRIMARY KEY NOT NULL,
-	TenNCC VARCHAR(75) NOT NULL UNIQUE,
+	TenNCC NVARCHAR(100) NOT NULL UNIQUE,
 	DiaChi NVARCHAR(200),
-	SDT CHAR(10)
+	SDT CHAR(10),
+	Xoa BIT DEFAULT(0)
 )
 
 CREATE TABLE NguyenVatLieu(
 	MSNVL int PRIMARY KEY NOT NULL,
-	TenNVL VARCHAR(75) NOT NULL UNIQUE,
+	TenNVL NVARCHAR(100) NOT NULL UNIQUE,
 	MoTa NVARCHAR(200),
 	DVT VARCHAR(3) NOT NULL CONSTRAINT DVT_NVL_Check CHECK(DVT IN ('kg','g','mg','m','mm','lit','ml')), 
-	SLTon INT NOT NULL CONSTRAINT SLT_NVL_Check CHECK(SLTon >=0)
+	SLTon INT NOT NULL CONSTRAINT SLT_NVL_Check CHECK(SLTon >=0),
+	Xoa BIT DEFAULT(0)
 )
 
 CREATE TABLE PhieuNhapHang(
@@ -55,13 +59,15 @@ CREATE TABLE PhieuNhapHang(
 	MaNV INT NOT NULL,
 	FOREIGN KEY(MaNCC) REFERENCES dbo.NhaCungCap(MaNCC), 
 	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV),
-	TongTien INT
+	TongTien INT,
+	Xoa BIT DEFAULT(0)
 )
 
 --DanhMucSanPham (MaDM, TenDanhMuc)
 CREATE TABLE DanhMucSanPham(
 	MaDM INT NOT NULL PRIMARY KEY, 
-	TenDanhMuc NVARCHAR(100)
+	TenDanhMuc NVARCHAR(100),
+	Xoa BIT DEFAULT(0)
 )
 
 
@@ -72,14 +78,16 @@ CREATE TABLE SanPham(
 	MoTa NVARCHAR(200),  
 	MaDM INT NOT NULL, 
 	AnhSP NVARCHAR(200), 
-	FOREIGN KEY(MaDM) REFERENCES dbo.DanhMucSanPham(MaDM)
+	FOREIGN KEY(MaDM) REFERENCES dbo.DanhMucSanPham(MaDM),
+	Xoa BIT DEFAULT(0)
 )
 
 
 CREATE TABLE CaLam(
 	MaCaLam INT NOT NULL PRIMARY KEY, 
 	BatDau TIME, 
-	KetThuc TIME
+	KetThuc TIME,
+	Xoa BIT DEFAULT(0)
 )
 
 --LichLamViec (MaCaLam, MaNV, NgayLamViec)
@@ -89,13 +97,14 @@ CREATE TABLE LichLamViec (
 	NgayLamViec DATE,
 	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV), 
 	FOREIGN KEY(MaCaLam) REFERENCES dbo.CaLam(MaCaLam), 
-	CONSTRAINT PK_LichLamViec PRIMARY KEY(MaCaLam, MaNV)
+	CONSTRAINT PK_LichLamViec PRIMARY KEY(MaCaLam, MaNV, NgayLamViec),
 )
 
 --HinhThucThanhToan (MaThanhToan, TenLoaiHinhThucThanhToan)
 CREATE TABLE HinhThucThanhToan(
 	MaThanhToan INT NOT NULL PRIMARY KEY, 
-	TenLoaiHinhThucThanhToan NVARCHAR(100)
+	TenLoaiHinhThucThanhToan NVARCHAR(100),
+	Xoa BIT DEFAULT(0)
 )
 
 
@@ -109,7 +118,8 @@ CREATE TABLE HoaDon (
 	TongTien INT,
 	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV), 
 	FOREIGN KEY(MaKH) REFERENCES dbo.KhachHang(MaKH), 
-	FOREIGN KEY(MaThanhToan) REFERENCES dbo.HinhThucThanhToan(MaThanhToan)
+	FOREIGN KEY(MaThanhToan) REFERENCES dbo.HinhThucThanhToan(MaThanhToan),
+	Xoa BIT DEFAULT(0)
 )
 
 --ChuongTrinhKhuyenMai (MaKM,TenKM,PhanTramGiamGia, AnhKMQR)
@@ -119,7 +129,8 @@ CREATE TABLE ChuongTrinhKhuyenMai(
 	TenKM NVARCHAR(100), 
 	PhanTramGiamGia INT,
 	NgayBatDau DATETIME not null DEFAULT(GETDATE()),
-	NgayKetThuc DATETIME not null DEFAULT(GETDATE())
+	NgayKetThuc DATETIME not null DEFAULT(GETDATE()),
+	Xoa BIT DEFAULT(0)
 )
 
 
@@ -131,7 +142,8 @@ CREATE TABLE ChiTietPhieuNhapHang(
 	SL INT NOT NULL, 
 	CONSTRAINT PK_ChiTietPhieuNhapHang PRIMARY KEY(MaPhieuNhap, MSNVL), 
 	FOREIGN KEY(MaPhieuNhap) REFERENCES dbo.PhieuNhapHang(MaPhieuNhap), 
-	FOREIGN KEY(MSNVL) REFERENCES dbo.NguyenVatLieu(MSNVL)
+	FOREIGN KEY(MSNVL) REFERENCES dbo.NguyenVatLieu(MSNVL),
+	
 )
 
 --ChiTietKhuyenMai (MaKM, MaHD, MaKH)
@@ -156,18 +168,5 @@ CREATE TABLE ChiTietHoaDon(
 	FOREIGN KEY(MaHD) REFERENCES dbo.HoaDon(MaHD), 
 	FOREIGN KEY(MaSP) REFERENCES dbo.SanPham(MaSP), 
 	CONSTRAINT PL_ChiTietHoaDon PRIMARY KEY(MaHD, MaSP)
-)
-
-CREATE TABLE QuyenThaoTac(
-	MaQuyen INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	TenQuyen VARCHAR(150) NOT NULL,
-	Xoa BIT DEFAULT(0),
-	GhiChu NVARCHAR(200)
-)
-CREATE TABLE PhanQuyenNguoiDung(
-	MaPQND INT PRIMARY KEY NOT NULL IDENTITY(1,1),
-	MaNV INT REFERENCES dbo.NhanVien(MaNV),
-	MaQuyen INT REFERENCES dbo.QuyenThaoTac(MaQuyen),
-	Xoa BIT DEFAULT(0)
 )
 
