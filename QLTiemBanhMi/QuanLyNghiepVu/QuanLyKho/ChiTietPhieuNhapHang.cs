@@ -37,7 +37,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         List<string> list_malhp= new List<string>();
         List<string> list_tenlhp = new List<string>();
       
-        private void ChiTietHD_SP_Load(object sender, EventArgs e)
+        private void ChiTietPhieuNhapHang_Load(object sender, EventArgs e)
         {
             ////load danh sach san pham
             //List<string> list_sanphamid = Program.Quanlyhoadonsql.LayDS_SanPham(glue_nguyenvatlieu);

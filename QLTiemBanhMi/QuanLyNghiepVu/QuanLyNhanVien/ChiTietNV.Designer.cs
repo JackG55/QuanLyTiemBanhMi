@@ -30,7 +30,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.tb_tendangnhap = new System.Windows.Forms.TextBox();
+            this.tb_username = new System.Windows.Forms.TextBox();
             this.buttonHuy = new System.Windows.Forms.Button();
             this.buttonLuu = new System.Windows.Forms.Button();
             this.tb_manv = new System.Windows.Forms.TextBox();
@@ -53,20 +53,20 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(42, 80);
+            this.label5.Location = new System.Drawing.Point(42, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(151, 25);
             this.label5.TabIndex = 69;
             this.label5.Text = "Tên Đăng Nhập";
             // 
-            // tb_tendangnhap
+            // tb_username
             // 
-            this.tb_tendangnhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_tendangnhap.Location = new System.Drawing.Point(229, 77);
-            this.tb_tendangnhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_tendangnhap.Name = "tb_tendangnhap";
-            this.tb_tendangnhap.Size = new System.Drawing.Size(304, 30);
-            this.tb_tendangnhap.TabIndex = 68;
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.Location = new System.Drawing.Point(229, 125);
+            this.tb_username.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_username.Name = "tb_username";
+            this.tb_username.Size = new System.Drawing.Size(304, 30);
+            this.tb_username.TabIndex = 68;
             // 
             // buttonHuy
             // 
@@ -143,7 +143,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 129);
+            this.label3.Location = new System.Drawing.Point(42, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 25);
             this.label3.TabIndex = 99;
@@ -152,7 +152,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             // tb_tennv
             // 
             this.tb_tennv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_tennv.Location = new System.Drawing.Point(229, 126);
+            this.tb_tennv.Location = new System.Drawing.Point(229, 79);
             this.tb_tennv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_tennv.Name = "tb_tennv";
             this.tb_tennv.Size = new System.Drawing.Size(304, 30);
@@ -182,6 +182,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             this.cbbChucVu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbChucVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cbbChucVu.FormattingEnabled = true;
+            this.cbbChucVu.Items.AddRange(new object[] {
+            "Nhan Vien Ban Hang",
+            "Nhan Vien Kho",
+            "Quan Ly"});
             this.cbbChucVu.Location = new System.Drawing.Point(229, 332);
             this.cbbChucVu.Margin = new System.Windows.Forms.Padding(4);
             this.cbbChucVu.Name = "cbbChucVu";
@@ -232,6 +236,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             this.cbb_gioitinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_gioitinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cbb_gioitinh.FormattingEnabled = true;
+            this.cbb_gioitinh.Items.AddRange(new object[] {
+            "Nu",
+            "Nam"});
             this.cbb_gioitinh.Location = new System.Drawing.Point(229, 229);
             this.cbb_gioitinh.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_gioitinh.Name = "cbb_gioitinh";
@@ -259,7 +266,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.buttonLuu);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tb_tendangnhap);
+            this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_manv);
             this.Name = "ChiTietNV";
@@ -273,7 +280,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
 
         #endregion
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tb_tendangnhap;
+        private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.Button buttonHuy;
         private System.Windows.Forms.Button buttonLuu;
         private System.Windows.Forms.TextBox tb_manv;

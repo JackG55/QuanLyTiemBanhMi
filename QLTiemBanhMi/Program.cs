@@ -19,11 +19,6 @@ namespace QLTiemBanhMi
         
         public static DangNhap dangnhap;
         public static User user;
-
-        public static quanlynhanviensql Quanlynhanviensql;
-        public static quanlysanphamsql Quanlysanphamsql;
-        public static quantrihethongsql Quantrihethongsql;
-        public static quanlyhoadonsql Quanlyhoadonsql;
         public static fillData FillData;
 
 
@@ -35,15 +30,16 @@ namespace QLTiemBanhMi
         public static PhieuNhapHang phieuNhapHang;
         public static ChiTietPhieuNhapHang chiTietPhieuNhapHang;
 
-       
+        /// <summary>
+        /// Khai báo các biến static liên quan đến NhanVien
+        /// </summary>
         public static NhanVien nhanvien;
-        public static LoaiKH chiTietLoaiNV;
 
-        public static HoaDon hoaDon;
-        public static ChiTietHoaDon chiTietHoaDon;
-        public static SanPham sanpham;
-        public static DanhMucSanPham chiTietDonVi;
-        public static HinhThucThanhToan giabanSanPham;
+        /// <summary>
+        /// Khai báo các biến static liên quan đến KhachHang
+        /// </summary>
+        public static KhachHang khachHang;
+
 
 
         [STAThread]
@@ -54,22 +50,9 @@ namespace QLTiemBanhMi
             dangnhap = new DangNhap();
 
             //khai báo sql
-            Quanlynhanviensql = new quanlynhanviensql();
-            Quanlyhoadonsql = new quanlyhoadonsql();
-            Quanlysanphamsql = new quanlysanphamsql();
-            Quantrihethongsql = new quantrihethongsql();
             FillData = new fillData();
 
             //khai báo object để sử dụng
-            hoaDon = new HoaDon();
-            chiTietHoaDon = new ChiTietHoaDon();
-
-            nhanvien = new NhanVien();
-            chiTietLoaiNV = new LoaiKH();
-
-            sanpham = new SanPham();
-            chiTietDonVi = new DanhMucSanPham();
-            giabanSanPham = new HinhThucThanhToan();
             user = new User();
 
             //KHO
@@ -85,7 +68,14 @@ namespace QLTiemBanhMi
             //Chi tiết phiếu nhập hàng
             chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
 
-          
+            //NHÂN VIÊN
+            //Nhân viên
+            nhanvien = new NhanVien();
+
+            //BÁN HÀNG
+            //Khách hàng
+            khachHang = new KhachHang();
+
 
             Application.Run(new QuanTriHeThong.QuanLyChung());
         }

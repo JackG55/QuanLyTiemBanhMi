@@ -1,5 +1,5 @@
 ﻿
-namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
+namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 {
     partial class ThongTinHD
     {
@@ -29,15 +29,13 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
-            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.glue_nhanvien = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.tb_id = new System.Windows.Forms.TextBox();
+            this.tb_mahd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_ngaylap = new System.Windows.Forms.TextBox();
@@ -49,41 +47,40 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.buttonHuy = new System.Windows.Forms.Button();
             this.buttonLưu = new System.Windows.Forms.Button();
             this.dgv_DSCTHD = new System.Windows.Forms.DataGridView();
-            this.btn_xoa = new System.Windows.Forms.Button();
-            this.btn_them = new System.Windows.Forms.Button();
-            this.btn_sua = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_xoa = new System.Windows.Forms.Button();
+            this.btn_them = new System.Windows.Forms.Button();
+            this.btn_sua = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_tamtinh = new System.Windows.Forms.TextBox();
             this.gb_thanhtoan = new System.Windows.Forms.GroupBox();
-            this.glue_km = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_km = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tb_tongtien = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.glue_hinhthuctt = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.glue_nhanvien.Properties)).BeginInit();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tb_tongtien = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_km = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.glue_km = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_nhanvien = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.glue_khachhang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSCTHD)).BeginInit();
             this.gb_thanhtoan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.glue_km.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glue_hinhthuctt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.glue_km.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -96,37 +93,15 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.label4.TabIndex = 67;
             this.label4.Text = "Nhân Viên Bán Hàng";
             // 
-            // gridLookUpEdit1View
+            // tb_mahd
             // 
-            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
-            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // glue_nhanvien
-            // 
-            this.glue_nhanvien.Location = new System.Drawing.Point(245, 160);
-            this.glue_nhanvien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.glue_nhanvien.Name = "glue_nhanvien";
-            this.glue_nhanvien.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glue_nhanvien.Properties.Appearance.Options.UseFont = true;
-            this.glue_nhanvien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.glue_nhanvien.Properties.PopupView = this.gridLookUpEdit1View;
-            this.glue_nhanvien.Properties.ReadOnly = true;
-            this.glue_nhanvien.Size = new System.Drawing.Size(304, 32);
-            this.glue_nhanvien.TabIndex = 74;
-            this.glue_nhanvien.EditValueChanged += new System.EventHandler(this.gluenhanvien_EditValueChanged);
-            // 
-            // tb_id
-            // 
-            this.tb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_id.Location = new System.Drawing.Point(245, 16);
-            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.ReadOnly = true;
-            this.tb_id.Size = new System.Drawing.Size(304, 30);
-            this.tb_id.TabIndex = 63;
+            this.tb_mahd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_mahd.Location = new System.Drawing.Point(245, 16);
+            this.tb_mahd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_mahd.Name = "tb_mahd";
+            this.tb_mahd.ReadOnly = true;
+            this.tb_mahd.Size = new System.Drawing.Size(304, 30);
+            this.tb_mahd.TabIndex = 63;
             // 
             // label1
             // 
@@ -156,7 +131,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.tb_ngaylap.ReadOnly = true;
             this.tb_ngaylap.Size = new System.Drawing.Size(305, 30);
             this.tb_ngaylap.TabIndex = 92;
-            this.tb_ngaylap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tienthanhtoan_KeyPress);
             // 
             // label3
             // 
@@ -177,7 +151,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.tb_soluong.ReadOnly = true;
             this.tb_soluong.Size = new System.Drawing.Size(70, 30);
             this.tb_soluong.TabIndex = 98;
-            this.tb_soluong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tongtien_KeyPress);
             // 
             // label9
             // 
@@ -245,14 +218,14 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             // dgv_DSCTHD
             // 
             this.dgv_DSCTHD.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_DSCTHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_DSCTHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgv_DSCTHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSCTHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSP,
@@ -268,6 +241,59 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.dgv_DSCTHD.Size = new System.Drawing.Size(920, 243);
             this.dgv_DSCTHD.TabIndex = 112;
             // 
+            // MaSP
+            // 
+            this.MaSP.DataPropertyName = "MaSP";
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaSP.DefaultCellStyle = dataGridViewCellStyle27;
+            this.MaSP.Frozen = true;
+            this.MaSP.HeaderText = "Mã Sản Phẩm";
+            this.MaSP.MinimumWidth = 6;
+            this.MaSP.Name = "MaSP";
+            this.MaSP.Width = 200;
+            // 
+            // TenSP
+            // 
+            this.TenSP.DataPropertyName = "TenSP";
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenSP.DefaultCellStyle = dataGridViewCellStyle28;
+            this.TenSP.Frozen = true;
+            this.TenSP.HeaderText = "Tên Sản Phẩm";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            this.TenSP.Width = 200;
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonGia.DefaultCellStyle = dataGridViewCellStyle29;
+            this.DonGia.Frozen = true;
+            this.DonGia.HeaderText = "Đơn giá";
+            this.DonGia.MinimumWidth = 6;
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Width = 120;
+            // 
+            // SL
+            // 
+            this.SL.DataPropertyName = "SL";
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SL.DefaultCellStyle = dataGridViewCellStyle30;
+            this.SL.Frozen = true;
+            this.SL.HeaderText = "Số Lượng";
+            this.SL.MinimumWidth = 6;
+            this.SL.Name = "SL";
+            this.SL.Width = 150;
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.Frozen = true;
+            this.MoTa.HeaderText = "GhiChu";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.Width = 200;
+            // 
             // btn_xoa
             // 
             this.btn_xoa.BackColor = System.Drawing.Color.White;
@@ -281,6 +307,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.btn_xoa.Text = "Xoá";
             this.btn_xoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_xoa.UseVisualStyleBackColor = false;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_them
             // 
@@ -295,6 +322,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.btn_them.Text = "Thêm";
             this.btn_them.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_them.UseVisualStyleBackColor = false;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
             // btn_sua
             // 
@@ -310,6 +338,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.btn_sua.Text = "Sửa";
             this.btn_sua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_sua.UseVisualStyleBackColor = false;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // label6
             // 
@@ -320,59 +349,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.label6.Size = new System.Drawing.Size(200, 25);
             this.label6.TabIndex = 116;
             this.label6.Text = "Danh Sách Mặt Hàng";
-            // 
-            // MaSP
-            // 
-            this.MaSP.DataPropertyName = "MaSP";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaSP.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MaSP.Frozen = true;
-            this.MaSP.HeaderText = "Mã Sản Phẩm";
-            this.MaSP.MinimumWidth = 6;
-            this.MaSP.Name = "MaSP";
-            this.MaSP.Width = 200;
-            // 
-            // TenSP
-            // 
-            this.TenSP.DataPropertyName = "TenSP";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenSP.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TenSP.Frozen = true;
-            this.TenSP.HeaderText = "Tên Sản Phẩm";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            this.TenSP.Width = 200;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonGia.DefaultCellStyle = dataGridViewCellStyle4;
-            this.DonGia.Frozen = true;
-            this.DonGia.HeaderText = "Đơn giá";
-            this.DonGia.MinimumWidth = 6;
-            this.DonGia.Name = "DonGia";
-            this.DonGia.Width = 120;
-            // 
-            // SL
-            // 
-            this.SL.DataPropertyName = "SL";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SL.DefaultCellStyle = dataGridViewCellStyle5;
-            this.SL.Frozen = true;
-            this.SL.HeaderText = "Số Lượng";
-            this.SL.MinimumWidth = 6;
-            this.SL.Name = "SL";
-            this.SL.Width = 150;
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.Frozen = true;
-            this.MoTa.HeaderText = "GhiChu";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.Width = 200;
             // 
             // label7
             // 
@@ -414,107 +390,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.gb_thanhtoan.TabStop = false;
             this.gb_thanhtoan.Text = "Thanh Toán";
             // 
-            // glue_km
-            // 
-            this.glue_km.Location = new System.Drawing.Point(343, 31);
-            this.glue_km.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.glue_km.Name = "glue_km";
-            this.glue_km.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glue_km.Properties.Appearance.Options.UseFont = true;
-            this.glue_km.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.glue_km.Properties.PopupView = this.gridView2;
-            this.glue_km.Size = new System.Drawing.Size(216, 32);
-            this.glue_km.TabIndex = 121;
-            // 
-            // gridView2
-            // 
-            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(220, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 25);
-            this.label8.TabIndex = 120;
-            this.label8.Text = "Khuyến Mãi";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(565, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 25);
-            this.label10.TabIndex = 120;
-            this.label10.Text = "=";
-            // 
-            // tb_km
-            // 
-            this.tb_km.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_km.Location = new System.Drawing.Point(595, 31);
-            this.tb_km.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_km.Name = "tb_km";
-            this.tb_km.ReadOnly = true;
-            this.tb_km.Size = new System.Drawing.Size(103, 30);
-            this.tb_km.TabIndex = 120;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(711, 34);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 25);
-            this.label11.TabIndex = 122;
-            this.label11.Text = "VND";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(220, 75);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 25);
-            this.label12.TabIndex = 123;
-            this.label12.Text = "Tổng Tiền";
-            // 
-            // tb_tongtien
-            // 
-            this.tb_tongtien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_tongtien.ForeColor = System.Drawing.Color.DarkRed;
-            this.tb_tongtien.Location = new System.Drawing.Point(595, 72);
-            this.tb_tongtien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_tongtien.Name = "tb_tongtien";
-            this.tb_tongtien.ReadOnly = true;
-            this.tb_tongtien.Size = new System.Drawing.Size(103, 30);
-            this.tb_tongtien.TabIndex = 124;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(711, 75);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 25);
-            this.label13.TabIndex = 125;
-            this.label13.Text = "VND";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(594, 494);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(54, 25);
-            this.label14.TabIndex = 126;
-            this.label14.Text = "VND";
-            // 
             // glue_hinhthuctt
             // 
             this.glue_hinhthuctt.Location = new System.Drawing.Point(343, 110);
@@ -527,6 +402,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.glue_hinhthuctt.Properties.PopupView = this.gridView3;
             this.glue_hinhthuctt.Size = new System.Drawing.Size(216, 32);
             this.glue_hinhthuctt.TabIndex = 127;
+            this.glue_hinhthuctt.EditValueChanged += new System.EventHandler(this.glue_hinhthuctt_EditValueChanged);
             // 
             // gridView3
             // 
@@ -545,11 +421,125 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.label5.TabIndex = 126;
             this.label5.Text = "Hình Thức Thanh Toán";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(711, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 25);
+            this.label13.TabIndex = 125;
+            this.label13.Text = "VND";
+            // 
+            // tb_tongtien
+            // 
+            this.tb_tongtien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_tongtien.ForeColor = System.Drawing.Color.DarkRed;
+            this.tb_tongtien.Location = new System.Drawing.Point(595, 72);
+            this.tb_tongtien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_tongtien.Name = "tb_tongtien";
+            this.tb_tongtien.ReadOnly = true;
+            this.tb_tongtien.Size = new System.Drawing.Size(103, 30);
+            this.tb_tongtien.TabIndex = 124;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(220, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 25);
+            this.label12.TabIndex = 123;
+            this.label12.Text = "Tổng Tiền";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(711, 34);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 25);
+            this.label11.TabIndex = 122;
+            this.label11.Text = "VND";
+            // 
+            // tb_km
+            // 
+            this.tb_km.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_km.Location = new System.Drawing.Point(595, 31);
+            this.tb_km.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_km.Name = "tb_km";
+            this.tb_km.ReadOnly = true;
+            this.tb_km.Size = new System.Drawing.Size(103, 30);
+            this.tb_km.TabIndex = 120;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(565, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(24, 25);
+            this.label10.TabIndex = 120;
+            this.label10.Text = "=";
+            // 
+            // glue_km
+            // 
+            this.glue_km.Location = new System.Drawing.Point(343, 31);
+            this.glue_km.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.glue_km.Name = "glue_km";
+            this.glue_km.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glue_km.Properties.Appearance.Options.UseFont = true;
+            this.glue_km.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.glue_km.Properties.PopupView = this.gridView2;
+            this.glue_km.Size = new System.Drawing.Size(216, 32);
+            this.glue_km.TabIndex = 121;
+            this.glue_km.EditValueChanged += new System.EventHandler(this.glue_km_EditValueChanged);
+            // 
+            // gridView2
+            // 
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(220, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(117, 25);
+            this.label8.TabIndex = 120;
+            this.label8.Text = "Khuyến Mãi";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(594, 494);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(54, 25);
+            this.label14.TabIndex = 126;
+            this.label14.Text = "VND";
+            // 
+            // tb_nhanvien
+            // 
+            this.tb_nhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_nhanvien.Location = new System.Drawing.Point(245, 161);
+            this.tb_nhanvien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_nhanvien.Name = "tb_nhanvien";
+            this.tb_nhanvien.ReadOnly = true;
+            this.tb_nhanvien.Size = new System.Drawing.Size(304, 30);
+            this.tb_nhanvien.TabIndex = 127;
+            // 
             // ThongTinHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(978, 762);
+            this.Controls.Add(this.tb_nhanvien);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.gb_thanhtoan);
             this.Controls.Add(this.label7);
@@ -567,25 +557,22 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             this.Controls.Add(this.tb_ngaylap);
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.buttonLưu);
-            this.Controls.Add(this.glue_nhanvien);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_id);
+            this.Controls.Add(this.tb_mahd);
             this.Name = "ThongTinHD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hoá Đơn";
             this.Load += new System.EventHandler(this.ThongTinHD_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.glue_nhanvien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glue_khachhang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSCTHD)).EndInit();
             this.gb_thanhtoan.ResumeLayout(false);
             this.gb_thanhtoan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.glue_km.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glue_hinhthuctt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.glue_km.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,9 +582,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
         private System.Windows.Forms.Button buttonHuy;
         private System.Windows.Forms.Button buttonLưu;
         private System.Windows.Forms.Label label4;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
-        private DevExpress.XtraEditors.GridLookUpEdit glue_nhanvien;
-        private System.Windows.Forms.TextBox tb_id;
+        private System.Windows.Forms.TextBox tb_mahd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_ngaylap;
@@ -632,5 +617,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
         private DevExpress.XtraEditors.GridLookUpEdit glue_hinhthuctt;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_nhanvien;
     }
 }

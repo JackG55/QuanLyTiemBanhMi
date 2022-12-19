@@ -8,17 +8,16 @@ namespace QLTiemBanhMi.Object
 {
     public class User
     {
-        private string id;
-        private string tendangnhap;
-        private string matkhau;
-        private string tendaydu;
-        private string tenloai;
-      
-        public string Id { get => id; set => id = value; }
-        public string Tendangnhap { get => tendangnhap; set => tendangnhap = value; }
-        public string Matkhau { get => matkhau; set => matkhau = value; }
-        public string Tendaydu { get => tendaydu; set => tendaydu = value; }
-        public string Tenloai { get => tenloai; set => tenloai = value; }
-       
+        private int manv;
+        private string username;
+        private string pass;
+        private string chucvu;
+        private string tennv;
+
+        public int Manv { get => manv; set => manv = value; }
+        public string Username { get => username; set => username = value; }
+        public string Pass { get => pass; set => pass = value; }
+        public string Chucvu { get => chucvu; set => chucvu = value; }
+        public string Tennv { get => tennv; set => tennv = value; }
     }
 }

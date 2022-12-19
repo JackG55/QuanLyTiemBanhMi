@@ -15,7 +15,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
 {
     public partial class ChiTietNV: Form
     {
-        string loainhanvienid = "";
         public ChiTietNV(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -35,88 +34,96 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
         }
 
 
-        public void setThongTinVaoFormDeSua(List<string> list_loainhanvienId)
+        public void setThongTinVaoFormDeSua()
         {
 
-            //tb_manv.Text = Program.nhanvien.Id;
-            //tb_tendangnhap.Text = Program.nhanvien.Tendangnhap;
-            //tb_diachi.Text = Program.nhanvien.Diachi;
-            //tb_tennv.Text = Program.nhanvien.Tendaydu;
-          
-            //tb_matkhau.Text = Program.nhanvien.Matkhau;
+            tb_manv.Text = Program.nhanvien.Manv.ToString(); ;
+            tb_username.Text = Program.nhanvien.Username;
+            tb_diachi.Text = Program.nhanvien.Diachi;
+            tb_tennv.Text = Program.nhanvien.Tennv;
+            if (Program.nhanvien.Namsinh == null)
+            {
+                dtp_ngaysinh.Value = System.DateTime.Now;
+            }
+            else
+            {
+                try
+                {
+                    dtp_ngaysinh.Value = Convert.ToDateTime(Program.nhanvien.Namsinh);
+                }
+                catch
+                {
+                    dtp_ngaysinh.Value = System.DateTime.Now;
+                }
 
-            //HienThongTinLenEditValue(list_loainhanvienId, Program.nhanvien.Loainhanvienid.ToString());
+            }
+            cbb_gioitinh.ValueMember = Program.nhanvien.Gioitinh;
+            cbbChucVu.ValueMember = Program.nhanvien.Chucvu;
         }
-
-        private void HienThongTinLenEditValue(List<string> list_loainhanvienId, string loainhanvienId)
-        {
-            int index = list_loainhanvienId.BinarySearch(loainhanvienId);
-          
-        }
-
-
         public bool KiemTra()
         {
-            if (tb_tendangnhap.Text == ""||
-            tb_diachi.Text == ""||
-            tb_tennv.Text == ""||
-            tb_matkhau.Text == "")
+            if (tb_username.Text == ""|| tb_tennv.Text == "" || cbbChucVu.Text=="" || cbb_gioitinh.Text=="" || tb_diachi.Text == "")
             {
-                DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if(dtp_ngaysinh.Value.Date >= DateTime.Now.Date)
+            {
+                MessageBox.Show("Ngày sinh không hợp lệ", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }    
             return true;
         }
 
         private void buttonLưu_Click(object sender, EventArgs e)
         {
-            //if (!KiemTra())
-            //    return;
-            //else
-            //{
-            //    if (Program.opt == 1) //them
-            //    {
-            //        string sql = "Them_NV";
-            //        string[] para = {"@tendangnhap", "@matkhau", "@tendaydu", "@diachi", "@loainhanvienID", "@ghichu" };
-            //        object[] values = {tb_tendangnhap.Text, Convert.ToString(tb_matkhau.Text), Convert.ToString(tb_tennv.Text), Convert.ToString(tb_diachi.Text), glue_loainhanvien.EditValue.ToString(), Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
+            if (!KiemTra())
+                return;
+            else
+            {
+                if (Program.opt == 1) //them
+                {
+                    string sql = "Them_NV";
+                    string[] para = {"@MaNV" ,"@TenNV","@UserName","@Pass","@NamSinh","@DiaChi","@ChucVu","@GioiTinh"};
+                    object[] values = { int.Parse(tb_manv.Text), tb_tennv.Text, tb_username.Text, tb_matkhau.Text, dtp_ngaysinh.Value,tb_diachi.Text,cbbChucVu.Text,cbb_gioitinh.Text};
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-            //    }
-            //    if (Program.opt == 2) //sua
-            //    {
-            //        string sql = "Sua_NV";
-            //        string[] para = { "@id", "@tendangnhap", "@tendaydu", "@diachi", "@loainhanvienID", "@ghichu" };
-            //        object[] values = { Int32.Parse(tb_manv.Text), Convert.ToString(tb_tendangnhap.Text), Convert.ToString(tb_tennv.Text), Convert.ToString(tb_diachi.Text), glue_loainhanvien.EditValue.ToString(), Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
+                }
+                if (Program.opt == 2) //sua
+                {
+                    string sql = "Sua_NV";
+                    string[] para = { "@MaNV", "@TenNV", "@NamSinh", "@DiaChi", "@ChucVu", "@GioiTinh" };
+                    object[] values = { int.Parse(tb_manv.Text), tb_tennv.Text, dtp_ngaysinh.Value, tb_diachi.Text, cbbChucVu.Text, cbb_gioitinh.Text };
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
-            //}
+            }
         }
 
         private void buttonHuy_Click(object sender, EventArgs e)
@@ -135,23 +142,21 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
             {
                 Random _random = new Random();
                 tb_manv.Text = "";
-                tb_tendangnhap.Text = "";
+                tb_username.Text = "";
                 tb_diachi.Text = "";
                 tb_tennv.Text = "";
                // tb_ghichu.Text = "";
                 tb_matkhau.Text = _random.Next(100000, 1000000).ToString();
                 tb_matkhau.ReadOnly = true;
                 tb_manv.ReadOnly = true;
-
-                
-                tb_manv.Text = Program.Quanlynhanviensql.TaoMaNhanVien().ToString();
+                tb_manv.Text = Program.FillData.SinhMaTuDong("MaNV", "NhanVien").ToString();
             }
             if (Program.opt == 2) // sua
             {
                 tb_manv.ReadOnly = true;
                 tb_matkhau.Visible = false;
                 labelMK.Visible = false;
-              //  setThongTinVaoFormDeSua(list_loainhanvienId);
+                setThongTinVaoFormDeSua();
             }
         }
     }

@@ -150,7 +150,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(304, 30);
             this.tb_sdt.TabIndex = 96;
-            this.tb_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tienloi_KeyPress);
+            this.tb_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sdt_KeyPress);
             // 
             // label3
             // 
@@ -172,9 +172,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.glue_hang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glue_hang.Properties.PopupView = this.gridView1;
+            this.glue_hang.Properties.ReadOnly = true;
             this.glue_hang.Size = new System.Drawing.Size(304, 32);
             this.glue_hang.TabIndex = 104;
-            this.glue_hang.EditValueChanged += new System.EventHandler(this.glue_sanpham_EditValueChanged);
+            this.glue_hang.EditValueChanged += new System.EventHandler(this.glue_hang_EditValueChanged);
             // 
             // gridView1
             // 
@@ -199,9 +200,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.tb_dtl.Location = new System.Drawing.Point(229, 319);
             this.tb_dtl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_dtl.Name = "tb_dtl";
+            this.tb_dtl.ReadOnly = true;
             this.tb_dtl.Size = new System.Drawing.Size(304, 30);
             this.tb_dtl.TabIndex = 107;
-            this.tb_dtl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_VAT_KeyPress);
             // 
             // label4
             // 
@@ -218,6 +219,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.cbb_gioitinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_gioitinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cbb_gioitinh.FormattingEnabled = true;
+            this.cbb_gioitinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nu"});
             this.cbb_gioitinh.Location = new System.Drawing.Point(229, 218);
             this.cbb_gioitinh.Margin = new System.Windows.Forms.Padding(4);
             this.cbb_gioitinh.Name = "cbb_gioitinh";
@@ -258,7 +262,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.Name = "ChiTietKH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Khách Hàng";
-            this.Load += new System.EventHandler(this.ChiTietHD_SP_Load);
+            this.Load += new System.EventHandler(this.ChiTietKH_Load);
             ((System.ComponentModel.ISupportInitialize)(this.glue_hang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

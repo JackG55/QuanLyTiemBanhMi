@@ -37,7 +37,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
             if (Program.opt == 1) //them
             {
-
                 tb_tenncc.Text = "";
                 tb_diachi.Text = "";
                 tb_sdt.Text = "";

@@ -1,4 +1,116 @@
-﻿--Nhà Cung Cấp
+﻿--Khách Hàng
+CREATE OR ALTER PROC Them_KH (@MaKH INT,@HoTen NVARCHAR(100),@NgaySinh DATE,@SDT CHAR(10), @GioiTinh CHAR(3))
+AS
+BEGIN
+	INSERT dbo.KhachHang
+	(
+	    MaKH,
+	    MaLoaiKH,
+	    HoTen,
+	    NgaySinh,
+	    GioiTinh,
+	    SDT,
+	    DiemTichLuy
+	)
+	VALUES
+	(   @MaKH,         -- MaKH - int
+	    5,         -- MaLoaiKH - int
+	    @HoTen,       -- HoTen - nvarchar(100)
+	    @NgaySinh, -- NgaySinh - date
+	    @GioiTinh,        -- GioiTinh - char(3)
+	    @SDT,        -- SDT - char(10)
+	    0          -- DiemTichLuy - int
+	    )
+	
+	
+END
+GO
+
+CREATE OR ALTER PROC Sua_KH (@MaKH INT, @HoTen NVARCHAR(100),@NgaySinh DATE,@SDT CHAR(10), @GioiTinh CHAR(3))
+AS
+BEGIN
+	UPDATE dbo.KhachHang SET
+		HoTen= @HoTen,
+		NgaySinh = @NgaySinh, 
+		SDT = @SDT,
+		GioiTinh = @GioiTinh
+	WHERE MaKH = @MaKH
+END
+GO
+--Doi Mat Khau
+CREATE   PROC [dbo].[DoiMatKhau](@tendangnhap VARCHAR(40),@matkhau VARCHAR(40))
+AS
+BEGIN
+	UPDATE dbo.NhanVien SET Pass = @matkhau WHERE UserName = @tendangnhap
+END
+GO
+
+
+--LichLamViec
+CREATE OR ALTER PROC Them_LichLamViec (@MaNV INT, @MaCaLam int, @NgayLamViec DATE)
+AS
+BEGIN
+	INSERT dbo.LichLamViec
+	(
+	    MaCaLam,
+	    MaNV,
+	    NgayLamViec
+	)
+	VALUES
+	(   @MaNV,        -- MaCaLam - int
+	    @MaCaLam,        -- MaNV - int
+	   @NgayLamViec -- NgayLamViec - date
+	    )
+END
+GO
+
+--NhanVien
+CREATE OR ALTER PROC Xoa_NhanVien (@MaNV INT)
+AS
+BEGIN
+	UPDATE dbo.NhanVien SET 
+		Xoa = 1
+	WHERE MaNV = @MaNV
+END
+GO
+
+CREATE OR ALTER PROC Them_NV (@MaNV INT, @TenNV NVARCHAR(100), @UserName VARCHAR(40),@Pass VARCHAR(40),
+					@NamSinh DATE, @DiaChi NVARCHAR(100), @ChucVu VARCHAR(100), @GioiTinh VARCHAR(3))
+AS
+BEGIN
+	INSERT dbo.NhanVien
+	(
+	    MaNV,
+	    TenNV,
+	    UserName,
+	    Pass,
+	    NamSinh,
+	    DiaChi,
+	    ChucVu,
+	    GioiTinh,
+	    Xoa
+	)
+	VALUES
+	(@MaNV,@TenNV,@UserName,@Pass,@NamSinh,@DiaChi,@ChucVu,@GioiTinh,0)
+	
+END
+GO
+
+CREATE OR ALTER PROC Sua_NV (@MaNV INT, @TenNV NVARCHAR(100),@NamSinh DATE, @DiaChi NVARCHAR(100), @ChucVu VARCHAR(100), @GioiTinh VARCHAR(3))
+AS
+BEGIN
+	UPDATE dbo.NhanVien SET 
+		TenNV = @TenNV,
+		DiaChi = @DiaChi, 
+		GioiTinh = @GioiTinh,
+		NamSinh = @NamSinh,
+		ChucVu = @ChucVu
+	WHERE MaNV = @MaNV
+END
+GO
+
+
+--Nhà Cung Cấp
 CREATE OR ALTER PROC Them_NCC (@MaNCC INT, @TenNCC NVARCHAR(100), @DiaChi NVARCHAR(200), @SDT CHAR(10))
 AS
 BEGIN
@@ -75,3 +187,5 @@ BEGIN
 	WHERE MSNVL = @MaNVL
 END
 GO
+
+--

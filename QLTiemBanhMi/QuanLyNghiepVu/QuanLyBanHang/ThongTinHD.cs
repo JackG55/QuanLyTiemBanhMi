@@ -11,17 +11,15 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using QLTiemBanhMi.Connector;
 
-namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
+namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 {
     public partial class ThongTinHD : Form
     {
         private string magv;
-        public ThongTinHD()
+        public ThongTinHD(BanHang banHang)
         {
             InitializeComponent();
         }
-        string congtyid = "";
-        string hoahongid="";
         public delegate void UpdateDelegate(object sender, UpdateEventArgs args);
         public event UpdateDelegate UpdateEventHandler;
         public class UpdateEventArgs : EventArgs
@@ -39,6 +37,12 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
 
         private void ThongTinHD_Load(object sender, EventArgs e)
         {
+            tb_mahd.Text = Program.FillData.SinhMaTuDong("MaKH", "KhachHang").ToString();
+            tb_ngaylap.Text = DateTime.Now.ToString();
+            List<string> list_kh_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_khachhang, "KhachHang", "HoTen", "MaKH");
+            List<string> list_hinhthuctt_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_hinhthuctt, "HinhThucThanhToan", "TenLoaiHinhThucThanhToan", "MaThanhToan");
+            tb_nhanvien.Text = Program.user.Tennv;
+
             ////load danh sach công ty
             //List<string> list_congtyid = Program.Quanlyhoadonsql.LayDS_CongTy(glue_khachhang);
             ////load danh sach nhân viên
@@ -53,11 +57,11 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             //    tb_soluong.Text = "0";
             //    tb_ngaylap.Text = "0";
             //    tb_hoahong.Text = "0";
-  
+
             //    tb_id.Text = Program.Quanlyhoadonsql.TaoMaHoaDon().ToString();
             //    HienThongTinLenEditValue(list_nhanvienid, Program.user.Id, glue_nhanvien);
-               
-             
+
+
 
             //}
             //if (Program.opt == 2) // sua
@@ -67,7 +71,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
             //    tb_ngaylap.ReadOnly = false;
             //    tb_hoahong.ReadOnly = false;
             //    glue_nguoinhanhoahong.ReadOnly = false;
-               
+
             //    setThongTinVaoFormDeSua(list_congtyid, list_nhanvienid, list_nguoinhanhoahongid);
             //}
         }
@@ -113,15 +117,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
            
             gridLookUpEdit.EditValue = gridLookUpEdit.Properties.GetKeyValue(index1);
         }
-
-        public bool KiemTraNgayHenThanhToan(DateTimePicker dateTimePicker)
-        {
-            if (dateTimePicker.Value < DateTime.Now)
-                return false;
-            else
-                return true;
-        }
-
 
         //public bool Kiemtra_HoaDon()
         //{
@@ -237,58 +232,34 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyHoaDon
         {
             this.Close();
         }
-
-        private void gluenhanvien_EditValueChanged(object sender, EventArgs e)
-        {
-            //lấy gia tri mã nhân viên
-            //Program.hoaDon.Nhanvienid = glue_nhanvien.EditValue.ToString();
-        }
-
-     
-        private void glue_nguoinhanhoahong_EditValueChanged(object sender, EventArgs e)
-        {
-            //lấy gia tri mã ngươi nhan hoa hong
-          // hoahongid = glue_nguoinhanhoahong.EditValue.ToString();
-        }
-
-
-        private void tb_tienthanhtoan_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-       
-        private void tb_tongtien_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void tb_tienloi_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void glue_congty_EditValueChanged_1(object sender, EventArgs e)
         {
             congtyid = glue_khachhang.EditValue.ToString();
         }
 
-        private void tb_hoahong_KeyPress(object sender, KeyPressEventArgs e)
+        private void glue_km_EditValueChanged(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
-        
+        private void glue_hinhthuctt_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_sua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_them_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

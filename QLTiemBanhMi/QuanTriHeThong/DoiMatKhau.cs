@@ -25,7 +25,7 @@ namespace QLTiemBanhMi.QuanTriHeThong
                 XtraMessageBox.Show("Bạn phải nhập đầy đủ thông tin!", "Lỗi");
             else if (txtReNewPass.Text != txtNewPass.Text)
                 XtraMessageBox.Show("Mật khẩu xác nhận không đúng!", "Lỗi");
-            else if (Program.user.Matkhau != txtOldPass.Text)
+            else if (Program.user.Pass != txtOldPass.Text)
             {
                 XtraMessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi");
             }
@@ -33,12 +33,12 @@ namespace QLTiemBanhMi.QuanTriHeThong
             {
                 string sql = "DoiMatKhau";
                 string[] para = { "@tendangnhap", "@matkhau"};
-                object[] values = { Program.user.Tendangnhap, txtNewPass.Text};
+                object[] values = { Program.user.Username, txtNewPass.Text};
                 int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
                 if (a != 0)
                 {
                     XtraMessageBox.Show("Đổi mật khẩu thành công!");
-                    Program.user.Matkhau = txtNewPass.Text;
+                    Program.user.Pass = txtNewPass.Text;
                 }   
             }
         }

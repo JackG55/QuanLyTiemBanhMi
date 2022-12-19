@@ -99,5 +99,53 @@ namespace QLTiemBanhMi.Connector
             return list;
 
         }
+
+        /// <summary>
+        /// Hàm này để lấy danh sách đối tượng là Nhân viên để kiểm tra thông tin đăng nhập
+        /// </summary>
+      
+        /// <returns>Trả về một list các mã </returns>
+        public List<NhanVien> LayDSNhanVien()
+        {
+            List<NhanVien> list_nv = new List<NhanVien>();
+            string query = $"SELECT * FROM dbo.NhanVien WHERE Xoa = 0";
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                NhanVien nv = new NhanVien();
+                nv.Manv = int.Parse(row["MaNV"].ToString());
+                nv.Tennv = row["TenNV"].ToString();
+                nv.Username = row["UserNam"].ToString();
+                nv.Pass = row["Pass"].ToString();
+                nv.Chucvu = row["ChucVu"].ToString();
+                list_nv.Add(nv);
+            }
+            return list_nv;
+
+        }
+
+        /// <summary>
+        /// Hàm này để truyền thông tin lên grid lookup edit và trả lại 1 list chứa mảng
+        /// </summary>
+        /// <param name="combobox"></param>
+        /// <param name="tenBang">Tên Bảng</param>
+        /// <param name="tenHienThi">Tên hiển thị lên</param>
+        /// <param name="maCanLay">Mã tương ứng với Tên</param>
+        /// <returns>Trả về một list các mã </returns>
+        public void LayDS_Len_ComBoBox(System.Windows.Forms.ComboBox cbb, string tenBang, string tenHienThi,string maCanLay)
+        {
+            string query = $"SELECT * FROM dbo.{tenBang} WHERE Xoa = 0";
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+            cbb.DisplayMember = tenHienThi;
+            cbb.ValueMember = maCanLay;
+            cbb.DataSource = dataTable;
+           
+
+        }
+
+      
     }
 }

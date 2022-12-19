@@ -17,6 +17,18 @@ namespace QLTiemBanhMi.Object
         private int diemtichluy;
         private bool xoa;
 
+        public KhachHang(int makh, int maloaikh, string hoten, string ngaysinh, string gioitinh, string sdt, int diemtichluy, bool xoa)
+        {
+            this.makh = makh;
+            this.maloaikh = maloaikh;
+            this.hoten = hoten;
+            this.ngaysinh = ngaysinh;
+            this.gioitinh = gioitinh;
+            this.sdt = sdt;
+            this.diemtichluy = diemtichluy;
+            this.xoa = xoa;
+        }
+
         public int Makh { get => makh; set => makh = value; }
         public int Maloaikh { get => maloaikh; set => maloaikh = value; }
         public string Hoten { get => hoten; set => hoten = value; }

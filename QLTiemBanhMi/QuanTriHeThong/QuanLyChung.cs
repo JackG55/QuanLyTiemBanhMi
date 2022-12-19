@@ -17,12 +17,6 @@ namespace QLTiemBanhMi.QuanTriHeThong
 {
     public partial class QuanLyChung : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        List<string> tenquyen_hethong = new List<string>() { "PhanQuyen"};
-        List<string> tenquyen_sanpham = new List<string>() { "ThemSanPham", "DanhSachSanPham", "QuanLyGiaSanPham", 
-            "QuanLyDonVi","SuaSanPham","XoaSanPham" };
-        List<string> tenquyen_nhanvien = new List<string>() { "DanhSachNhanVien", "ThemNhanVien", "ThemLoaiNhanVien",
-            "SuaNhanVien", "SuaLoaiNhanVien", "XoaNhanVien","XoaLoaiNhanVien" };
-        List<string> tenquyen_hoadon = new List<string>() { "BanHang", "SuaHoaDon","SuaChiTietHoaDon" };
         int chk = 0;
         public QuanLyChung()
         {
@@ -71,8 +65,23 @@ namespace QLTiemBanhMi.QuanTriHeThong
             }
         }
 
-        
-        
+        private void QuanLyChung_Load(object sender, EventArgs e)
+        {
+
+            if (Program.user.Chucvu == "Nhan Vien Ban Hang")
+            {
+                ribbonPageGroup_BanHang.Visible = true;
+            }
+            if (Program.user.Chucvu == "Nhan Vien Kho")
+            {
+                ribbonPageGroup_Kho.Visible = true;
+            }
+            if (Program.user.Chucvu == "Quan Ly")
+            {
+                ribbonPageGroup_SanPham.Visible = true;
+                ribbonPageGroup_NhanVien.Visible = true;
+            }
+        }
 
         public void barButtonItemQLSanPham_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -86,54 +95,17 @@ namespace QLTiemBanhMi.QuanTriHeThong
             sanpham.Show();
         }
 
-      
-        private void barButtonItem_qlhoadon_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem_banhang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            QuanLyNghiepVu.QuanLyBanHang.BanHang hoaDon = new QuanLyNghiepVu.QuanLyBanHang.BanHang();
-            hoaDon.TopLevel = false;
+            QuanLyNghiepVu.QuanLyBanHang.BanHang banHang = new QuanLyNghiepVu.QuanLyBanHang.BanHang();
+            banHang.TopLevel = false;
             panelMain.Controls.Clear();
             panelMain.Dock = DockStyle.Fill;
-            panelMain.Controls.Add(hoaDon);
-            hoaDon.Dock = DockStyle.Fill;
-            hoaDon.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            hoaDon.Show();
+            panelMain.Controls.Add(banHang);
+            banHang.Dock = DockStyle.Fill;
+            banHang.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            banHang.Show();
         }
-
-        private bool KiemTraQuyen(List<string> list1, List<string> tenquyenlist)
-        {
-            foreach (string i in list1)
-            {
-                if (tenquyenlist.Contains(i))
-                    return true;
-            }
-            return false;
-        }
-        
-        private void QuanLyChung_Load(object sender, EventArgs e)
-        {
-           // List<string> tenquyenlist = Program.PhanQuyenList.Select(o => o.Tenquyen).ToList();
-        
-            //if (KiemTraQuyen(tenquyen_hethong,tenquyenlist))
-            //{
-               
-            //}
-            //if (KiemTraQuyen(tenquyen_sanpham, tenquyenlist))
-            //{
-            //    ribbonPageGroup_SanPham.Visible = true;
-            //}
-            //if (KiemTraQuyen(tenquyen_hoadon, tenquyenlist))
-            //{
-            //    ribbonPageGroup_HoaDon.Visible = true;
-            //}
-            //if (KiemTraQuyen(tenquyen_nhanvien, tenquyenlist))
-            //{
-            //    ribbonPageGroup_NhanVien.Visible = true;
-            //}
-
-           
-
-        }
-
         private void barButtonItem_qlnhanvien_ItemClick(object sender, ItemClickEventArgs e)
         {
             QuanLyNghiepVu.QuanLyNhanVien.NhanVien nhanvien = new QuanLyNghiepVu.QuanLyNhanVien.NhanVien();
@@ -144,11 +116,6 @@ namespace QLTiemBanhMi.QuanTriHeThong
             nhanvien.Dock = DockStyle.Fill;
             nhanvien.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             nhanvien.Show();
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void bbi_quanlykho_ItemClick(object sender, ItemClickEventArgs e)
@@ -162,5 +129,7 @@ namespace QLTiemBanhMi.QuanTriHeThong
             kho.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             kho.Show();
         }
+
+       
     }
 }

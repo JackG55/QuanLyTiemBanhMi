@@ -186,7 +186,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.Name = "ChiTietPhieuNhapHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Phiếu Nhập Hàng";
-            this.Load += new System.EventHandler(this.ChiTietHD_SP_Load);
+            this.Load += new System.EventHandler(this.ChiTietPhieuNhapHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.glue_nguyenvatlieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

@@ -14,7 +14,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 {
     public partial class BanHang: Form
     {
-        List<string> tenquyen_hoadon = new List<string>() { "BanHang", "DanhSachHoaDon","SuaHoaDon", "SuaChiTietHoaDon" };
+        
         public BanHang()
         {
             InitializeComponent();
@@ -22,184 +22,84 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 
         private void HoaDon_Load(object sender, EventArgs e)
         {
-            //foreach (QuyenThaoTac q in Program.PhanQuyenList)
-            //{
-            //    if (q.Tenquyen == tenquyen_hoadon[0])
-            //    {
-            //        btn_themhoadon.Visible = true;
-            //        btn_thanhtoanhd.Visible = true;
-            //        btn_chitietthanhtoan.Visible = true;
-            //        btn_themchitiethoadon.Visible = true;
+            //load lên datagridView khách hàng
+            string sql1 = @"SELECT dbo.KhachHang.*, TenLoaiKH
+                            FROM dbo.KhachHang, dbo.LoaiKH
+                            WHERE KhachHang.MaLoaiKH = LoaiKH.MaLoaiKH AND KhachHang.Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_khachhang, sql1);
 
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[1])
-            //    {
-
-
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[2])
-            //    {
-            //        btn_suahoadon.Visible = true;
-
-            //    }
-            //    if (q.Tenquyen == tenquyen_hoadon[3])
-            //    {
-            //        btn_suachitiethoadon.Visible = true;
-                 
-
-            //    }
-
-            //}
-            //Program.Quanlyhoadonsql.LayDSHoaDon(dataGridViewDSHoaDon);
+            //load lên datagridView hoá đơn
+            string sql2 = @"SELECT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen
+                    FROM dbo.HoaDon JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.MaThanhToan = HoaDon.MaThanhToan 
+                    JOIN dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH WHERE HoaDon.Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_hoadon, sql2);
         }
 
         private void dataGridViewDSHoaDon_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            //string nhanvienid, congtyid, nguoinhanhoahongid = "";
-            //tb_id.Text = dataGridViewDSHoaDon.CurrentRow.Cells["ID"].Value.ToString();
-            //tb_hoadon.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenHoaDon"].Value.ToString();
-            //tb_congty.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenCongTy"].Value.ToString();
-            //tb_nhanvien.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TenNV"].Value.ToString();
-            //tb_tienthanhtoan.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TongTienDaThanhToan"].Value.ToString();
-            //tb_ngayhenthanhtoan.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NgayHenThanhToan"].Value.ToString();
-            //tb_nguoinhanhoahong.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NguoiNhanHH"].Value.ToString();
-            //tb_ngaylap.Text = dataGridViewDSHoaDon.CurrentRow.Cells["NgayLap"].Value.ToString();
-            //tb_tienloi.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TienLoi"].Value.ToString();
-            //tb_tongtien.Text = dataGridViewDSHoaDon.CurrentRow.Cells["TongTien"].Value.ToString();
-            //tb_hoahong.Text = dataGridViewDSHoaDon.CurrentRow.Cells["HoaHong"].Value.ToString();
-            //tb_ghichu.Text = dataGridViewDSHoaDon.CurrentRow.Cells["GhiChu"].Value.ToString();
-            //nhanvienid = dataGridViewDSHoaDon.CurrentRow.Cells["NhanVienID"].Value.ToString();
-            //congtyid = dataGridViewDSHoaDon.CurrentRow.Cells["CongTyID"].Value.ToString();
-            //nguoinhanhoahongid = dataGridViewDSHoaDon.CurrentRow.Cells["NguoiNhanHoaHongID"].Value.ToString();
-
-
-            //Program.hoaDon = new Object.HoaDon(tb_id.Text, tb_hoadon.Text, congtyid, nhanvienid, Convert.ToDateTime(tb_ngaylap.Text),
-            //    tb_tongtien.Text, tb_tienthanhtoan.Text, Convert.ToDateTime(tb_ngayhenthanhtoan.Text), tb_tienloi.Text,
-            //    tb_hoahong.Text, nguoinhanhoahongid, tb_ghichu.Text);
-            //Program.Quanlyhoadonsql.LayDSChiTietHoaDon(dtgv_DSChiTietHoaDon, tb_id.Text);
-        }
-        //private void chiTietHD_UpdateEventHandler1(object sender, ThongTinHD.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-        //}
-
-        //private void ThanhToanHD_UpdateEventHandler1(object sender, ThanhToanHD.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-        //}
-
-        //private void chiTietHD_SP_UpdateEventHandler1(object sender, ChiTietHD_SP.UpdateEventArgs args)
-        //{
-        //    string sql = @"SELECT dbo.HoaDon.*, TenDayDu AS TenNV, TenCongTy AS TenCongTy,Ten AS NguoiNhanHH 
-        //                   FROM dbo.HoaDon left JOIN dbo.CaNhanNhanTien ON CaNhanNhanTien.ID = HoaDon.NguoiNhanHoaHongID
-        //                   JOIN dbo.NhanVien ON NhanVien.ID = HoaDon.NhanVienID 
-        //                   JOIN dbo.CongTy ON CongTy.ID = HoaDon.CongTyID
-        //                   WHERE HoaDon.Xoa = 0";
-        //    DataTable dataTable = new DataTable();
-        //    dataTable = connection.FillDataSet(sql, CommandType.Text);
-        //    dataGridViewDSHoaDon.AutoGenerateColumns = false;
-        //    dataGridViewDSHoaDon.DataSource = dataTable;
-
-        //    int id_hd = Int32.Parse(tb_id.Text);
-        //    sql = @"SELECT  dbo.ChiTietHoaDon.* , TenSanPham
-        //                    FROM dbo.HoaDon JOIN dbo.ChiTietHoaDon ON ChiTietHoaDon.HoaDonID = HoaDon.ID
-        //                    JOIN dbo.SanPham ON SanPham.ID = ChiTietHoaDon.SanPhamID
-        //                    WHERE dbo.HoaDon.ID = '" + id_hd + "' AND dbo.ChiTietHoaDon.Xoa = 0";
-        //    DataTable dataTable1 = new DataTable();
-        //    dataTable1 = connection.FillDataSet(sql, CommandType.Text);
-        //    dtgv_DSChiTietHoaDon.AutoGenerateColumns = false;
-        //    dtgv_DSChiTietHoaDon.DataSource = dataTable1;
-        //}
-        private void btn_suahoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 2;
-            //ThongTinHD chiTietHD = new ThongTinHD(this);
-            //chiTietHD.UpdateEventHandler += chiTietHD_UpdateEventHandler1;
-            //chiTietHD.ShowDialog();
-           
+            string mahd = dgv_hoadon.CurrentRow.Cells["MaHD"].Value.ToString();
+            //Lay ds chi tiet lịch làm việc của mỗi nv
+            string sql = @"SELECT dbo.ChiTietHoaDon.*, TenSP
+                            FROM dbo.HoaDon, dbo.ChiTietHoaDon, dbo.SanPham
+                            WHERE ChiTietHoaDon.MaHD=HoaDon.MaHD AND ChiTietHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = "+int.Parse(mahd)+"";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_chitiethoadon, sql);
         }
 
-        private void btn_themhoadon_Click(object sender, EventArgs e)
+        private void chiTietKH_UpdateEventHandler1(object sender, ChiTietKH.UpdateEventArgs args)
         {
-            //Program.opt = 1;
-            //ThongTinHD chiTietHD = new ThongTinHD(this);
-            //chiTietHD.UpdateEventHandler += chiTietHD_UpdateEventHandler1;
-            //chiTietHD.ShowDialog();
+
+            string sql1 = @"SELECT dbo.KhachHang.*, TenLoaiKH
+                            FROM dbo.KhachHang, dbo.LoaiKH
+                            WHERE KhachHang.MaLoaiKH = LoaiKH.MaLoaiKH AND KhachHang.Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_khachhang, sql1);
+
         }
-
-        private void btn_chitietthanhtoan_Click(object sender, EventArgs e)
+        private void thongTinHD_UpdateEventHandler1(object sender, ThongTinHD.UpdateEventArgs args)
         {
-            //XemThanhToanHD xemThanhToanHD = new XemThanhToanHD();
-
-            //xemThanhToanHD.ShowDialog();
-        }
-
-        private void dtgv_DSChiTietHoaDon_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-            //Program.chiTietHoaDon.Id = dtgv_DSChiTietHoaDon.CurrentRow.Cells["IDD"].Value.ToString();
-            //Program.chiTietHoaDon.Hoadonid = tb_id.Text;
-            //Program.chiTietHoaDon.Sanphamid = dtgv_DSChiTietHoaDon.CurrentRow.Cells["SanPhamID"].Value.ToString();
-            //Program.chiTietHoaDon.Soluong = dtgv_DSChiTietHoaDon.CurrentRow.Cells["SoLuong"].Value.ToString();
-            //Program.chiTietHoaDon.Giaban = dtgv_DSChiTietHoaDon.CurrentRow.Cells["GiaBan"].Value.ToString();
-            //Program.chiTietHoaDon.Vat = dtgv_DSChiTietHoaDon.CurrentRow.Cells["VAT"].Value.ToString();
-            //Program.chiTietHoaDon.Tienloi = dtgv_DSChiTietHoaDon.CurrentRow.Cells["TienLoii"].Value.ToString();
-            //Program.chiTietHoaDon.Ghichu = dtgv_DSChiTietHoaDon.CurrentRow.Cells["GhiChuGSP"].Value.ToString();
-           
-        }
-
-        private void btn_suachitiethoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 2;
-            //ChiTietHD_SP chiTietHD_SP = new ChiTietHD_SP(this);
-            //chiTietHD_SP.UpdateEventHandler += chiTietHD_SP_UpdateEventHandler1;
-            //chiTietHD_SP.ShowDialog();
-        }
-
-        private void btn_themchitiethoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 1;
-            //ChiTietHD_SP chiTietHD_SP = new ChiTietHD_SP(this);
-            //chiTietHD_SP.UpdateEventHandler += chiTietHD_SP_UpdateEventHandler1;
-            //chiTietHD_SP.ShowDialog();
-        }
-
-        private void btn_thanhtoanhd_Click(object sender, EventArgs e)
-        {
-            //ThanhToanHD chiTietThanhToan = new ThanhToanHD(this);
-            //chiTietThanhToan.UpdateEventHandler += ThanhToanHD_UpdateEventHandler1;
-            //chiTietThanhToan.ShowDialog();
-        }
-
-        private void btn_themncc_Click(object sender, EventArgs e)
-        {
+            string sql2 = @"SELECT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen
+                    FROM dbo.HoaDon JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.MaThanhToan = HoaDon.MaThanhToan 
+                    JOIN dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH WHERE HoaDon.Xoa = 0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_hoadon, sql2);
 
         }
 
-        private void btn_suancc_Click(object sender, EventArgs e)
+        private void btn_themkh_Click(object sender, EventArgs e)
         {
-
+            Program.opt = 1;
+            ChiTietKH chiTietKH = new ChiTietKH(this);
+            chiTietKH.UpdateEventHandler += chiTietKH_UpdateEventHandler1;
+            chiTietKH.ShowDialog();
         }
 
-        private void btn_xoancc_Click(object sender, EventArgs e)
+        private void btn_suakh_Click(object sender, EventArgs e)
         {
+            Program.opt = 2;
+            ChiTietKH chiTietKH = new ChiTietKH(this);
+            chiTietKH.UpdateEventHandler += chiTietKH_UpdateEventHandler1;
+            chiTietKH.ShowDialog();
+        }
 
+        private void btn_taohd_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ThongTinHD thongTinHD = new ThongTinHD(this);
+            thongTinHD.UpdateEventHandler += thongTinHD_UpdateEventHandler1;
+            thongTinHD.ShowDialog();
+        }
+
+        private void dgv_khachhang_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //Lấy các trường thông tin để nếu mà sửa thì sửa
+            string makh = dgv_khachhang.CurrentRow.Cells["MaKH"].Value.ToString();
+            string maloaikh = dgv_khachhang.CurrentRow.Cells["MaLoaiKH"].Value.ToString();
+            string hoten = dgv_khachhang.CurrentRow.Cells["HoTen"].Value.ToString();
+            string ngaysinh = dgv_khachhang.CurrentRow.Cells["NgaySinh"].Value.ToString();
+            string gioitinh = dgv_khachhang.CurrentRow.Cells["GioiTinh"].Value.ToString();
+            string sdt = dgv_khachhang.CurrentRow.Cells["SDT"].Value.ToString();
+            string diemtichluy = dgv_khachhang.CurrentRow.Cells["DiemTichLuy"].Value.ToString();
+
+            //Tạo 1 Object để phục vụ cho thêm sửa xoá
+            Program.khachHang = new Object.KhachHang(int.Parse(makh),int.Parse(maloaikh),hoten,ngaysinh,gioitinh,sdt,int.Parse(diemtichluy),false);
         }
     }
 }
