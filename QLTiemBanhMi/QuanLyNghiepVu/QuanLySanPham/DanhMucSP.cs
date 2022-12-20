@@ -16,7 +16,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
     public partial class DanhMucSP : Form
     {
         private string magv;
-        public DanhMucSP()
+        public DanhMucSP(SanPham sanPham)
         {
             InitializeComponent();
         }
@@ -34,101 +34,89 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             UpdateEventHandler.Invoke(this, args);
         }
 
-        public void setThongTinVaoFormDeSua()
+
+        public bool KiemTra()
         {
-            //tb_madm.Text = Program.chiTietDonVi.Id;
-            //tb_tendm.Text = Program.chiTietDonVi.Tendonvi;
-           
+            if (tb_madm.Text == "" || tb_tendm.Text == "")
+            {
+                DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            List<string> list_tendm = Program.FillData.LayDSTen("TenDanhMuc", "DanhMucSanPham");
+            if (Program.opt == 1)
+            {
+                if (list_tendm.Contains(tb_tendm.Text))
+                {
+                    DialogResult result = MessageBox.Show("Tên danh mục đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+            if (Program.opt == 2)
+            {
+
+                list_tendm.Remove(Program.danhMucSanPham.Tendanhmuc);
+                if (list_tendm.Contains(tb_tendm.Text))
+                {
+                    DialogResult result = MessageBox.Show("Tên danh mục đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            return true;
         }
-
-        private void HienThongTinLenEditValue(GridLookUpEdit grid, List<string> list, string ma)
-        {
-            //int index = list.BinarySearch(ma);
-            //grid.EditValue = grid.Properties.GetKeyValue(index);
-        }
-
-        //public bool KiemTra()
-        //{
-        //    if (tb_madm.Text == "" || tb_tendm.Text == "")
-        //    {
-        //        DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-        //    List<string> list_tenloaidv = Program.Quanlysanphamsql.LayDSTenLoaiDonVi();
-        //    if (Program.opt == 1)
-        //    {
-        //        if (list_tenloaidv.Contains(tb_tendm.Text))
-        //        {
-        //            DialogResult result = MessageBox.Show("Tên loại đơn vị đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return false;
-        //        }
-
-        //    }
-        //    if (Program.opt == 2)
-        //    {
-
-        //        list_tenloaidv.Remove(Program.chiTietDonVi.Tendonvi);
-        //        if (list_tenloaidv.Contains(tb_tendm.Text))
-        //        {
-        //            DialogResult result = MessageBox.Show("Tên loại đơn vị đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            return false;
-        //        }
-        //    }
-
-        //    return true;
-        //}
 
 
         private void buttonLưu_Click(object sender, EventArgs e)
         {
-            //if (!KiemTra())
-            //    return;
-            //else
-            //{
-            //    if (Program.opt == 1) //them
-            //    {
-            //        string sql = "Them_DonVi";
-            //        string[] para = { "@tendonvi", "@ghichu" };
-            //        object[] values = { tb_tendm.Text, Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
+            if (!KiemTra())
+                return;
+            else
+            {
+                if (Program.opt == 1) //them
+                {
+                    string sql = "Them_DMSP";
+                    string[] para = { "@MaDM", "@TenDanhMuc" };
+                    object[] values = { int.Parse(tb_tendm.Text), tb_tendm.Text };
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-            //    }
-            //    if (Program.opt == 2) //sua
-            //    {
-            //        string sql = "Sua_DonVi";
-            //        string[] para = { "@id", "@tendonvi", "@ghichu" };
-            //        object[] values = { Int32.Parse(tb_madm.Text), tb_tendm.Text, Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-                            
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
+                }
+                if (Program.opt == 2) //sua
+                {
+                    string sql = "Sua_DMSP";
+                    string[] para = { "@MaDM", "@TenDanhMuc" };
+                    object[] values = { int.Parse(tb_tendm.Text), tb_tendm.Text };
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
 
-            //}
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
         }
 
         private void buttonHuy_Click(object sender, EventArgs e)
@@ -136,16 +124,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.Close();
         }
 
-        private void gluegiaovien_EditValueChanged(object sender, EventArgs e)
-        {
-            //gan gia tri
-            //magv = gluegiaovien.EditValue.ToString();
-
-            ////thay doi text box
-            //tbmagv.Text = magv;
-        }
-
-
+      
         private void DanhMucSP_Load(object sender, EventArgs e)
         {
 
@@ -158,7 +137,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             }
             if (Program.opt == 2) // sua
             {
-                setThongTinVaoFormDeSua();
+                tb_madm.Text = Program.danhMucSanPham.Madm.ToString();
+                tb_tendm.Text = Program.danhMucSanPham.Tendanhmuc;
             }
         }
     }

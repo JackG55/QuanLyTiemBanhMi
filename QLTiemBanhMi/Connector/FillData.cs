@@ -225,5 +225,17 @@ namespace QLTiemBanhMi.Connector
             dataGridView.DataSource = dataTable;
         }
 
+        /// <summary>
+        /// Hàm để lấy Ds bảng Danh mục theo mã danh mục
+        /// </summary>
+        /// <param name="madm">Mã danh mục</param>
+        /// <returns></returns>
+        public DataTable LayDS_DanhMuc(int madm)
+        {
+            string query = "SELECT MaDM, TenDanhMuc from dbo.DanhMucSanPham WHERE Xoa = 0 AND MaDM='" + madm + "'";
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+            return dataTable;
+        }
     }
 }

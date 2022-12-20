@@ -31,12 +31,12 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         {
             this.label5 = new System.Windows.Forms.Label();
             this.tb_tensanpham = new System.Windows.Forms.TextBox();
-            this.tb_id = new System.Windows.Forms.TextBox();
+            this.tb_masp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_mota = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tb_anhsp = new System.Windows.Forms.TextBox();
+            this.tb_giaban = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.glue_danhmucsp = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -65,14 +65,15 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.tb_tensanpham.Size = new System.Drawing.Size(304, 30);
             this.tb_tensanpham.TabIndex = 68;
             // 
-            // tb_id
+            // tb_masp
             // 
-            this.tb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_id.Location = new System.Drawing.Point(229, 18);
-            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(304, 30);
-            this.tb_id.TabIndex = 63;
+            this.tb_masp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_masp.Location = new System.Drawing.Point(229, 18);
+            this.tb_masp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_masp.Name = "tb_masp";
+            this.tb_masp.ReadOnly = true;
+            this.tb_masp.Size = new System.Drawing.Size(304, 30);
+            this.tb_masp.TabIndex = 63;
             // 
             // label1
             // 
@@ -109,18 +110,19 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(42, 224);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 25);
+            this.label7.Size = new System.Drawing.Size(82, 25);
             this.label7.TabIndex = 97;
-            this.label7.Text = "Ảnh Sản Phẩm";
+            this.label7.Text = "Giá Bán";
             // 
-            // tb_anhsp
+            // tb_giaban
             // 
-            this.tb_anhsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_anhsp.Location = new System.Drawing.Point(229, 221);
-            this.tb_anhsp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_anhsp.Name = "tb_anhsp";
-            this.tb_anhsp.Size = new System.Drawing.Size(304, 30);
-            this.tb_anhsp.TabIndex = 96;
+            this.tb_giaban.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_giaban.Location = new System.Drawing.Point(229, 221);
+            this.tb_giaban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_giaban.Name = "tb_giaban";
+            this.tb_giaban.Size = new System.Drawing.Size(304, 30);
+            this.tb_giaban.TabIndex = 96;
+            this.tb_giaban.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_giaban_KeyPress);
             // 
             // label3
             // 
@@ -144,7 +146,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.glue_danhmucsp.Properties.PopupView = this.gridLookUpEdit1View;
             this.glue_danhmucsp.Size = new System.Drawing.Size(304, 32);
             this.glue_danhmucsp.TabIndex = 104;
-            this.glue_danhmucsp.EditValueChanged += new System.EventHandler(this.glue_donvi_EditValueChanged);
             // 
             // gridLookUpEdit1View
             // 
@@ -194,7 +195,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.Controls.Add(this.glue_danhmucsp);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.tb_anhsp);
+            this.Controls.Add(this.tb_giaban);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_mota);
             this.Controls.Add(this.buttonHuy);
@@ -202,7 +203,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tb_tensanpham);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_id);
+            this.Controls.Add(this.tb_masp);
             this.Name = "ChiTietSP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Sản Phẩm";
@@ -219,12 +220,12 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private System.Windows.Forms.TextBox tb_tensanpham;
         private System.Windows.Forms.Button buttonHuy;
         private System.Windows.Forms.Button buttonLưu;
-        private System.Windows.Forms.TextBox tb_id;
+        private System.Windows.Forms.TextBox tb_masp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_mota;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tb_anhsp;
+        private System.Windows.Forms.TextBox tb_giaban;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.GridLookUpEdit glue_danhmucsp;
         private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;

@@ -1,4 +1,12 @@
-﻿--Chi Tiet Khuyen Mai
+﻿--Danh Mục Sản Phẩm
+CREATE OR ALTER PROC Them_DMSP (@MaDM INT, @TenDanhMuc NVARCHAR(100))
+AS
+BEGIN
+	INSERT dbo.DanhMucSanPham
+	(MaDM,TenDanhMuc, Xoa)VALUES(@MaDM,@TenDanhMuc,0)
+END
+GO
+--Chi Tiet Khuyen Mai
 CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @MaHD INT, @MaKH INT)
 AS
 BEGIN

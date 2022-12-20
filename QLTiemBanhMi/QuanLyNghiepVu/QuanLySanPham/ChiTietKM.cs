@@ -15,7 +15,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 {
     public partial class ChiTietKM : Form
     {
-        public ChiTietKM()
+        public ChiTietKM(SanPham sanPham)
         {
             InitializeComponent();
         }
@@ -33,86 +33,82 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             UpdateEventHandler.Invoke(this, args);
         }
 
-        public void setThongTinVaoFormDeSua(List<string> list_donvi)
+        public void setThongTinVaoFormDeSua()
         {
-            //tb_id.Text = Program.sanpham.Id;
-            //tb_tensanpham.Text = Program.sanpham.Tensanpham;
-            //tb_quycach.Text = Program.sanpham.Quycach;
-            //tb_soluongton.Text = Program.sanpham.Soluongton;
-          
-            //tb_nguonnhap.Text = Program.sanpham.Nguonnhap;
-            //tb_ghichu.Text = Program.sanpham.Ghichu;
+            tb_makm.Text = Program.chuongTrinhKhuyenMai.Makm.ToString();
+            tb_tenkm.Text = Program.chuongTrinhKhuyenMai.Tenkm;
+            tb_giamgia.Text = Program.chuongTrinhKhuyenMai.Phantramgiamgia.ToString();
+            dtpngaybatdau.Value = Program.chuongTrinhKhuyenMai.Ngaybatdau.Date;
 
-            //HienThongTinLenEditValue(list_donvi, Program.sanpham.Donviid.ToString());
+            dtpngayketthuc.Value = Program.chuongTrinhKhuyenMai.Ngayketthuc.Date;
+           
         }
 
-        private void HienThongTinLenEditValue(List<string> list_donvi, string donviID)
-        {
-            int index = list_donvi.BinarySearch(donviID);
-          //  glue_donvi.EditValue = glue_donvi.Properties.GetKeyValue(index);
-        }
 
-        //public bool KiemTra()
-        //{
-        //    if (tb_id.Text == "" || tb_tensanpham.Text == "" ||
-        //    tb_quycach.Text == "" ||
-        //    tb_nguonnhap.Text == "" || tb_soluongton.Text == ""|| glue_donvi.EditValue.ToString() == "")
-        //    {
-        //        DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public bool KiemTra()
+        {
+            if (tb_tenkm.Text == "" || tb_giamgia.Text == "")
+            {
+                MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (dtpngaybatdau.Value.Date > dtpngayketthuc.Value.Date)
+            {
+                MessageBox.Show("Ngày không hợp lệ", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }    
+            return true;
+        }
 
         private void buttonLưu_Click(object sender, EventArgs e)
         {
-            //if (!KiemTra())
-            //    return;
-            //else
-            //{
-            //    if (Program.opt == 1) //them
-            //    {
-            //        string sql = "Them_SP";
-            //        string[] para = { "@tensanpham", "@quycach", "@donviID", "@soluongton", "@nguonnhap", "@ghichu" };
-            //        object[] values = { tb_tensanpham.Text, Convert.ToString(tb_quycach.Text), Int32.Parse(glue_donvi.EditValue.ToString()), Int32.Parse(tb_soluongton.Text), Convert.ToString(tb_nguonnhap.Text), Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
+            if (!KiemTra())
+                return;
+            else
+            {
+                if (Program.opt == 1) //them
+                {
+                    string sql = "Them_CTKM";
+                    string[] para = { "@MaKM", "@TenKM", "@PhanTramGiamGia", "@NgayBatDau", "@NgayKetThuc"};
+                    object[] values = { int.Parse(tb_makm.Text), tb_tenkm.Text, Int32.Parse(tb_giamgia.Text), dtpngaybatdau.Value.Date, dtpngayketthuc.Value.Date };
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Thêm thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-            //    }
-            //    if (Program.opt == 2) //sua
-            //    {
-            //        string sql = "Sua_SP";
-            //        string[] para = { "@id", "@tensanpham", "@quycach", "@donviID", "@soluongton", "@nguonnhap", "@ghichu" };
-            //        object[] values = { Int32.Parse(tb_id.Text) ,tb_tensanpham.Text, tb_quycach.Text, Int32.Parse(glue_donvi.EditValue.ToString()), Int32.Parse(tb_soluongton.Text), tb_nguonnhap.Text, Convert.ToString(tb_ghichu.Text) };
-            //        int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //        if (a != 0)
-            //        {
-            //            DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            if (result2 == DialogResult.OK)
-            //            {
-            //                this.Close();
-            //                edit();
-            //            }
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
+                }
+                if (Program.opt == 2) //sua
+                {
+                    string sql = "Sua_CTKM";
+                    string[] para = { "@MaKM", "@TenKM", "@PhanTramGiamGia", "@NgayBatDau", "@NgayKetThuc" };
+                    object[] values = { int.Parse(tb_makm.Text), tb_tenkm.Text, Int32.Parse(tb_giamgia.Text), dtpngaybatdau.Value.Date, dtpngayketthuc.Value.Date }; 
+                    int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+                    if (a != 0)
+                    {
+                        DialogResult result2 = MessageBox.Show("Sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (result2 == DialogResult.OK)
+                        {
+                            this.Close();
+                            edit();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
-            //}
+            }
         }
 
         private void buttonHuy_Click(object sender, EventArgs e)
@@ -123,36 +119,27 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void ChiTietSP_Load(object sender, EventArgs e)
         {
 
-            //load danh sach loai nhan vien
-            //List<string> list_donvi = Program.Quanlysanphamsql.LayDS_DonVi(glue_donvi);
-            //if (Program.opt == 1) //them
-            //{
-            //    tb_id.Text = "";
-            //    tb_tensanpham.Text = "";
-            //    tb_quycach.Text = "";
-            //    tb_soluongton.Text = "";
-               
-            //    tb_nguonnhap.Text = "";
-            //    tb_ghichu.Text = "";
-
-            //    //mã tự tạo
-            //    tb_id.ReadOnly = true;
-
-
-            //    //sql lấy mã
-            //    tb_id.Text = Program.Quanlysanphamsql.TaoMaSanPham().ToString();
-            //}
-            //if (Program.opt == 2) // sua
-            //{
-            //    tb_id.ReadOnly = true;
-            //    setThongTinVaoFormDeSua(list_donvi);
-            //}
+           if (Program.opt == 1) //them
+           {
+                tb_makm.Text = "";
+                tb_tenkm.Text = "";
+                tb_giamgia.Text = "1";
+                //sql lấy mã
+                tb_makm.Text = Program.FillData.SinhMaTuDong("MaKM", "ChuongTrinhKhuyenMai").ToString();
+            }
+            if (Program.opt == 2) // sua
+            {
+                setThongTinVaoFormDeSua();
+            }
         }
 
-        private void glue_donvi_EditValueChanged(object sender, EventArgs e)
+      
+        private void tb_giamgia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //gan gia tri
-           // Program.sanpham.Donviid = glue_donvi.EditValue.ToString();
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

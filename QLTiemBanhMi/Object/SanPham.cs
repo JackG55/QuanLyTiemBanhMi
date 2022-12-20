@@ -21,25 +21,21 @@ namespace QLTiemBanhMi.Object
 
         }
 
+        public SanPham(int masp, string tensp, string mota, int madm, int giaban)
+        {
+            this.masp = masp;
+            this.tensp = tensp;
+            this.mota = mota;
+            this.madm = madm;
+            this.giaban = giaban;
+        }
+
         public int Masp { get => masp; set => masp = value; }
         public string Tensp { get => tensp; set => tensp = value; }
         public string Mota { get => mota; set => mota = value; }
         public int Madm { get => madm; set => madm = value; }
         public int Giaban { get => giaban; set => giaban = value; }
         public bool Xoa { get => xoa; set => xoa = value; }
-
-        //public SanPham(string id, string tensanpham, string quycach, string donviid, string soluongton, DateTime ngaytao, string ghichu, string nguonnhap)
-        //{
-        //    this.id = id;
-        //    this.tensanpham = tensanpham;
-        //    this.quycach = quycach;
-        //    this.donviid = donviid;
-        //    this.soluongton = soluongton;
-        //    this.ngaytao = ngaytao;
-        //    this.ghichu = ghichu;
-        //    this.nguonnhap = nguonnhap;
-        //}
-
 
     }
 }

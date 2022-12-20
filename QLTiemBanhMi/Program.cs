@@ -45,6 +45,13 @@ namespace QLTiemBanhMi
         /// </summary>
         public static ChiTietHoaDon chiTietHoaDon;
 
+        /// <summary>
+        /// Khai báo các biến static liên quan đến SanPham
+        /// </summary>
+        public static DanhMucSanPham danhMucSanPham;
+        public static SanPham sanPham;
+        public static ChuongTrinhKhuyenMai chuongTrinhKhuyenMai;
+
 
 
 
@@ -83,6 +90,11 @@ namespace QLTiemBanhMi
             khachHang = new KhachHang();
             chiTietHoaDon = new ChiTietHoaDon();
 
+            //SẢN PHẨM
+            //Danh muc san pham
+            danhMucSanPham = new DanhMucSanPham();
+            sanPham = new SanPham();
+            chuongTrinhKhuyenMai = new ChuongTrinhKhuyenMai();
 
             Application.Run(new QuanTriHeThong.DangNhap());
         }

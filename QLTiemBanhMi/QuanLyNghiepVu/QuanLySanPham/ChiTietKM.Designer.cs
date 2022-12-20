@@ -30,13 +30,13 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.tb_tensanpham = new System.Windows.Forms.TextBox();
-            this.tb_id = new System.Windows.Forms.TextBox();
+            this.tb_tenkm = new System.Windows.Forms.TextBox();
+            this.tb_makm = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonHuy = new System.Windows.Forms.Button();
             this.buttonLưu = new System.Windows.Forms.Button();
-            this.tb_quycach = new System.Windows.Forms.TextBox();
+            this.tb_giamgia = new System.Windows.Forms.TextBox();
             this.dtpngaybatdau = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,23 +53,24 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.label5.TabIndex = 69;
             this.label5.Text = "Tên Khuyến Mãi";
             // 
-            // tb_tensanpham
+            // tb_tenkm
             // 
-            this.tb_tensanpham.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_tensanpham.Location = new System.Drawing.Point(229, 66);
-            this.tb_tensanpham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_tensanpham.Name = "tb_tensanpham";
-            this.tb_tensanpham.Size = new System.Drawing.Size(304, 30);
-            this.tb_tensanpham.TabIndex = 68;
+            this.tb_tenkm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_tenkm.Location = new System.Drawing.Point(229, 66);
+            this.tb_tenkm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_tenkm.Name = "tb_tenkm";
+            this.tb_tenkm.Size = new System.Drawing.Size(304, 30);
+            this.tb_tenkm.TabIndex = 68;
             // 
-            // tb_id
+            // tb_makm
             // 
-            this.tb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_id.Location = new System.Drawing.Point(229, 18);
-            this.tb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(304, 30);
-            this.tb_id.TabIndex = 63;
+            this.tb_makm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_makm.Location = new System.Drawing.Point(229, 18);
+            this.tb_makm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_makm.Name = "tb_makm";
+            this.tb_makm.ReadOnly = true;
+            this.tb_makm.Size = new System.Drawing.Size(304, 30);
+            this.tb_makm.TabIndex = 63;
             // 
             // label1
             // 
@@ -123,14 +124,15 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.buttonLưu.UseVisualStyleBackColor = false;
             this.buttonLưu.Click += new System.EventHandler(this.buttonLưu_Click);
             // 
-            // tb_quycach
+            // tb_giamgia
             // 
-            this.tb_quycach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_quycach.Location = new System.Drawing.Point(229, 116);
-            this.tb_quycach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_quycach.Name = "tb_quycach";
-            this.tb_quycach.Size = new System.Drawing.Size(304, 30);
-            this.tb_quycach.TabIndex = 103;
+            this.tb_giamgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_giamgia.Location = new System.Drawing.Point(229, 116);
+            this.tb_giamgia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_giamgia.Name = "tb_giamgia";
+            this.tb_giamgia.Size = new System.Drawing.Size(304, 30);
+            this.tb_giamgia.TabIndex = 103;
+            this.tb_giamgia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_giamgia_KeyPress);
             // 
             // dtpngaybatdau
             // 
@@ -182,14 +184,14 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.Controls.Add(this.dtpngayketthuc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpngaybatdau);
-            this.Controls.Add(this.tb_quycach);
+            this.Controls.Add(this.tb_giamgia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.buttonLưu);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tb_tensanpham);
+            this.Controls.Add(this.tb_tenkm);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_id);
+            this.Controls.Add(this.tb_makm);
             this.Name = "ChiTietKM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi Tiết Khuyến Mãi";
@@ -201,13 +203,13 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 
         #endregion
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tb_tensanpham;
+        private System.Windows.Forms.TextBox tb_tenkm;
         private System.Windows.Forms.Button buttonHuy;
         private System.Windows.Forms.Button buttonLưu;
-        private System.Windows.Forms.TextBox tb_id;
+        private System.Windows.Forms.TextBox tb_makm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tb_quycach;
+        private System.Windows.Forms.TextBox tb_giamgia;
         private System.Windows.Forms.DateTimePicker dtpngaybatdau;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;

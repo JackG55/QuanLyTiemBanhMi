@@ -21,5 +21,18 @@ namespace QLTiemBanhMi.Object
         public bool Xoa { get => xoa; set => xoa = value; }
         public DateTime Ngaybatdau { get => ngaybatdau; set => ngaybatdau = value; }
         public DateTime Ngayketthuc { get => ngayketthuc; set => ngayketthuc = value; }
+        public ChuongTrinhKhuyenMai()
+        {
+
+        }
+
+        public ChuongTrinhKhuyenMai(int makm, string tenkm, int phantramgiamgia, DateTime ngaybatdau, DateTime ngayketthuc)
+        {
+            this.makm = makm;
+            this.tenkm = tenkm;
+            this.phantramgiamgia = phantramgiamgia;
+            this.ngaybatdau = ngaybatdau;
+            this.ngayketthuc = ngayketthuc;
+        }
     }
 }

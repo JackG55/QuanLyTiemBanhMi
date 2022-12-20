@@ -46,7 +46,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             string sql = @"SELECT dbo.ChuongTrinhKhuyenMai.*
                             FROM dbo.ChuongTrinhKhuyenMai, dbo.ChiTietKhuyenMai,dbo.KhachHang
                             WHERE ChuongTrinhKhuyenMai.MaKM=ChuongTrinhKhuyenMai.MaKM AND ChiTietKhuyenMai.MAKH=KhachHang.MaKH
-                            AND ChuongTrinhKhuyenMai.MaKM NOT IN (SELECT DISTINCT MaKM FROM dbo.ChiTietKhuyenMai WHERE MAKH =1)";
+                            AND ChuongTrinhKhuyenMai.MaKM NOT IN (SELECT DISTINCT MaKM FROM dbo.ChiTietKhuyenMai WHERE MAKH ="+ makh+")AND NgayBatDau <= GETDATE() AND GETDATE()<=NgayKetThuc";
             List<string> list_km_id = Program.FillData.LayDS_Len_GridLookUpEdit_DK(glue_hinhthuctt, sql, "PhanTramGiamGia", "MaKM");
             tb_nhanvien.Text = Program.user.Tennv;
             dgv_DSCTHD.Columns["SL"].ReadOnly = false;

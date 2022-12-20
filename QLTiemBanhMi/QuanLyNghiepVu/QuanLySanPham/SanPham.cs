@@ -14,8 +14,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 {
     public partial class SanPham : Form
     {
-        List<string> tenquyen_sanpham = new List<string>() { "ThemSanPham", "DanhSachSanPham", "QuanLyGiaSanPham", "QuanLyDonVi", "SuaSanPham", "XoaSanPham" };
-        public SanPham()
+        string masp = "";
+       public SanPham()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void SanPham_Load(object sender, EventArgs e)
         {
             //load lên datagridView Danh Sach San Pham
-            string sql1 = "SELECT * FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM ";
+            string sql1 = "SELECT SanPham.* FROM dbo.SanPham Where Xoa=0 ";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
 
             //load lên datagridView Chuong trinh Khuyen Mai
@@ -37,28 +37,21 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 
         private void dataGridViewDSSanPham_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            //tb_id.Text = dataGridViewDSSanPham.CurrentRow.Cells["ID"].Value.ToString();
-            //tb_tensanpham.Text = dataGridViewDSSanPham.CurrentRow.Cells["TenSanPham"].Value.ToString();
-            //tb_quycach.Text = dataGridViewDSSanPham.CurrentRow.Cells["QuyCach"].Value.ToString();
-            //tb_donviid.Text = dataGridViewDSSanPham.CurrentRow.Cells["DonViID"].Value.ToString();
-            //tb_soluongton.Text = dataGridViewDSSanPham.CurrentRow.Cells["SoLuongTon"].Value.ToString();
-            //tb_ngaytao.Text = dataGridViewDSSanPham.CurrentRow.Cells["NgayTao"].Value.ToString();
-            //tb_nguonnhap.Text = dataGridViewDSSanPham.CurrentRow.Cells["NguonNhap"].Value.ToString();
-            //tb_ghichu.Text = dataGridViewDSSanPham.CurrentRow.Cells["GhiChu"].Value.ToString();
-
-
-            ////tạo object để truyền qua form Chi tiết
-            //Program.sanpham = new Object.SanPham(tb_id.Text, tb_tensanpham.Text, tb_quycach.Text, tb_donviid.Text, tb_soluongton.Text, 
-            //    Convert.ToDateTime(tb_ngaytao.Text), tb_ghichu.Text, tb_nguonnhap.Text);
-
-            ////load nhap san pham
-            //Program.Quanlysanphamsql.LayDSGiaBanSP(dtgv_DSGiaBanSP, tb_id.Text);
+            masp = dgv_DSSanPham.CurrentRow.Cells["MaSP"].Value.ToString();
+            string tensp = dgv_DSSanPham.CurrentRow.Cells["TenSP"].Value.ToString();
+            string mota = dgv_DSSanPham.CurrentRow.Cells["MoTa"].Value.ToString();
+            string giaban = dgv_DSSanPham.CurrentRow.Cells["GiaBan"].Value.ToString();
+            string madm= dgv_DSSanPham.CurrentRow.Cells["MaDM"].Value.ToString();
+           
+            //tạo object để truyền qua form Chi tiết
+            Program.sanPham = new Object.SanPham(int.Parse(masp), tensp,mota,int.Parse(madm),int.Parse(giaban));
         }
 
         private void chiTietSP_UpdateEventHandler1(object sender, ChiTietSP.UpdateEventArgs args)
         {
 
-            Program.Quanlysanphamsql.LayDSSanPham(dgv_DSSanPham);
+            string sql1 = "SELECT * FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM where SanPham.Xoa=0";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
 
         }
 
@@ -80,86 +73,17 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         }
         private void btn_xoasanpham_Click(object sender, EventArgs e)
         {
-            //string sql = "Xoa_SP";
-            //string[] para = { "@id" };
-            //object[] values = { Int32.Parse(tb_id.Text) };
-            //int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //if (a != 0)
-            //{
-            //    DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    if (result2 == DialogResult.OK)
-            //    {
-            //        Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
-
-
-
-        private void cbbDSDonVi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham, cbb_danhmucsp.SelectedValue.ToString());
-
-            //if(cbbDSDonVi.SelectedValue.ToString() == "0")
-            //{
-            //    btnSuaDonVi.Enabled = false;
-            //    btnXoaDonVi.Enabled = false;
-            //}    
-            //else
-            //{
-            //    btnSuaDonVi.Enabled = true;
-            //    btnXoaDonVi.Enabled = true;
-            //    //load danh sach don vi
-            //    DataTable list_donvi = Program.Quanlysanphamsql.LayDS_DonVi(cbbDSDonVi.SelectedValue.ToString());
-
-            //    //tạo 1 Object Don Vi de luu gia tri
-            //    Program.chiTietDonVi = new Object.DonVi(list_donvi.Rows[0]["ID"].ToString(), list_donvi.Rows[0]["TenDonVi"].ToString(), list_donvi.Rows[0]["Ghichu"].ToString());
-            //}    
-           
-        }
-        private void chiTietDV_UpdateEventHandler1(object sender, DanhMucSP.UpdateEventArgs args)
-        {
-
-            Program.Quanlysanphamsql.LayDSDonVi(cbb_danhmucsp);
-
-        }
-        private void btnSuaDonVi_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 2;
-            //DanhMucSP chiTietDonVi = new ChiTietDonVi(this);
-            //chiTietDonVi.UpdateEventHandler += chiTietDV_UpdateEventHandler1;
-            //chiTietDonVi.ShowDialog();
-        }
-
-        private void btnThemDonVi_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 1;
-            //DanhMucSP chiTietDonVi = new ChiTietDonVi(this);
-           
-            //chiTietDonVi.UpdateEventHandler += chiTietDV_UpdateEventHandler1;
-            //chiTietDonVi.ShowDialog();
-        }
-
-       
-        private void btnXoaDonVi_Click(object sender, EventArgs e)
-        {
-            string sql = "Xoa_DonVi";
-            string[] para = { "@id" };
-            object[] values = { Int32.Parse(cbb_danhmucsp.SelectedValue.ToString()) };
+            string sql = "Xoa_SP";
+            string[] para = { "@MaSP" };
+            object[] values = { Int32.Parse(masp) };
             int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
             if (a != 0)
             {
                 DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result2 == DialogResult.OK)
                 {
-                    
-                    Program.Quanlysanphamsql.LayDSDonVi(cbb_danhmucsp);
-                    //edit();
+                    string sql1 = "SELECT SanPham.* FROM dbo.SanPham Where Xoa=0 ";
+                    Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
                 }
             }
             else
@@ -168,39 +92,75 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             }
         }
 
-        //private void giabanSanPham_UpdateEventHandler1(object sender, GiaBanSanPham.UpdateEventArgs args)
-        //{
 
-        //    Program.Quanlysanphamsql.LayDSGiaBanSP(dtgv_DSGiaBanSP, tb_id.Text);
 
-        //}
-        //private void btn_themgiaban_Click(object sender, EventArgs e)
-        //{
-        //    Program.opt = 1;
-        //    GiaBanSanPham giabanSanPham = new GiaBanSanPham(this);
-          
-        //    giabanSanPham.UpdateEventHandler += giabanSanPham_UpdateEventHandler1;
-        //    giabanSanPham.ShowDialog();
-        //}
-
-        private void btn_xoagiaban_Click(object sender, EventArgs e)
+        private void cbb_danhmucsp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //string sql = "Xoa_GiaBanSanPham";
-            //string[] para = { "@id" };
-            //object[] values = { Int32.Parse(dtgv_DSGiaBanSP.CurrentRow.Cells["IDD"].Value.ToString()) };
-            //int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
-            //if (a != 0)
-            //{
-            //    DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    if (result2 == DialogResult.OK)
-            //    {
-            //        Program.Quanlysanphamsql.LayDSGiaBanSP(dtgv_DSGiaBanSP, tb_id.Text);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+
+            Program.FillData.LayDSSanPhamTheoDanhMuc(dgv_DSSanPham, int.Parse(cbb_danhmucsp.SelectedValue.ToString()));
+            //load danh sach danh mục theo mã được chọn ở combobox
+            DataTable list_danhmuc = Program.FillData.LayDS_DanhMuc(int.Parse(cbb_danhmucsp.SelectedValue.ToString()));
+
+            //tạo 1 Object Danh Mục Sản Phẩm de luu gia tri
+            Program.danhMucSanPham = new Object.DanhMucSanPham(int.Parse(list_danhmuc.Rows[0]["ID"].ToString()), list_danhmuc.Rows[0]["TenDanhMuc"].ToString());
+
+        }
+        private void danhMucSP_UpdateEventHandler1(object sender, DanhMucSP.UpdateEventArgs args)
+        {
+
+            Program.FillData.LayDS_Len_ComBoBox(cbb_danhmucsp, "TenDanhMuc", "MaDM");
+
+        }
+        private void btn_suadm_Click(object sender, EventArgs e)
+        {
+            Program.opt = 2;
+            DanhMucSP danhMucSP = new DanhMucSP(this);
+            danhMucSP.UpdateEventHandler += danhMucSP_UpdateEventHandler1;
+            danhMucSP.ShowDialog();
+        }
+
+        private void btn_themdm_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            DanhMucSP danhMucSP = new DanhMucSP(this);
+
+            danhMucSP.UpdateEventHandler += danhMucSP_UpdateEventHandler1;
+            danhMucSP.ShowDialog();
+        }
+        private void chiTietKM_UpdateEventHandler1(object sender, ChiTietKM.UpdateEventArgs args)
+        {
+
+            string sql2 = "SELECT * FROM dbo.ChuongTrinhKhuyenMai";
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSKhuyenMai, sql2);
+
+        }
+
+        private void btn_themctkm_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ChiTietKM chiTietKM = new ChiTietKM(this);
+            chiTietKM.UpdateEventHandler += chiTietKM_UpdateEventHandler1;
+            chiTietKM.ShowDialog();
+        }
+
+        private void btn_suactkm_Click(object sender, EventArgs e)
+        {
+            Program.opt = 2;
+            ChiTietKM chiTietKM = new ChiTietKM(this);
+            chiTietKM.UpdateEventHandler += chiTietKM_UpdateEventHandler1;
+            chiTietKM.ShowDialog();
+        }
+
+        private void dgv_DSKhuyenMai_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string makm = dgv_DSKhuyenMai.CurrentRow.Cells["MaKM"].Value.ToString();
+            string tenkm = dgv_DSKhuyenMai.CurrentRow.Cells["TenKM"].Value.ToString();
+            string phantramgiamgia = dgv_DSKhuyenMai.CurrentRow.Cells["PhanTramGiamGia"].Value.ToString();
+            string ngaybatdau = dgv_DSKhuyenMai.CurrentRow.Cells["NgayBatDau"].Value.ToString();
+            string ngayketthuc = dgv_DSKhuyenMai.CurrentRow.Cells["NgayKetThuc"].Value.ToString();
+
+            //tạo object để truyền qua form Chi tiết
+            Program.chuongTrinhKhuyenMai = new Object.ChuongTrinhKhuyenMai(int.Parse(makm), tenkm, int.Parse(phantramgiamgia), Convert.ToDateTime(ngaybatdau), Convert.ToDateTime(ngayketthuc));
         }
     }
 }
