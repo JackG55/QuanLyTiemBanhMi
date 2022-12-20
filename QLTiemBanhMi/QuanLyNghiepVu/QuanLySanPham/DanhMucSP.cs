@@ -130,10 +130,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 
             if (Program.opt == 1) //them
             {
-                tb_madm.Text = Program.FillData.SinhMaTuDong("MaDM", "DanhMucSanPham").ToString();
-                
+                tb_madm.Text = Program.FillData.SinhMaTuDong("MaDM", "DanhMucSanPham").ToString(); 
                 tb_tendm.Text = "";
-             
+                tb_madm.ReadOnly = true;
+
             }
             if (Program.opt == 2) // sua
             {

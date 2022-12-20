@@ -53,6 +53,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             string sql1 = "SELECT * FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM where SanPham.Xoa=0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
 
+
         }
 
         private void btn_suaSanPham_Click(object sender, EventArgs e)
@@ -75,15 +76,85 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         {
             string sql = "Xoa_SP";
             string[] para = { "@MaSP" };
-            object[] values = { Int32.Parse(masp) };
+            object[] values = { Int32.Parse(masp)};
             int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
             if (a != 0)
             {
                 DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result2 == DialogResult.OK)
                 {
+                    Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void cbbDSDonVi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            //Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham, cbbDSDonVi.SelectedValue.ToString());
+
+            //if(cbbDSDonVi.SelectedValue.ToString() == "0")
+            //{
+            //    btnSuaDonVi.Enabled = false;
+            //    btnXoaDonVi.Enabled = false;
+            //}    
+            //else
+            //{
+            //    btnSuaDonVi.Enabled = true;
+            //    btnXoaDonVi.Enabled = true;
+            //    //load danh sach don vi
+            //    DataTable list_donvi = Program.Quanlysanphamsql.LayDS_DonVi(cbbDSDonVi.SelectedValue.ToString());
+
+            //    //tạo 1 Object Don Vi de luu gia tri
+            //    Program.chiTietDonVi = new Object.DonVi(list_donvi.Rows[0]["ID"].ToString(), list_donvi.Rows[0]["TenDonVi"].ToString(), list_donvi.Rows[0]["Ghichu"].ToString());
+            //}    
+           
+        }
+        private void chiTietDV_UpdateEventHandler1(object sender, DanhMucSP.UpdateEventArgs args)
+        {
+
+           // Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
+
+        }
+        private void btnSuaDonVi_Click(object sender, EventArgs e)
+        {
+            //Program.opt = 2;
+            //DanhMucSP chiTietDonVi = new ChiTietDonVi(this);
+            //chiTietDonVi.UpdateEventHandler += chiTietDV_UpdateEventHandler1;
+            //chiTietDonVi.ShowDialog();
+        }
+
+        private void btnThemDonVi_Click(object sender, EventArgs e)
+        {
+            //Program.opt = 1;
+            //DanhMucSP chiTietDonVi = new ChiTietDonVi(this);
+           
+            //chiTietDonVi.UpdateEventHandler += chiTietDV_UpdateEventHandler1;
+            //chiTietDonVi.ShowDialog();
+        }
+
+       
+        private void btnXoaDonVi_Click(object sender, EventArgs e)
+        {
+            string sql = "Xoa_DonVi";
+            string[] para = { "@id" };
+            object[] values = { Int32.Parse(cbbDSDonVi.SelectedValue.ToString()) };
+            int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+            if (a != 0)
+            {
+                DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result2 == DialogResult.OK)
+                {
+
                     string sql1 = "SELECT SanPham.* FROM dbo.SanPham Where Xoa=0 ";
                     Program.FillData.LoadDS_Len_DataGridView(dgv_DSSanPham, sql1);
+
                 }
             }
             else
