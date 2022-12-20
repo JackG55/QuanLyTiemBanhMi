@@ -29,7 +29,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         }
         private void ChiTietKH_Load(object sender, EventArgs e)
         {
-            //load danh sach san pham
+            //load danh sach khách hàng
             List<string> list_loaikh_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_hang,"LoaiKH","TenLoaiKH","MaLoaiKH");
 
             if (Program.opt == 1) //them

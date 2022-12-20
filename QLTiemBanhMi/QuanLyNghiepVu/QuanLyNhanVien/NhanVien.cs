@@ -14,6 +14,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
 {
     public partial class NhanVien : Form
     {
+        string manv = "";
         public NhanVien()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyNhanVien
         private void dataGridViewDSNhanVien_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             //Lấy các trường thông tin để nếu mà sửa thì sửa
-            string manv = dgv_dsnv.CurrentRow.Cells["MaNV"].Value.ToString();
+            manv = dgv_dsnv.CurrentRow.Cells["MaNV"].Value.ToString();
             string tennv = dgv_dsnv.CurrentRow.Cells["TenNV"].Value.ToString();
             string username = dgv_dsnv.CurrentRow.Cells["UserName"].Value.ToString();
             string gioitinh = dgv_dsnv.CurrentRow.Cells["GioiTinh"].Value.ToString();

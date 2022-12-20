@@ -40,6 +40,12 @@ namespace QLTiemBanhMi
         /// </summary>
         public static KhachHang khachHang;
 
+        /// <summary>
+        /// Khai báo các biến static liên quan đến BanHang
+        /// </summary>
+        public static ChiTietHoaDon chiTietHoaDon;
+
+
 
 
         [STAThread]
@@ -75,9 +81,10 @@ namespace QLTiemBanhMi
             //BÁN HÀNG
             //Khách hàng
             khachHang = new KhachHang();
+            chiTietHoaDon = new ChiTietHoaDon();
 
 
-            Application.Run(new QuanTriHeThong.QuanLyChung());
+            Application.Run(new QuanTriHeThong.DangNhap());
         }
     }
 }

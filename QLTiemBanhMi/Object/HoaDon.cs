@@ -29,24 +29,5 @@ namespace QLTiemBanhMi.Object
         public string Tongtien { get => tongtien; set => tongtien = value; }
         public bool Xoa { get => xoa; set => xoa = value; }
 
-        //public HoaDon(string id, string tenhoadon, string congtyid, string nhanvienid, DateTime ngaylap, string tongtien, 
-        //                string tongtiendathanhtoan, DateTime ngayhenthanhtoan, string tienloi, string hoahong, 
-        //                string nguoinhanhoahongid,string ghichu)
-        //{
-        //    this.id = id;
-        //    this.tenhoadon = tenhoadon;
-        //    this.congtyid = congtyid;
-        //    this.nhanvienid = nhanvienid;
-        //    this.ngaylap = ngaylap;
-        //    this.tongtien = tongtien;
-        //    this.tongtiendathanhtoan = tongtiendathanhtoan;
-        //    this.ngayhenthanhtoan = ngayhenthanhtoan;
-        //    this.tienloi = tienloi;
-        //    this.hoahong = hoahong;
-        //    this.nguoinhanhoahongid = nguoinhanhoahongid;
-        //    this.ghichu = ghichu;
-        //}
-
-
     }
 }

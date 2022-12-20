@@ -17,6 +17,10 @@ namespace QLTiemBanhMi.Object
         private int diemtichluy;
         private bool xoa;
 
+        public KhachHang()
+        {
+
+        }
         public KhachHang(int makh, int maloaikh, string hoten, string ngaysinh, string gioitinh, string sdt, int diemtichluy, bool xoa)
         {
             this.makh = makh;

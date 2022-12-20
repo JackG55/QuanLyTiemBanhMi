@@ -1,4 +1,69 @@
-﻿--Khách Hàng
+﻿--Chi Tiet Khuyen Mai
+CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @MaHD INT, @MaKH INT)
+AS
+BEGIN
+	INSERT dbo.ChiTietKhuyenMai
+	(
+	    MaKM,
+	    MaHD,
+	    MAKH
+	)
+	VALUES
+	(   @MaKM, -- MaKM - int
+	    @MaHD, -- MaHD - int
+	    @MaKH  -- MAKH - int
+	    )
+	
+END
+GO
+--Chi Tiết Hoá Đơn
+CREATE OR ALTER PROC Them_CTHD (@MaHD INT, @MaSP INT, @SL INT,@DonGia INT)
+AS
+BEGIN
+	INSERT dbo.ChiTietHoaDon
+	(
+	    MaHD,
+	    MaSP,
+	    SL,
+	    DonGia
+	)
+	VALUES
+	(   @MaHD,   -- MaHD - int
+	    @MaSP,   -- MaSP - int
+	    @SL,   -- SL - int
+	    @DonGia    -- DonGia - int
+	    )
+END
+GO
+
+--Hoá Đơn
+CREATE OR ALTER PROC Them_HoaDon (@MaHD INT, @MaNV INT, @NgayTao DATETIME, @MaKH INT,@MaThanhToan INT,@TongTien int)
+AS
+BEGIN
+	INSERT dbo.HoaDon
+	(
+	    MaHD,
+	    MaNV,
+	    NgayTao,
+	    MaKH,
+	    MaThanhToan,
+	    TongTien,
+	    Xoa
+	)
+	VALUES
+	(   @MaHD,         -- MaHD - int
+	    @MaNV,         -- MaNV - int
+	    @NgayTao, -- NgayTao - datetime
+	    @MaKH,         -- MaKH - int
+	    @MaThanhToan,         -- MaThanhToan - int
+	    @TongTien,         -- TongTien - int
+	    0       -- Xoa - bit
+	    )
+	
+END
+GO
+
+--Khách Hàng
 CREATE OR ALTER PROC Them_KH (@MaKH INT,@HoTen NVARCHAR(100),@NgaySinh DATE,@SDT CHAR(10), @GioiTinh CHAR(3))
 AS
 BEGIN

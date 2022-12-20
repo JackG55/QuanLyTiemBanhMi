@@ -93,6 +93,12 @@
     <Compile Include="QuanLyNghiepVu\QuanLyBanHang\BanHang.Designer.cs">
       <DependentUpon>BanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyNghiepVu\QuanLyBanHang\ChiTietHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyNghiepVu\QuanLyBanHang\ChiTietHD.Designer.cs">
+      <DependentUpon>ChiTietHD.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyNghiepVu\QuanLyBanHang\ChiTietKH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNghiepVu\QuanLyBanHang\BanHang.resx">
       <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNghiepVu\QuanLyBanHang\ChiTietHD.resx">
+      <DependentUpon>ChiTietHD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNghiepVu\QuanLyBanHang\ChiTietKH.resx">
       <DependentUpon>ChiTietKH.cs</DependentUpon>

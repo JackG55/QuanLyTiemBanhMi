@@ -12,7 +12,7 @@ namespace QLTiemBanhMi.Object
         private string tensp;
         private string mota;
         private int madm;
-        private string anhsp;
+        private int giaban;
         
         private bool xoa;
 
@@ -25,7 +25,7 @@ namespace QLTiemBanhMi.Object
         public string Tensp { get => tensp; set => tensp = value; }
         public string Mota { get => mota; set => mota = value; }
         public int Madm { get => madm; set => madm = value; }
-        public string Anhsp { get => anhsp; set => anhsp = value; }
+        public int Giaban { get => giaban; set => giaban = value; }
         public bool Xoa { get => xoa; set => xoa = value; }
 
         //public SanPham(string id, string tensanpham, string quycach, string donviid, string soluongton, DateTime ngaytao, string ghichu, string nguonnhap)

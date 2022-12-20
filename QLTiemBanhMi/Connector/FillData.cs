@@ -42,6 +42,22 @@ namespace QLTiemBanhMi.Connector
         }
 
         /// <summary>
+        /// Hàm này dùng để lấy giá trị của một cột theo khoá chính
+        /// </summary>
+        /// <param name="tenMa"></param>
+        /// <param name="tenBang"></param>
+        /// <param name="tenTruong"></param>
+        /// <param name="giatri"></param>
+        /// <returns></returns>
+        public int LayGiaTriTheoMa(string tenMa, string giatri, string tenBang, string tenTruong)
+        {
+            string sql = $"SELECT {tenTruong} FROM dbo.{tenBang} where {tenMa} = {giatri}";
+            object result = connection.docGiaTri(sql);
+            int kq = (int)result ;
+            return kq;
+        }
+
+        /// <summary>
         /// hàm này lấy danh sách Tên trong Bảng để phục vụ việc kiểm tra xem có trùng hay không
         /// </summary>
         /// <param name="tenTruong">Tên trường cần lấy</param>
@@ -101,9 +117,44 @@ namespace QLTiemBanhMi.Connector
         }
 
         /// <summary>
+        /// Hàm này để truyền thông tin lên grid lookup edit các row thoả mãn 1 đk và trả lại 1 list chứa mảng
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="V">Tên Bảng</param>
+        /// <param name="tenHienThi">Tên hiển thị lên</param>
+        /// <param name="maCanLay">Mã tương ứng với Tên</param>
+        /// <returns>Trả về một list các mã </returns>
+        public List<string> LayDS_Len_GridLookUpEdit_DK(GridLookUpEdit grid, string query, string tenHienThi, string maCanLay)
+        {
+            List<string> list = new List<string>();
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+
+            grid.Properties.DataSource = null;
+            grid.Properties.DataSource = dataTable;
+            grid.Properties.DisplayMember = tenHienThi;
+            grid.Properties.ValueMember = maCanLay;
+            grid.Properties.BestFitMode = BestFitMode.BestFitResizePopup;
+
+            //tu động mở popup khi co ket qua
+            grid.Properties.ImmediatePopup = true;
+
+            //setup co the nhap vao grid
+            grid.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+
+            string field = maCanLay;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(row[field].ToString());
+            }
+            return list;
+
+        }
+
+        /// <summary>
         /// Hàm này để lấy danh sách đối tượng là Nhân viên để kiểm tra thông tin đăng nhập
         /// </summary>
-      
+
         /// <returns>Trả về một list các mã </returns>
         public List<NhanVien> LayDSNhanVien()
         {

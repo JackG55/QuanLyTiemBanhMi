@@ -10,33 +10,27 @@ namespace QLTiemBanhMi.Object
     {
         private int mahd;
         private int masp;
-        private string mota;
+        private string tensp;
         private int soluong;
         private int dongia;
 
         public ChiTietHoaDon()
         {
+
+        }
+
+        public ChiTietHoaDon(int masp, string tensp, int soluong, int dongia)
+        {
+            this.masp = masp;
+            this.tensp = tensp;
+            this.soluong = soluong;
+            this.dongia = dongia;
         }
 
         public int Mahd { get => mahd; set => mahd = value; }
         public int Masp { get => masp; set => masp = value; }
-        public string Mota { get => mota; set => mota = value; }
         public int Soluong { get => soluong; set => soluong = value; }
         public int Dongia { get => dongia; set => dongia = value; }
-
-        //public ChiTietHoaDon(string id, string hoadonid, string sanphamid, string soluong, string giaban, string vat, string tienloi, bool xoa, string ghichu)
-        //{
-        //    this.id = id;
-        //    this.hoadonid = hoadonid;
-        //    this.sanphamid = sanphamid;
-        //    this.soluong = soluong;
-        //    this.giaban = giaban;
-        //    this.vat = vat;
-        //    this.tienloi = tienloi;
-        //    this.xoa = xoa;
-        //    this.ghichu = ghichu;
-        //}
-
-
+        public string Tensp { get => tensp; set => tensp = value; }
     }
 }
