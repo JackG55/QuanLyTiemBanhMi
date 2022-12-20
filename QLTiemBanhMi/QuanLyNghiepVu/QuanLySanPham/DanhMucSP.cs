@@ -157,7 +157,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
 
                 tb_madm.ReadOnly = true;
 
-                tb_madm.Text = Program.Quanlysanphamsql.TaoMaDonVi().ToString();
+                //tb_madm.Text = Program.Quanlysanphamsql.TaoMaDonVi().ToString();
             }
             if (Program.opt == 2) // sua
             {

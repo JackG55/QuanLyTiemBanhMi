@@ -39,45 +39,36 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
       
         private void ChiTietPhieuNhapHang_Load(object sender, EventArgs e)
         {
-            ////load danh sach san pham
-            //List<string> list_sanphamid = Program.Quanlyhoadonsql.LayDS_SanPham(glue_nguyenvatlieu);
-            
-            //if (Program.opt == 1) //them
-            //{
-            //    tb_tienloi.Text = "0";
-            //    tb_soluong.Text = "0";
-            //    tb_dongia.Text = "0";
-            //    tb_VAT.Text = "0";
-            //    tb_id.Text = Program.Quanlyhoadonsql.TaoMaHoaDon_SP().ToString();
-            //    tb_maphieunhap.Text = Program.hoaDon.Id;
+            //load danh sach nguyên liệu
+            List<string> list_NguyenLieuID = Program.FillData.LayDS_Len_GridLookUpEdit(glue_nguyenvatlieu, "NguyenVatLieu", "TenNVL", "MSNVL");
 
-            //}
-            //if (Program.opt == 2) // sua
-            //{
-                
-            //    setThongTinVaoFormDeSua(list_sanphamid);
-            //}
+            if (Program.opt == 1) //them
+            {
+                tb_dongia.Text = "";
+                tb_soluong.Text = "";
+
+                tb_maphieunhap.ReadOnly = true;
+                tb_maphieunhap.Text = Program.chiTietPhieuNhapHang.Maphieunhap;
+                //tb_maphieunhap.Text = Program.FillData.SinhMaTuDong("MaPhieuNhap", "ChiTietPhieuNhapHang").ToString();
+
+                HienThongTinLenEditValue(list_NguyenLieuID, Program.chiTietPhieuNhapHang.Msnvl, glue_nguyenvatlieu);
+               
+
+            }
+            if (Program.opt == 2) // sua
+            {
+
+                setThongTinVaoFormDeSua(list_NguyenLieuID);
+            }
         }
 
-        public void setThongTinVaoFormDeSua(List<string> list_sanphamid)
+        public void setThongTinVaoFormDeSua(List<string> list_NguyenLieuID)
         {
-            //tb_id.Text = Program.chiTietHoaDon.Id;
-            //tb_maphieunhap.Text = Program.chiTietHoaDon.Hoadonid;
-            //tb_soluong.Text = Program.chiTietHoaDon.Soluong;
-            //tb_dongia.Text = Program.chiTietHoaDon.Giaban;
-            //if (Program.chiTietHoaDon.Tienloi == "")
-            //    tb_tienloi.Text = "0";
-            //else
-            //    tb_tienloi.Text = Program.chiTietHoaDon.Tienloi;
-            //if (Program.chiTietHoaDon.Vat == "")
-            //    tb_VAT.Text = "0";
-            //else
-            //    tb_VAT.Text = Program.chiTietHoaDon.Vat;
-           
-            //tb_ghichu.Text = Program.chiTietHoaDon.Ghichu;
-            //sanphamid = Program.chiTietHoaDon.Sanphamid;
-            //HienThongTinLenEditValue(list_sanphamid, Program.chiTietHoaDon.Sanphamid, glue_nguyenvatlieu);
-            
+            tb_maphieunhap.Text = Program.chiTietPhieuNhapHang.Maphieunhap;
+            tb_dongia.Text = Program.chiTietPhieuNhapHang.Dongia;
+            tb_soluong.Text = Program.chiTietPhieuNhapHang.Sl;
+
+            HienThongTinLenEditValue(list_NguyenLieuID, Program.chiTietPhieuNhapHang.Msnvl, glue_nguyenvatlieu);
         }
 
        
@@ -87,34 +78,17 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             gridLookUpEdit.EditValue = gridLookUpEdit.Properties.GetKeyValue(index1);
         }
 
-        public bool KiemTraNgayHenThanhToan(DateTimePicker dateTimePicker)
+        public bool Kiemtra_ChiTietPhieuNhapHang()
         {
-            if (dateTimePicker.Value.Date < DateTime.Now.Date)
+            if (tb_soluong.Text == ""|| tb_dongia.Text == "")
+            {
+                DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-            else
-                return true;
+            }
+          
+
+            return true;
         }
-
-
-        //public bool Kiemtra_HoaDonSP()
-        //{
-        //    //if (sanphamid == "" || tb_dongia.Text == "" || tb_tienloi.Text == "" || tb_VAT.Text =="" ||tb_soluong.Text =="")
-        //    //{
-        //    //    DialogResult result = MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    //    return false;
-        //    //}
-        //    //if(Program.opt ==1) // ktra so luong khi them
-        //    //{
-        //    //    if (Int32.Parse(tb_soluong.Text) > Program.Quanlyhoadonsql.LaySoLuongTonTheoIDSanPham(Int32.Parse(sanphamid)))
-        //    //    {
-        //    //        DialogResult result = MessageBox.Show("Số lượng phải ít hơn số lượng tồn", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    //        return false;
-
-        //    //    }
-        //    //}    
-            
-        //    //return true;
-        //}
 
         private void buttonLưu_Click(object sender, EventArgs e)
         {

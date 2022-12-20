@@ -55,7 +55,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void chiTietSP_UpdateEventHandler1(object sender, ChiTietSP.UpdateEventArgs args)
         {
 
-            Program.Quanlysanphamsql.LayDSSanPham(dgv_DSSanPham);
+           // Program.Quanlysanphamsql.LayDSSanPham(dgv_DSSanPham);
 
         }
 
@@ -122,7 +122,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void chiTietDV_UpdateEventHandler1(object sender, DanhMucSP.UpdateEventArgs args)
         {
 
-            Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
+           // Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
 
         }
         private void btnSuaDonVi_Click(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
                 if (result2 == DialogResult.OK)
                 {
                     
-                    Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
+                    //Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
                     //edit();
                 }
             }

@@ -41,7 +41,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
 
             //load lên datagridView Chi tiết phiếu nhập hàng
             string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
-            string sql4 = "SELECT MaPhieuNhap, dbo.ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia FROM dbo.ChiTietPhieuNhapHang " +
+            string sql4 = "SELECT MaPhieuNhap, dbo.ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
                            "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL " +
                            "WHERE MaPhieuNhap = " + maPhieuNhap;
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
@@ -92,66 +92,17 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             Program.phieuNhapHang = new Object.PhieuNhapHang(maphieunhap, mancc, manv, tongtien,Convert.ToDateTime(ngaytao));
 
         }
-      
-        private void btn_suahoadon_Click(object sender, EventArgs e)
+
+        private void dtgv_DSChiTietPhieuNhapHang_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            //Program.opt = 2;
-            //ThongTinHD chiTietHD = new ThongTinHD(this);
-            //chiTietHD.UpdateEventHandler += chiTietHD_UpdateEventHandler1;
-            //chiTietHD.ShowDialog();
-           
-        }
+            //Lấy các trường thông tin để nếu  mà sửa thì sửa
+            string maphieunhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+            string msnvl = dgv_DSCTPNH.CurrentRow.Cells["MSNVLL"].Value.ToString();
+            string dongia = dgv_DSCTPNH.CurrentRow.Cells["DonGia"].Value.ToString();
+            string sl = dgv_DSCTPNH.CurrentRow.Cells["SL"].Value.ToString();
 
-        private void btn_themhoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 1;
-            //ThongTinHD chiTietHD = new ThongTinHD(this);
-            //chiTietHD.UpdateEventHandler += chiTietHD_UpdateEventHandler1;
-            //chiTietHD.ShowDialog();
-        }
-
-        private void btn_chitietthanhtoan_Click(object sender, EventArgs e)
-        {
-            //XemThanhToanHD xemThanhToanHD = new XemThanhToanHD();
-
-            //xemThanhToanHD.ShowDialog();
-        }
-
-        private void dtgv_DSChiTietHoaDon_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-            //Program.chiTietHoaDon.Id = dtgv_DSChiTietHoaDon.CurrentRow.Cells["IDD"].Value.ToString();
-            //Program.chiTietHoaDon.Hoadonid = tb_id.Text;
-            //Program.chiTietHoaDon.Sanphamid = dtgv_DSChiTietHoaDon.CurrentRow.Cells["SanPhamID"].Value.ToString();
-            //Program.chiTietHoaDon.Soluong = dtgv_DSChiTietHoaDon.CurrentRow.Cells["SoLuong"].Value.ToString();
-            //Program.chiTietHoaDon.Giaban = dtgv_DSChiTietHoaDon.CurrentRow.Cells["GiaBan"].Value.ToString();
-            //Program.chiTietHoaDon.Vat = dtgv_DSChiTietHoaDon.CurrentRow.Cells["VAT"].Value.ToString();
-            //Program.chiTietHoaDon.Tienloi = dtgv_DSChiTietHoaDon.CurrentRow.Cells["TienLoii"].Value.ToString();
-            //Program.chiTietHoaDon.Ghichu = dtgv_DSChiTietHoaDon.CurrentRow.Cells["GhiChuGSP"].Value.ToString();
-           
-        }
-
-        private void btn_suachitiethoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 2;
-            //ChiTietHD_SP chiTietHD_SP = new ChiTietHD_SP(this);
-            //chiTietHD_SP.UpdateEventHandler += chiTietHD_SP_UpdateEventHandler1;
-            //chiTietHD_SP.ShowDialog();
-        }
-
-        private void btn_themchitiethoadon_Click(object sender, EventArgs e)
-        {
-            //Program.opt = 1;
-            //ChiTietHD_SP chiTietHD_SP = new ChiTietHD_SP(this);
-            //chiTietHD_SP.UpdateEventHandler += chiTietHD_SP_UpdateEventHandler1;
-            //chiTietHD_SP.ShowDialog();
-        }
-
-        private void btn_thanhtoanhd_Click(object sender, EventArgs e)
-        {
-            //ThanhToanHD chiTietThanhToan = new ThanhToanHD(this);
-            //chiTietThanhToan.UpdateEventHandler += ThanhToanHD_UpdateEventHandler1;
-            //chiTietThanhToan.ShowDialog();
+            //Tạo 1 Object để phục vụ cho thêm sửa xoá
+            Program.chiTietPhieuNhapHang = new Object.ChiTietPhieuNhapHang(maphieunhap, msnvl, dongia, sl);
         }
 
 
@@ -286,7 +237,77 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             phieuNhapHang.ShowDialog();
         }
 
-       
+
+
+
         #endregion
+
+        #region ThemSuaXoa_ChitietPhieuNhapHang
+
+
+        private void ChiTietPhieuNhapHang_UpdateEventHandler1(object sender, ChiTietPhieuNhapHang.UpdateEventArgs args)
+        {
+            //load lên datagridView Chi tiết phiếu nhập hàng
+            string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+            string sql4 = "SELECT MaPhieuNhap, dbo.ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
+                           "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL " +
+                           "WHERE MaPhieuNhap = " + maPhieuNhap;
+            Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
+        }
+
+        private void btn_xoachitietpnh_Click(object sender, EventArgs e)
+        {
+            string sql = "Xoa_ChiTietPhieuNhaphang";
+            string[] para = { "@MaPhieuNhap", "@MSNVL" };
+
+            string maphieunhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhapHang"].Value.ToString();
+            string maNguyenvatlieu = dgv_DSCTPNH.CurrentRow.Cells["MSNVLL"].Value.ToString();
+            object[] values = { Int32.Parse(maphieunhap), Int32.Parse(maphieunhap) };
+            int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
+            if (a != 0)
+            {
+                DialogResult result2 = MessageBox.Show("Xoá thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result2 == DialogResult.OK)
+                {
+                    //load lên datagridView Chi tiết phiếu nhập hàng
+                    string maPhieuNhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhap"].Value.ToString();
+                    string sql4 = "SELECT MaPhieuNhap, dbo.ChiTietPhieuNhapHang.MSNVL, TenNVL, DonGia, SL FROM dbo.ChiTietPhieuNhapHang " +
+                                   "JOIN dbo.NguyenVatLieu ON NguyenVatLieu.MSNVL = ChiTietPhieuNhapHang.MSNVL " +
+                                   "WHERE MaPhieuNhap = " + maPhieuNhap;
+                    Program.FillData.LoadDS_Len_DataGridView(dgv_DSCTPNH, sql4);
+
+                    //load lên datagridView Danh sách phiếu nhập hàng
+                    string sql2 = "SELECT MaPhieuNhap, TenNCC, TenNV, NgayTao, TongTien, NhaCungCap.MaNCC, NhanVien.MaNV FROM dbo.PhieuNhapHang " +
+                                  "JOIN dbo.NhaCungCap ON NhaCungCap.MaNCC = PhieuNhapHang.MaNCC " +
+                                  "JOIN dbo.NhanVien ON NhanVien.MaNV = PhieuNhapHang.MaNV " +
+                                  "WHERE PhieuNhapHang.Xoa = 0";
+                    Program.FillData.LoadDS_Len_DataGridView(dgv_DSPNH, sql2);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xoá thông tin không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_suachitietPhieuNhapHang_Click(object sender, EventArgs e)
+        {
+            Program.opt = 2;
+            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
+            chiTietPhieuNhapHang.UpdateEventHandler += ChiTietPhieuNhapHang_UpdateEventHandler1;
+            chiTietPhieuNhapHang.ShowDialog();
+        }
+
+        private void btn_themchitietPhieuNhapHang_Click(object sender, EventArgs e)
+        {
+            Program.opt = 1;
+            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
+            chiTietPhieuNhapHang.UpdateEventHandler += ChiTietPhieuNhapHang_UpdateEventHandler1;
+            chiTietPhieuNhapHang.ShowDialog();
+        }
+
+        #endregion
+
+        
     }
 }
