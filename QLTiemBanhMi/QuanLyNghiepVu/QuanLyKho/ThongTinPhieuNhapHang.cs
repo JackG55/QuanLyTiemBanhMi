@@ -46,7 +46,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
 
             if (Program.opt == 1) //them
             {
-                tb_ngaytao.Text = DateTime.Now.Date.ToString();
+                tb_ngaytao.Text = DateTime.Now.ToString();
                 tb_tongtien.Text = "0";
                 tb_maphieunhap.Text = Program.FillData.SinhMaTuDong("MaPhieuNhap", "PhieuNhapHang").ToString();
 
@@ -131,7 +131,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
                 {
                     string sql = "Sua_PhieuNhapHang";
                     string[] para = new string[] { "@MaPhieuNhap", "@MaNCC" };
-                    object[] values = new object[] { Int32.Parse(tb_maphieunhap.Text), Convert.ToDateTime(tb_ngaytao.Text), Int32.Parse(nccid), Program.user.Manv };
+                    object[] values = new object[] { Int32.Parse(tb_maphieunhap.Text), Int32.Parse(nccid) };
                     int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
                     if (a != 0)
                     {

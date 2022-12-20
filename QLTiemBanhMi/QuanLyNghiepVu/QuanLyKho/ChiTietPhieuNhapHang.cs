@@ -50,7 +50,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             }
             if (Program.opt == 2) // sua
             {
-
+                glue_nguyenvatlieu.ReadOnly = true;
                 setThongTinVaoFormDeSua(list_NguyenLieuID);
             }
         }
@@ -77,7 +77,26 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
                MessageBox.Show("Điền đầy đủ thông tin", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-          
+            List<string> list_msnvl = Program.FillData.LayDSTen("MSNVL", "ChiTietPhieuNhapHang","MaPhieuNhap",Program.phieuNhapHang.Maphieunhap);
+            if (Program.opt == 1)
+            {
+                if (list_msnvl.Contains(manvl))
+                {
+                    DialogResult result = MessageBox.Show("Nguyên vật liệu đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+            if (Program.opt == 2)
+            {
+                list_msnvl.Remove(Program.chiTietPhieuNhapHang.Msnvl);
+                if (list_msnvl.Contains(manvl))
+                {
+                    DialogResult result = MessageBox.Show("Nguyên vật liệu đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
 
             return true;
         }

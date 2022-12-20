@@ -195,7 +195,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
                 if (result2 == DialogResult.OK)
                 {
                     //load lên datagridView Nguyên Vật Liệu           
-                    string sql3 = "SELECT * FROM dbo.NguyenVatLieu";
+                    string sql3 = "SELECT * FROM dbo.NguyenVatLieu where Xoa = 0";
                     Program.FillData.LoadDS_Len_DataGridView(dgv_DSNVL, sql3);
                 }
             }
@@ -259,10 +259,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         {
             string sql = "Xoa_ChiTietPhieuNhaphang";
             string[] para = { "@MaPhieuNhap", "@MSNVL" };
-
-            string maphieunhap = dgv_DSPNH.CurrentRow.Cells["MaPhieuNhapHang"].Value.ToString();
             string maNguyenvatlieu = dgv_DSCTPNH.CurrentRow.Cells["MSNVLL"].Value.ToString();
-            object[] values = { Int32.Parse(maphieunhap), Int32.Parse(maphieunhap) };
+            object[] values = { Program.phieuNhapHang.Maphieunhap, Int32.Parse(maNguyenvatlieu) };
             int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
             if (a != 0)
             {

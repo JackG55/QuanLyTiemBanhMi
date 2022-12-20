@@ -78,6 +78,29 @@ namespace QLTiemBanhMi.Connector
         }
 
 
+        /// <summary>
+        /// hàm này lấy danh sách Tên trong Bảng  theo một điều kiện nào đó để phục vụ việc kiểm tra xem có trùng hay không
+        /// </summary>
+        /// <param name="tenTruong">Tên trường cần lấy</param>
+        /// <param name="tenBang">Tên Bảng cần lấy</param>
+        /// <param name="madk">Truong điều kiện</param>
+        /// <param name="giatri">Giá trị điều kiện</param>
+        /// <returns></returns>
+        public List<string> LayDSTen(string tenTruong, string tenBang,string madk,string giatri)
+        {
+            List<string> list_tenloainv = new List<string>();
+            string query = $"SELECT * FROM dbo.{tenBang} WHERE {madk}={giatri}";
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(query, CommandType.Text);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list_tenloainv.Add(row[tenTruong].ToString());
+
+            }
+            return list_tenloainv;
+        }
+
 
         /// <summary>
         /// Hàm này để truyền thông tin lên grid lookup edit và trả lại 1 list chứa mảng

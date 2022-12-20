@@ -351,11 +351,10 @@ GO
 CREATE OR ALTER PROC Sua_ChiTietPhieuNhapHang (@MaPhieuNhap INT, @MSNVL INT, @DonGia INT, @SL INT)
 AS
 BEGIN
-	UPDATE dbo.ChiTietPhieuNhapHang
-	SET	 MSNVL = @MSNVL, 
+	UPDATE dbo.ChiTietPhieuNhapHang SET 
 	DonGia = @DonGia, 
 	SL = @SL
-	WHERE MaPhieuNhap = @MaPhieuNhap
+	WHERE MaPhieuNhap = @MaPhieuNhap AND MSNVL=@MSNVL
 END
 GO
 
