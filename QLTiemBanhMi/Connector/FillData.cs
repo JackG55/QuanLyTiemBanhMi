@@ -178,25 +178,52 @@ namespace QLTiemBanhMi.Connector
         }
 
         /// <summary>
-        /// Hàm này để truyền thông tin lên grid lookup edit và trả lại 1 list chứa mảng
+        /// Hàm này để truyền thông tin lên combobox
         /// </summary>
-        /// <param name="combobox"></param>
-        /// <param name="tenBang">Tên Bảng</param>
+        /// <param name="comboBox"></param>
         /// <param name="tenHienThi">Tên hiển thị lên</param>
         /// <param name="maCanLay">Mã tương ứng với Tên</param>
-        /// <returns>Trả về một list các mã </returns>
-        public void LayDS_Len_ComBoBox(System.Windows.Forms.ComboBox cbb, string tenBang, string tenHienThi,string maCanLay)
+        /// <returns></returns>
+        public void LayDS_Len_ComBoBox(System.Windows.Forms.ComboBox comboBox, string tenHienThi,string maCanLay)
         {
-            string query = $"SELECT * FROM dbo.{tenBang} WHERE Xoa = 0";
+            string sql = @"SELECT * FROM dbo.DanhMucSanPham WHERE Xoa =0
+                            UNION ALL
+                            SELECT 0 AS MaDM, N'Tất cả' AS TenDanhMuc, False AS Xoa";
+            comboBox.Refresh();
             DataTable dataTable = new DataTable();
-            dataTable = connection.FillDataSet(query, CommandType.Text);
-            cbb.DisplayMember = tenHienThi;
-            cbb.ValueMember = maCanLay;
-            cbb.DataSource = dataTable;
-           
+            dataTable = connection.FillDataSet(sql, CommandType.Text);
+            comboBox.DisplayMember =tenHienThi;
+            comboBox.ValueMember = maCanLay;
+            comboBox.DataSource = dataTable;
+
 
         }
 
-      
+        /// <summary>
+        /// Hàm này để truyền thông tin lên combobox
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="madm">Mã danh mục</param>
+        /// <returns></returns>
+        public void LayDSSanPhamTheoDanhMuc(DataGridView dataGridView, int madm)
+        {
+            string sql = "";
+            if (madm == 0)
+            {
+                sql = @"SELECT * FROM dbo.SanPham WHERE Xoa=0";
+            }
+            else
+            {   
+                sql = @"SELECT dbo.SanPham.*
+                FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM
+                WHERE DanhMucSanPham.MaDM='" + madm + "'";
+            }
+
+            DataTable dataTable = new DataTable();
+            dataTable = connection.FillDataSet(sql, CommandType.Text);
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.DataSource = dataTable;
+        }
+
     }
 }

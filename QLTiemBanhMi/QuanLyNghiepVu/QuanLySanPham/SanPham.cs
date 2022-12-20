@@ -30,6 +30,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             string sql2 = "SELECT * FROM dbo.ChuongTrinhKhuyenMai";
             Program.FillData.LoadDS_Len_DataGridView(dgv_DSKhuyenMai, sql2);
 
+            //load danh mục len combobox
+            Program.FillData.LayDS_Len_ComBoBox(cbb_danhmucsp, "TenDanhMuc", "MaDM");
+
         }
 
         private void dataGridViewDSSanPham_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -100,7 +103,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void cbbDSDonVi_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            //Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham, cbbDSDonVi.SelectedValue.ToString());
+            Program.Quanlysanphamsql.LayDSSanPham(dataGridViewDSSanPham, cbb_danhmucsp.SelectedValue.ToString());
 
             //if(cbbDSDonVi.SelectedValue.ToString() == "0")
             //{
@@ -122,7 +125,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private void chiTietDV_UpdateEventHandler1(object sender, DanhMucSP.UpdateEventArgs args)
         {
 
-            Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
+            Program.Quanlysanphamsql.LayDSDonVi(cbb_danhmucsp);
 
         }
         private void btnSuaDonVi_Click(object sender, EventArgs e)
@@ -147,7 +150,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         {
             string sql = "Xoa_DonVi";
             string[] para = { "@id" };
-            object[] values = { Int32.Parse(cbbDSDonVi.SelectedValue.ToString()) };
+            object[] values = { Int32.Parse(cbb_danhmucsp.SelectedValue.ToString()) };
             int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
             if (a != 0)
             {
@@ -155,7 +158,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
                 if (result2 == DialogResult.OK)
                 {
                     
-                    Program.Quanlysanphamsql.LayDSDonVi(cbbDSDonVi);
+                    Program.Quanlysanphamsql.LayDSDonVi(cbb_danhmucsp);
                     //edit();
                 }
             }

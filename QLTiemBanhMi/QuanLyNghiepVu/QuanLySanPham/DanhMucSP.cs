@@ -146,22 +146,18 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         }
 
 
-        private void ChiTietDonVi_Load(object sender, EventArgs e)
+        private void DanhMucSP_Load(object sender, EventArgs e)
         {
 
             if (Program.opt == 1) //them
             {
-                tb_madm.Text = "";
-                tb_tendm.Text = "";
+                tb_madm.Text = Program.FillData.SinhMaTuDong("MaDM", "DanhMucSanPham").ToString();
                 
-
-                tb_madm.ReadOnly = true;
-
-                tb_madm.Text = Program.Quanlysanphamsql.TaoMaDonVi().ToString();
+                tb_tendm.Text = "";
+             
             }
             if (Program.opt == 2) // sua
             {
-                tb_madm.ReadOnly = true;
                 setThongTinVaoFormDeSua();
             }
         }

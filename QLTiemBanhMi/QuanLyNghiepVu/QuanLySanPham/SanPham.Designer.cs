@@ -51,7 +51,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnhSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbbDSDonVi = new System.Windows.Forms.ComboBox();
+            this.cbb_danhmucsp = new System.Windows.Forms.ComboBox();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.btn_suactkm = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.sidePanel1.Controls.Add(this.btn_themdm);
             this.sidePanel1.Controls.Add(this.btn_suadm);
             this.sidePanel1.Controls.Add(this.dgv_DSSanPham);
-            this.sidePanel1.Controls.Add(this.cbbDSDonVi);
+            this.sidePanel1.Controls.Add(this.cbb_danhmucsp);
             this.sidePanel1.Controls.Add(this.label1);
             this.sidePanel1.Location = new System.Drawing.Point(13, 3);
             this.sidePanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -255,16 +255,16 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.AnhSP.Name = "AnhSP";
             this.AnhSP.Width = 300;
             // 
-            // cbbDSDonVi
+            // cbb_danhmucsp
             // 
-            this.cbbDSDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbDSDonVi.FormattingEnabled = true;
-            this.cbbDSDonVi.Location = new System.Drawing.Point(166, 45);
-            this.cbbDSDonVi.Margin = new System.Windows.Forms.Padding(4);
-            this.cbbDSDonVi.Name = "cbbDSDonVi";
-            this.cbbDSDonVi.Size = new System.Drawing.Size(295, 30);
-            this.cbbDSDonVi.TabIndex = 8;
-            this.cbbDSDonVi.SelectedIndexChanged += new System.EventHandler(this.cbbDSDonVi_SelectedIndexChanged);
+            this.cbb_danhmucsp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_danhmucsp.FormattingEnabled = true;
+            this.cbb_danhmucsp.Location = new System.Drawing.Point(166, 45);
+            this.cbb_danhmucsp.Margin = new System.Windows.Forms.Padding(4);
+            this.cbb_danhmucsp.Name = "cbb_danhmucsp";
+            this.cbb_danhmucsp.Size = new System.Drawing.Size(295, 30);
+            this.cbb_danhmucsp.TabIndex = 8;
+            this.cbb_danhmucsp.SelectedIndexChanged += new System.EventHandler(this.cbbDSDonVi_SelectedIndexChanged);
             // 
             // sidePanel2
             // 
@@ -423,7 +423,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         private System.Windows.Forms.Button btn_suasanpham;
         private System.Windows.Forms.DataGridView dgv_DSKhuyenMai;
         private System.Windows.Forms.Button btn_themctkm;
-        public System.Windows.Forms.ComboBox cbbDSDonVi;
+        public System.Windows.Forms.ComboBox cbb_danhmucsp;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;

@@ -123,7 +123,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.Name = "DanhMucSP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Mục Sản Phẩm";
-            this.Load += new System.EventHandler(this.ChiTietDonVi_Load);
+            this.Load += new System.EventHandler(this.DanhMucSP_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
