@@ -329,4 +329,37 @@ BEGIN
 END
 GO
 
---
+--Chi tiết phiếu nhập hàng
+CREATE OR ALTER PROC Them_ChiTietPhieuNhapHang (@MaPhieuNhap INT, @MSNVL INT, @DonGia INT, @SL INT)
+AS
+BEGIN
+	INSERT dbo.ChiTietPhieuNhapHang
+	(
+	    MaPhieuNhap,
+	    MSNVL,
+	    DonGia,
+	    SL
+	)
+	VALUES
+	(   @MaPhieuNhap, @MSNVL, @DonGia, @SL
+	    )
+END
+GO
+
+CREATE OR ALTER PROC Sua_ChiTietPhieuNhapHang (@MaPhieuNhap INT, @MSNVL INT, @DonGia INT, @SL INT)
+AS
+BEGIN
+	UPDATE dbo.ChiTietPhieuNhapHang
+	SET	 MSNVL = @MSNVL, 
+	DonGia = @DonGia, 
+	SL = @SL
+	WHERE MaPhieuNhap = @MaPhieuNhap
+END
+GO
+
+CREATE OR ALTER PROC Xoa_ChiTietPhieuNhapHang (@MaPhieuNhap INT, @MSNVL INT)
+AS
+BEGIN
+	DELETE dbo.ChiTietPhieuNhapHang WHERE MaPhieuNhap = @MaPhieuNhap AND MSNVL = @MSNVL
+END
+GO

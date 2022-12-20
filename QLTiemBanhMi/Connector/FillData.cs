@@ -168,7 +168,7 @@ namespace QLTiemBanhMi.Connector
                 NhanVien nv = new NhanVien();
                 nv.Manv = int.Parse(row["MaNV"].ToString());
                 nv.Tennv = row["TenNV"].ToString();
-                nv.Username = row["UserNam"].ToString();
+                nv.Username = row["UserName"].ToString();
                 nv.Pass = row["Pass"].ToString();
                 nv.Chucvu = row["ChucVu"].ToString();
                 list_nv.Add(nv);
