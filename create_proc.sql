@@ -1,81 +1,4 @@
-﻿
---Chương trình khuyến mãi
-CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhanTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
-AS
-BEGIN
-	INSERT dbo.ChuongTrinhKhuyenMai
-	(
-	    MaKM,
-	    TenKM,
-	    PhanTramGiamGia,
-	    NgayBatDau,
-	    NgayKetThuc,
-	    Xoa
-	)
-	VALUES
-	(  @MaKM,@TenKM,@PhanTramGiamGia,@NgayBatDau,@NgayKetThuc,0)
-END
-GO
-
-CREATE OR ALTER PROC Sua_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhanTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
-AS
-BEGIN
-	UPDATE dbo.ChuongTrinhKhuyenMai 
-	SET TenKM = @TenKM, PhanTramGiamGia=@PhanTramGiamGia,NgayBatDau=@NgayBatDau,NgayKetThuc=@NgayKetThuc
-	WHERE MaKM=@MaKM
-END
-GO
-
---Sản Phẩm
-CREATE OR ALTER PROC Them_SP (@MaSP INT, @TenSP NVARCHAR(100),@MaDM INT,@MoTa NVARCHAR(200),@GiaBan INT)
-AS
-BEGIN
-	INSERT dbo.SanPham
-	(
-	    MaSP,
-	    TenSP,
-	    MoTa,
-	    MaDM,
-	    Xoa,
-	    GiaBan
-	)
-	VALUES
-	(   @MaSP,@TenSP,@MoTa,@MaDM,0,@GiaBan)
-END
-GO
-
-CREATE OR ALTER PROC Sua_SP (@MaSP INT, @TenSP NVARCHAR(100),@MaDM INT,@MoTa NVARCHAR(200),@GiaBan INT)
-AS
-BEGIN
-	UPDATE dbo.SanPham SET
-	TenSP = @TenSP,MaDM=@MaDM,MoTa=@MoTa,GiaBan=@GiaBan
-	WHERE MaSP = @MaSP
-END
-GO
-
-CREATE OR ALTER PROC Xoa_SP (@MaSP INT)
-AS
-BEGIN
-	UPDATE dbo.SanPham SET Xoa=1 WHERE MaSP=@MaSP
-END
-	
-GO
---Danh Mục Sản Phẩm
-CREATE OR ALTER PROC Them_DMSP (@MaDM INT, @TenDanhMuc NVARCHAR(100))
-AS
-BEGIN
-	INSERT dbo.DanhMucSanPham
-	(MaDM,TenDanhMuc, Xoa)VALUES(@MaDM,@TenDanhMuc,0)
-END
-GO
-
-CREATE OR ALTER PROC Sua_DMSP (@MaDM INT, @TenDanhMuc NVARCHAR(100))
-AS
-BEGIN
-	UPDATE dbo.DanhMucSanPham SET TenDanhMuc = @TenDanhMuc WHERE MaDM= @MaDM
-END
-GO
---Chi Tiet Khuyen Mai
+﻿--Chi Tiet Khuyen Mai
 CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @MaHD INT, @MaKH INT)
 AS
 BEGIN
@@ -97,6 +20,9 @@ GO
 CREATE OR ALTER PROC Them_CTHD (@MaHD INT, @MaSP INT, @SL INT,@DonGia INT)
 AS
 BEGIN
+IF EXISTS(SELECT MaSP FROM dbo.ChiTietHoaDon WHERE MaHD = @MaHD)
+	UPDATE dbo.ChiTietHoaDon SET SL = SL + @SL WHERE MaHD = @MaHD AND MaSP = @MaSP
+ELSE
 	INSERT dbo.ChiTietHoaDon
 	(
 	    MaHD,
@@ -199,13 +125,12 @@ BEGIN
 	    NgayLamViec
 	)
 	VALUES
-	(   @MaCaLam,        -- MaCaLam - int
-	    @MaNV,        -- MaNV - int
+	(   @MaNV,        -- MaCaLam - int
+	    @MaCaLam,        -- MaNV - int
 	   @NgayLamViec -- NgayLamViec - date
 	    )
 END
 GO
-
 
 --NhanVien
 CREATE OR ALTER PROC Xoa_NhanVien (@MaNV INT)
@@ -365,29 +290,3 @@ BEGIN
 END
 GO
 
---Phiếu nhập hàng
-CREATE OR ALTER PROC Them_PhieuNhapHang (@MaPhieuNhap INT, @NgayTao DATETIME,@MaNCC INT, @MaNV INT)
-AS
-BEGIN
-	INSERT dbo.PhieuNhapHang
-	(
-	    MaPhieuNhap,
-	    NgayTao,
-	    MaNCC,
-	    MaNV,
-	    TongTien,
-	    Xoa
-	)
-	VALUES
-	(@MaPhieuNhap,@NgayTao,@MaNCC,@MaNV,0,0)
-END
-GO
-
-CREATE OR ALTER PROC Sua_PhieuNhapHang (@MaPhieuNhap INT, @MaNCC INT)
-AS
-BEGIN
-	UPDATE dbo.PhieuNhapHang
-	SET	 MaNCC = @MaNCC
-	WHERE MaPhieuNhap = @MaPhieuNhap
-END
-GO
