@@ -111,7 +111,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.glue_nhanvien.Properties.ReadOnly = true;
             this.glue_nhanvien.Size = new System.Drawing.Size(304, 32);
             this.glue_nhanvien.TabIndex = 74;
-            this.glue_nhanvien.EditValueChanged += new System.EventHandler(this.gluenhanvien_EditValueChanged);
             // 
             // tb_maphieunhap
             // 
@@ -152,7 +151,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.tb_tongtien.ReadOnly = true;
             this.tb_tongtien.Size = new System.Drawing.Size(304, 30);
             this.tb_tongtien.TabIndex = 98;
-            this.tb_tongtien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_tongtien_KeyPress);
             // 
             // label9
             // 

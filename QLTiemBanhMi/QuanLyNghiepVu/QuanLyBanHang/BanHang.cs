@@ -90,9 +90,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         private void dgv_khachhang_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             //Lấy các trường thông tin để nếu mà sửa thì sửa
-            string makh = dgv_khachhang.CurrentRow.Cells["MaKH"].Value.ToString();
+            string makh = dgv_khachhang.CurrentRow.Cells["MaKHH"].Value.ToString();
             string maloaikh = dgv_khachhang.CurrentRow.Cells["MaLoaiKH"].Value.ToString();
-            string hoten = dgv_khachhang.CurrentRow.Cells["HoTen"].Value.ToString();
+            string hoten = dgv_khachhang.CurrentRow.Cells["HoTenn"].Value.ToString();
             string ngaysinh = dgv_khachhang.CurrentRow.Cells["NgaySinh"].Value.ToString();
             string gioitinh = dgv_khachhang.CurrentRow.Cells["GioiTinh"].Value.ToString();
             string sdt = dgv_khachhang.CurrentRow.Cells["SDT"].Value.ToString();

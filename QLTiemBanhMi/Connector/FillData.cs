@@ -49,12 +49,11 @@ namespace QLTiemBanhMi.Connector
         /// <param name="tenTruong"></param>
         /// <param name="giatri"></param>
         /// <returns></returns>
-        public int LayGiaTriTheoMa(string tenMa, string giatri, string tenBang, string tenTruong)
+        public string LayGiaTriTheoMa(string tenMa, string giatri, string tenBang, string tenTruong)
         {
             string sql = $"SELECT {tenTruong} FROM dbo.{tenBang} where {tenMa} = {giatri}";
             object result = connection.docGiaTri(sql);
-            int kq = (int)result ;
-            return kq;
+            return result.ToString();
         }
 
         /// <summary>
@@ -188,7 +187,7 @@ namespace QLTiemBanhMi.Connector
         {
             string sql = @"SELECT * FROM dbo.DanhMucSanPham WHERE Xoa =0
                             UNION ALL
-                            SELECT 0 AS MaDM, N'Tất cả' AS TenDanhMuc, False AS Xoa";
+                            SELECT 0 AS MaDM, N'Tất cả' AS TenDanhMuc, 0 AS Xoa";
             comboBox.Refresh();
             DataTable dataTable = new DataTable();
             dataTable = connection.FillDataSet(sql, CommandType.Text);
@@ -210,13 +209,15 @@ namespace QLTiemBanhMi.Connector
             string sql = "";
             if (madm == 0)
             {
-                sql = @"SELECT * FROM dbo.SanPham WHERE Xoa=0";
+                sql = @"SELECT dbo.SanPham.*,TenDanhMuc
+                            FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM
+                            WHERE SanPham.Xoa = 0";
             }
             else
             {   
-                sql = @"SELECT dbo.SanPham.*
-                FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM
-                WHERE DanhMucSanPham.MaDM='" + madm + "'";
+                sql = @"SELECT dbo.SanPham.*,TenDanhMuc
+                            FROM dbo.SanPham JOIN dbo.DanhMucSanPham ON DanhMucSanPham.MaDM = SanPham.MaDM
+                            WHERE SanPham.Xoa = 0 and DanhMucSanPham.MaDM='" + madm + "'";
             }
 
             DataTable dataTable = new DataTable();
@@ -232,7 +233,16 @@ namespace QLTiemBanhMi.Connector
         /// <returns></returns>
         public DataTable LayDS_DanhMuc(int madm)
         {
-            string query = "SELECT MaDM, TenDanhMuc from dbo.DanhMucSanPham WHERE Xoa = 0 AND MaDM='" + madm + "'";
+            string query = "";
+            if(madm==0)
+            {
+                query = "SELECT MaDM, TenDanhMuc from dbo.DanhMucSanPham WHERE Xoa = 0";
+            }   
+            else
+            {
+                query = "SELECT MaDM, TenDanhMuc from dbo.DanhMucSanPham WHERE Xoa = 0 AND MaDM='" + madm + "'";
+            }    
+            
             DataTable dataTable = new DataTable();
             dataTable = connection.FillDataSet(query, CommandType.Text);
             return dataTable;

@@ -1,5 +1,6 @@
-﻿--Chương trình khuyến mãi
-CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhamTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
+﻿
+--Chương trình khuyến mãi
+CREATE OR ALTER PROC Them_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhanTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
 AS
 BEGIN
 	INSERT dbo.ChuongTrinhKhuyenMai
@@ -12,15 +13,15 @@ BEGIN
 	    Xoa
 	)
 	VALUES
-	(  @MaKM,@TenKM,@PhamTramGiamGia,@NgayBatDau,@NgayKetThuc,0)
+	(  @MaKM,@TenKM,@PhanTramGiamGia,@NgayBatDau,@NgayKetThuc,0)
 END
 GO
 
-CREATE OR ALTER PROC Sua_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhamTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
+CREATE OR ALTER PROC Sua_CTKM (@MaKM INT, @TenKM NVARCHAR(100),@PhanTramGiamGia INT,@NgayBatDau DATETIME,@NgayKetThuc DATETIME)
 AS
 BEGIN
 	UPDATE dbo.ChuongTrinhKhuyenMai 
-	SET TenKM = @TenKM, PhanTramGiamGia=@PhamTramGiamGia,NgayBatDau=@NgayBatDau,NgayKetThuc=@NgayKetThuc
+	SET TenKM = @TenKM, PhanTramGiamGia=@PhanTramGiamGia,NgayBatDau=@NgayBatDau,NgayKetThuc=@NgayKetThuc
 	WHERE MaKM=@MaKM
 END
 GO
@@ -198,12 +199,13 @@ BEGIN
 	    NgayLamViec
 	)
 	VALUES
-	(   @MaNV,        -- MaCaLam - int
-	    @MaCaLam,        -- MaNV - int
+	(   @MaCaLam,        -- MaCaLam - int
+	    @MaNV,        -- MaNV - int
 	   @NgayLamViec -- NgayLamViec - date
 	    )
 END
 GO
+
 
 --NhanVien
 CREATE OR ALTER PROC Xoa_NhanVien (@MaNV INT)
@@ -361,5 +363,32 @@ CREATE OR ALTER PROC Xoa_ChiTietPhieuNhapHang (@MaPhieuNhap INT, @MSNVL INT)
 AS
 BEGIN
 	DELETE dbo.ChiTietPhieuNhapHang WHERE MaPhieuNhap = @MaPhieuNhap AND MSNVL = @MSNVL
+END
+GO
+
+--Phiếu nhập hàng
+CREATE OR ALTER PROC Them_PhieuNhapHang (@MaPhieuNhap INT, @NgayTao DATETIME,@MaNCC INT, @MaNV INT)
+AS
+BEGIN
+	INSERT dbo.PhieuNhapHang
+	(
+	    MaPhieuNhap,
+	    NgayTao,
+	    MaNCC,
+	    MaNV,
+	    TongTien,
+	    Xoa
+	)
+	VALUES
+	(@MaPhieuNhap,@NgayTao,@MaNCC,@MaNV,0,0)
+END
+GO
+
+CREATE OR ALTER PROC Sua_PhieuNhapHang (@MaPhieuNhap INT, @MaNCC INT)
+AS
+BEGIN
+	UPDATE dbo.PhieuNhapHang
+	SET	 MaNCC = @MaNCC
+	WHERE MaPhieuNhap = @MaPhieuNhap
 END
 GO

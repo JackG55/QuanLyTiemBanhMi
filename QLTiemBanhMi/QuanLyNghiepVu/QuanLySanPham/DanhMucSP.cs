@@ -98,7 +98,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
                 {
                     string sql = "Sua_DMSP";
                     string[] para = { "@MaDM", "@TenDanhMuc" };
-                    object[] values = { int.Parse(tb_tendm.Text), tb_tendm.Text };
+                    object[] values = { int.Parse(tb_madm.Text), tb_tendm.Text };
                     int a = connection.Excute_Sql(sql, CommandType.StoredProcedure, para, values);
                     if (a != 0)
                     {

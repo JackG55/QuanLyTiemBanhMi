@@ -148,7 +148,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.glue_nguyenvatlieu.Properties.PopupView = this.gridView1;
             this.glue_nguyenvatlieu.Size = new System.Drawing.Size(304, 32);
             this.glue_nguyenvatlieu.TabIndex = 104;
-            this.glue_nguyenvatlieu.EditValueChanged += new System.EventHandler(this.glue_sanpham_EditValueChanged);
+            this.glue_nguyenvatlieu.EditValueChanged += new System.EventHandler(this.glue_nguyenvatlieu_EditValueChanged);
             // 
             // gridView1
             // 

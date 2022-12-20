@@ -435,6 +435,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             // 
             // NgaySinh
             // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
             this.NgaySinh.HeaderText = "Ngày Sinh";
             this.NgaySinh.MinimumWidth = 6;
             this.NgaySinh.Name = "NgaySinh";
@@ -442,6 +443,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             // 
             // GioiTinh
             // 
+            this.GioiTinh.DataPropertyName = "GioiTinh";
             this.GioiTinh.HeaderText = "Giới Tinh";
             this.GioiTinh.MinimumWidth = 6;
             this.GioiTinh.Name = "GioiTinh";

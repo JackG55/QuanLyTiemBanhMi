@@ -43,21 +43,9 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             tb_ngaylap.Text = DateTime.Now.ToString();
             List<string> list_kh_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_khachhang, "KhachHang", "HoTen", "MaKH");
             List<string> list_hinhthuctt_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_hinhthuctt, "HinhThucThanhToan", "TenLoaiHinhThucThanhToan", "MaThanhToan");
-            string sql = @"SELECT dbo.ChuongTrinhKhuyenMai.*
-                            FROM dbo.ChuongTrinhKhuyenMai, dbo.ChiTietKhuyenMai,dbo.KhachHang
-                            WHERE ChuongTrinhKhuyenMai.MaKM=ChuongTrinhKhuyenMai.MaKM AND ChiTietKhuyenMai.MAKH=KhachHang.MaKH
-                            AND ChuongTrinhKhuyenMai.MaKM NOT IN (SELECT DISTINCT MaKM FROM dbo.ChiTietKhuyenMai WHERE MAKH ="+ makh+")AND NgayBatDau <= GETDATE() AND GETDATE()<=NgayKetThuc";
-            List<string> list_km_id = Program.FillData.LayDS_Len_GridLookUpEdit_DK(glue_hinhthuctt, sql, "PhanTramGiamGia", "MaKM");
             tb_nhanvien.Text = Program.user.Tennv;
             dgv_DSCTHD.Columns["SL"].ReadOnly = false;
         }
-        private void HienThongTinLenEditValue(List<string> list, string id, GridLookUpEdit gridLookUpEdit)
-        {
-            int index1 = list.IndexOf(id);
-           
-            gridLookUpEdit.EditValue = gridLookUpEdit.Properties.GetKeyValue(index1);
-        }
-
         public bool Kiemtra_HoaDon()
         {
             if (makh== "" || int.Parse(tb_soluong.Text) == 0 || matt== "")
@@ -149,6 +137,13 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         private void glue_khachhang_EditValueChanged(object sender, EventArgs e)
         {
             makh = glue_khachhang.EditValue.ToString();
+            string sql = @"SELECT dbo.ChuongTrinhKhuyenMai.*
+                            FROM dbo.ChuongTrinhKhuyenMai, dbo.ChiTietKhuyenMai,dbo.KhachHang
+                            WHERE ChuongTrinhKhuyenMai.MaKM=ChuongTrinhKhuyenMai.MaKM AND ChiTietKhuyenMai.MAKH=KhachHang.MaKH
+                            AND ChuongTrinhKhuyenMai.MaKM NOT IN (SELECT DISTINCT MaKM FROM dbo.ChiTietKhuyenMai WHERE MAKH = '" + makh + "') " +
+                            " AND NgayBatDau <= GETDATE() AND GETDATE()<=NgayKetThuc";
+            List<string> list_km_id = Program.FillData.LayDS_Len_GridLookUpEdit_DK(glue_km, sql, "PhanTramGiamGia", "MaKM");
+
         }
 
         private void glue_km_EditValueChanged(object sender, EventArgs e)
@@ -201,27 +196,41 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 
         private void dgv_DSCTHD_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            tb_soluong.Text = dgv_DSCTHD.Rows.Cast<DataGridViewRow>()
+               .Sum(t => Convert.ToInt32(t.Cells["SL"].Value)).ToString();
+            int sum = 0;
+            for (int i = 0; i < dgv_DSCTHD.Rows.Count; ++i)
+            {
+                sum += Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["DonGia"].Value) * Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["SL"].Value);
+            }
+            tb_tamtinh.Text = sum.ToString();
             if (dgv_DSCTHD.Columns[e.ColumnIndex].Name == "SL")
             {
                 tb_soluong.Text = dgv_DSCTHD.Rows.Cast<DataGridViewRow>()
-                .Sum(t => Convert.ToInt32(t.Cells["SL"].Value)).ToString();
-            }
-
-            if (dgv_DSCTHD.Columns[e.ColumnIndex].Name == "DonGia")
-            {
-                int sum = 0;
+              .Sum(t => Convert.ToInt32(t.Cells["SL"].Value)).ToString();
+                sum = 0;
                 for (int i = 0; i < dgv_DSCTHD.Rows.Count; ++i)
                 {
                     sum += Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["DonGia"].Value) * Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["SL"].Value);
                 }
                 tb_tamtinh.Text = sum.ToString();
-               
             }
+
+            //if (dgv_DSCTHD.Columns[e.ColumnIndex].Name == "DonGia")
+            //{
+
+
+            //}
         }
         int rowindex = -1;
         private void dgv_DSCTHD_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             rowindex = dgv_DSCTHD.CurrentCell.RowIndex;
+        }
+
+        private void dgv_DSCTHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

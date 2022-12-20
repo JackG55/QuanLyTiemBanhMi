@@ -86,10 +86,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.buttonLưu.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLưu.Image = global::QLTiemBanhMi.Properties.Resources.save_16x16;
             this.buttonLưu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLưu.Location = new System.Drawing.Point(156, 265);
+            this.buttonLưu.Location = new System.Drawing.Point(171, 265);
             this.buttonLưu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLưu.Name = "buttonLưu";
-            this.buttonLưu.Size = new System.Drawing.Size(89, 50);
+            this.buttonLưu.Size = new System.Drawing.Size(80, 50);
             this.buttonLưu.TabIndex = 88;
             this.buttonLưu.Text = "OK";
             this.buttonLưu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

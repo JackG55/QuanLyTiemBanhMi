@@ -66,7 +66,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             this.tb_hoten.Location = new System.Drawing.Point(229, 66);
             this.tb_hoten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_hoten.Name = "tb_hoten";
-            this.tb_hoten.ReadOnly = true;
             this.tb_hoten.Size = new System.Drawing.Size(304, 30);
             this.tb_hoten.TabIndex = 68;
             // 

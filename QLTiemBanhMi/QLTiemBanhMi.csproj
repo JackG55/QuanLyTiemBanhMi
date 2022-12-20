@@ -60,10 +60,6 @@
   <ItemGroup>
     <Compile Include="Connector\connection.cs" />
     <Compile Include="Connector\FillData.cs" />
-    <Compile Include="Connector\quanlyhoadonsql.cs" />
-    <Compile Include="Connector\quanlynhanviensql.cs" />
-    <Compile Include="Connector\quanlysanphamsql.cs" />
-    <Compile Include="Connector\quantrihethongsql.cs" />
     <Compile Include="Object\ChiTietHoaDon.cs" />
     <Compile Include="Object\ChiTietPhieuNhapHang.cs" />
     <Compile Include="Object\NguyenVatLieu.cs" />

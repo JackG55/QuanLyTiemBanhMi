@@ -29,12 +29,12 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.label14 = new System.Windows.Forms.Label();
@@ -44,12 +44,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.btn_themdm = new System.Windows.Forms.Button();
             this.btn_suadm = new System.Windows.Forms.Button();
             this.dgv_DSSanPham = new System.Windows.Forms.DataGridView();
-            this.MaSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbb_danhmucsp = new System.Windows.Forms.ComboBox();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
             this.btn_suactkm = new System.Windows.Forms.Button();
@@ -61,6 +55,12 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.NgayBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_themctkm = new System.Windows.Forms.Button();
+            this.MaSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaDM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sidePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSanPham)).BeginInit();
             this.sidePanel2.SuspendLayout();
@@ -202,65 +202,6 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.dgv_DSSanPham.TabIndex = 9;
             this.dgv_DSSanPham.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDSSanPham_CellEnter);
             // 
-            // MaSPP
-            // 
-            this.MaSPP.DataPropertyName = "MaSP";
-            this.MaSPP.Frozen = true;
-            this.MaSPP.HeaderText = "Mã Sản Phẩm";
-            this.MaSPP.MinimumWidth = 6;
-            this.MaSPP.Name = "MaSPP";
-            this.MaSPP.Width = 125;
-            // 
-            // TenSP
-            // 
-            this.TenSP.DataPropertyName = "TenSP";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenSP.DefaultCellStyle = dataGridViewCellStyle1;
-            this.TenSP.Frozen = true;
-            this.TenSP.HeaderText = "Tên Sản Phẩm";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            this.TenSP.Width = 225;
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoTa.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MoTa.Frozen = true;
-            this.MoTa.HeaderText = "Mô Tả";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.Width = 250;
-            // 
-            // GiaBan
-            // 
-            this.GiaBan.DataPropertyName = "GiaBan";
-            this.GiaBan.Frozen = true;
-            this.GiaBan.HeaderText = "Giá Bán";
-            this.GiaBan.MinimumWidth = 6;
-            this.GiaBan.Name = "GiaBan";
-            this.GiaBan.Width = 75;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.Frozen = true;
-            this.TenDanhMuc.HeaderText = "Danh Mục";
-            this.TenDanhMuc.MinimumWidth = 6;
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.Width = 125;
-            // 
-            // MaDM
-            // 
-            this.MaDM.DataPropertyName = "MaDM";
-            this.MaDM.Frozen = true;
-            this.MaDM.HeaderText = "MaDM";
-            this.MaDM.MinimumWidth = 6;
-            this.MaDM.Name = "MaDM";
-            this.MaDM.Visible = false;
-            this.MaDM.Width = 125;
-            // 
             // cbb_danhmucsp
             // 
             this.cbb_danhmucsp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -280,7 +221,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.sidePanel2.Controls.Add(this.btn_themctkm);
             this.sidePanel2.Location = new System.Drawing.Point(918, 3);
             this.sidePanel2.Name = "sidePanel2";
-            this.sidePanel2.Size = new System.Drawing.Size(514, 588);
+            this.sidePanel2.Size = new System.Drawing.Size(555, 588);
             this.sidePanel2.TabIndex = 3;
             this.sidePanel2.Text = "sidePanel2";
             // 
@@ -326,15 +267,15 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.dgv_DSKhuyenMai.RowHeadersWidth = 51;
             this.dgv_DSKhuyenMai.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_DSKhuyenMai.RowTemplate.Height = 24;
-            this.dgv_DSKhuyenMai.Size = new System.Drawing.Size(511, 499);
+            this.dgv_DSKhuyenMai.Size = new System.Drawing.Size(552, 499);
             this.dgv_DSKhuyenMai.TabIndex = 14;
             this.dgv_DSKhuyenMai.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DSKhuyenMai_CellEnter);
             // 
             // MaKM
             // 
             this.MaKM.DataPropertyName = "MaKM";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaKM.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaKM.DefaultCellStyle = dataGridViewCellStyle7;
             this.MaKM.Frozen = true;
             this.MaKM.HeaderText = "Mã Khuyến Mãi";
             this.MaKM.MinimumWidth = 6;
@@ -344,8 +285,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             // TenKM
             // 
             this.TenKM.DataPropertyName = "TenKM";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenKM.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenKM.DefaultCellStyle = dataGridViewCellStyle8;
             this.TenKM.Frozen = true;
             this.TenKM.HeaderText = "Tên Khuyến Mãi";
             this.TenKM.MinimumWidth = 6;
@@ -355,8 +296,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             // PhanTramGiamGia
             // 
             this.PhanTramGiamGia.DataPropertyName = "PhanTramGiamGia";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhanTramGiamGia.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PhanTramGiamGia.DefaultCellStyle = dataGridViewCellStyle9;
             this.PhanTramGiamGia.Frozen = true;
             this.PhanTramGiamGia.HeaderText = "% Giảm Giá";
             this.PhanTramGiamGia.MinimumWidth = 6;
@@ -366,8 +307,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             // NgayBatDau
             // 
             this.NgayBatDau.DataPropertyName = "NgayBatDau";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NgayBatDau.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NgayBatDau.DefaultCellStyle = dataGridViewCellStyle10;
             this.NgayBatDau.Frozen = true;
             this.NgayBatDau.HeaderText = "Ngày Bắt Đầu";
             this.NgayBatDau.MinimumWidth = 6;
@@ -397,12 +338,71 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.btn_themctkm.UseVisualStyleBackColor = false;
             this.btn_themctkm.Click += new System.EventHandler(this.btn_themctkm_Click);
             // 
+            // MaSPP
+            // 
+            this.MaSPP.DataPropertyName = "MaSP";
+            this.MaSPP.Frozen = true;
+            this.MaSPP.HeaderText = "Mã Sản Phẩm";
+            this.MaSPP.MinimumWidth = 6;
+            this.MaSPP.Name = "MaSPP";
+            this.MaSPP.Width = 125;
+            // 
+            // TenSP
+            // 
+            this.TenSP.DataPropertyName = "TenSP";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenSP.DefaultCellStyle = dataGridViewCellStyle11;
+            this.TenSP.Frozen = true;
+            this.TenSP.HeaderText = "Tên Sản Phẩm";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            this.TenSP.Width = 225;
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoTa.DefaultCellStyle = dataGridViewCellStyle12;
+            this.MoTa.Frozen = true;
+            this.MoTa.HeaderText = "Mô Tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.Width = 250;
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.DataPropertyName = "GiaBan";
+            this.GiaBan.Frozen = true;
+            this.GiaBan.HeaderText = "Giá Bán";
+            this.GiaBan.MinimumWidth = 6;
+            this.GiaBan.Name = "GiaBan";
+            this.GiaBan.Width = 75;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.Frozen = true;
+            this.TenDanhMuc.HeaderText = "Danh Mục";
+            this.TenDanhMuc.MinimumWidth = 6;
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.Width = 125;
+            // 
+            // MaDM
+            // 
+            this.MaDM.DataPropertyName = "MaDM";
+            this.MaDM.Frozen = true;
+            this.MaDM.HeaderText = "MaDM";
+            this.MaDM.MinimumWidth = 6;
+            this.MaDM.Name = "MaDM";
+            this.MaDM.Visible = false;
+            this.MaDM.Width = 125;
+            // 
             // SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1436, 765);
+            this.ClientSize = new System.Drawing.Size(1477, 765);
             this.Controls.Add(this.sidePanel2);
             this.Controls.Add(this.sidePanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

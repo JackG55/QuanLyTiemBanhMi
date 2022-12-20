@@ -50,7 +50,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             // tb_tendm
             // 
             this.tb_tendm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_tendm.Location = new System.Drawing.Point(180, 91);
+            this.tb_tendm.Location = new System.Drawing.Point(188, 88);
             this.tb_tendm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_tendm.Name = "tb_tendm";
             this.tb_tendm.Size = new System.Drawing.Size(304, 30);
@@ -91,7 +91,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             // tb_madm
             // 
             this.tb_madm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_madm.Location = new System.Drawing.Point(180, 43);
+            this.tb_madm.Location = new System.Drawing.Point(188, 40);
             this.tb_madm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_madm.Name = "tb_madm";
             this.tb_madm.ReadOnly = true;
@@ -113,7 +113,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLySanPham
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(496, 200);
+            this.ClientSize = new System.Drawing.Size(526, 200);
             this.Controls.Add(this.buttonHuy);
             this.Controls.Add(this.buttonLuu);
             this.Controls.Add(this.label5);

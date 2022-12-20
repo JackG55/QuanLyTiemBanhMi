@@ -96,7 +96,7 @@ namespace QLTiemBanhMi
             sanPham = new SanPham();
             chuongTrinhKhuyenMai = new ChuongTrinhKhuyenMai();
 
-            Application.Run(new QuanTriHeThong.DangNhap());
+            Application.Run(dangnhap);
         }
     }
 }

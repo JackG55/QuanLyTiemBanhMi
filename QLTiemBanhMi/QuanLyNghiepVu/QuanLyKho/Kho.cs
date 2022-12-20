@@ -224,7 +224,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         private void btn_themPhieuNhapHang_Click(object sender, EventArgs e)
         {
             Program.opt = 1;
-            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang();
+            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang(this);
             phieuNhapHang.UpdateEventHandler += PhieuNhapHang_UpdateEventHandler1;
             phieuNhapHang.ShowDialog();
         }
@@ -232,7 +232,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         private void btn_suaPhieuNhapHang_Click(object sender, EventArgs e)
         {
             Program.opt = 2;
-            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang();
+            ThongTinPhieuNhapHang phieuNhapHang = new ThongTinPhieuNhapHang(this);
             phieuNhapHang.UpdateEventHandler += PhieuNhapHang_UpdateEventHandler1;
             phieuNhapHang.ShowDialog();
         }
@@ -293,7 +293,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         private void btn_suachitietPhieuNhapHang_Click(object sender, EventArgs e)
         {
             Program.opt = 2;
-            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
+            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang(this);
             chiTietPhieuNhapHang.UpdateEventHandler += ChiTietPhieuNhapHang_UpdateEventHandler1;
             chiTietPhieuNhapHang.ShowDialog();
         }
@@ -301,7 +301,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         private void btn_themchitietPhieuNhapHang_Click(object sender, EventArgs e)
         {
             Program.opt = 1;
-            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang();
+            ChiTietPhieuNhapHang chiTietPhieuNhapHang = new ChiTietPhieuNhapHang(this);
             chiTietPhieuNhapHang.UpdateEventHandler += ChiTietPhieuNhapHang_UpdateEventHandler1;
             chiTietPhieuNhapHang.ShowDialog();
         }

@@ -51,8 +51,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
                 return;
             else
             {
-                Program.chiTietHoaDon = new Object.ChiTietHoaDon(int.Parse(tb_masanpham.Text), tensp,int.Parse(tb_soluong.Text), int.Parse(tb_dongia.Text));
+                Program.chiTietHoaDon = new Object.ChiTietHoaDon(int.Parse(tb_masanpham.Text), tensp, int.Parse(tb_soluong.Text), int.Parse(tb_dongia.Text));
                 edit();
+                this.Close();
+                
 
             }
         }
@@ -73,8 +75,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         {
             tb_masanpham.Text = glue_sanpham.EditValue.ToString();
             masp = tb_masanpham.Text;
-            object displayValue = glue_sanpham.Properties.GetDisplayValueByKeyValue(glue_sanpham.EditValue);
-            tensp = displayValue.ToString();
+            tensp = Program.FillData.LayGiaTriTheoMa("MaSP", masp, "SanPham", "TenSP").ToString();
             tb_dongia.Text = Program.FillData.LayGiaTriTheoMa("MaSP", masp, "SanPham", "GiaBan").ToString();
         }
     }
