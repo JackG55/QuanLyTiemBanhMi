@@ -18,6 +18,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         private string makh = "";
         private string makm = "";
         private string matt = "";
+        int phantram = 0;
         public ThongTinHD(BanHang banHang)
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
 
         private void ThongTinHD_Load(object sender, EventArgs e)
         {
-            tb_mahd.Text = Program.FillData.SinhMaTuDong("MaKH", "KhachHang").ToString();
+            tb_mahd.Text = Program.FillData.SinhMaTuDong("MaHD", "HoaDon").ToString();
             tb_ngaylap.Text = DateTime.Now.ToString();
             List<string> list_kh_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_khachhang, "KhachHang", "HoTen", "MaKH");
             List<string> list_hinhthuctt_id = Program.FillData.LayDS_Len_GridLookUpEdit(glue_hinhthuctt, "HinhThucThanhToan", "TenLoaiHinhThucThanhToan", "MaThanhToan");
@@ -137,12 +138,13 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
         private void glue_khachhang_EditValueChanged(object sender, EventArgs e)
         {
             makh = glue_khachhang.EditValue.ToString();
-            string sql = @"SELECT dbo.ChuongTrinhKhuyenMai.*
+            string sql = @"SELECT DISTINCT dbo.ChuongTrinhKhuyenMai.*
                             FROM dbo.ChuongTrinhKhuyenMai, dbo.ChiTietKhuyenMai,dbo.KhachHang
                             WHERE ChuongTrinhKhuyenMai.MaKM=ChuongTrinhKhuyenMai.MaKM AND ChiTietKhuyenMai.MAKH=KhachHang.MaKH
                             AND ChuongTrinhKhuyenMai.MaKM NOT IN (SELECT DISTINCT MaKM FROM dbo.ChiTietKhuyenMai WHERE MAKH = '" + makh + "') " +
                             " AND NgayBatDau <= GETDATE() AND GETDATE()<=NgayKetThuc";
             List<string> list_km_id = Program.FillData.LayDS_Len_GridLookUpEdit_DK(glue_km, sql, "PhanTramGiamGia", "MaKM");
+            
 
         }
 
@@ -156,7 +158,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             {
                 makm = glue_km.EditValue.ToString();
                 object displayValue = glue_km.Properties.GetDisplayValueByKeyValue(glue_km.EditValue);
-                int phantram = Convert.ToInt32(displayValue);
+                phantram = Convert.ToInt32(displayValue);
                 int tamtinh = int.Parse(tb_tamtinh.Text);
                 tb_tongtien.Text = (tamtinh - phantram * tamtinh / 100).ToString();
             }    
@@ -204,6 +206,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
                 sum += Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["DonGia"].Value) * Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["SL"].Value);
             }
             tb_tamtinh.Text = sum.ToString();
+            int tamtinh = int.Parse(tb_tamtinh.Text);
+            tb_tongtien.Text = (tamtinh - phantram * tamtinh / 100).ToString();
             if (dgv_DSCTHD.Columns[e.ColumnIndex].Name == "SL")
             {
                 tb_soluong.Text = dgv_DSCTHD.Rows.Cast<DataGridViewRow>()
@@ -214,6 +218,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
                     sum += Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["DonGia"].Value) * Convert.ToInt32(dgv_DSCTHD.Rows[i].Cells["SL"].Value);
                 }
                 tb_tamtinh.Text = sum.ToString();
+                tamtinh = int.Parse(tb_tamtinh.Text);
+                tb_tongtien.Text = (tamtinh - phantram * tamtinh / 100).ToString();
             }
 
             //if (dgv_DSCTHD.Columns[e.ColumnIndex].Name == "DonGia")

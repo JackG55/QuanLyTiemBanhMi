@@ -110,8 +110,8 @@
             // 
             this.barButtonItem_banhang.Caption = "Bán hàng";
             this.barButtonItem_banhang.Id = 3;
-            this.barButtonItem_banhang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_qlhoadon.ImageOptions.Image")));
-            this.barButtonItem_banhang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_qlhoadon.ImageOptions.LargeImage")));
+            this.barButtonItem_banhang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_banhang.ImageOptions.Image")));
+            this.barButtonItem_banhang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_banhang.ImageOptions.LargeImage")));
             this.barButtonItem_banhang.Name = "barButtonItem_banhang";
             this.barButtonItem_banhang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_banhang_ItemClick);
             // 
@@ -290,7 +290,7 @@
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "CHƯƠNG TRÌNH QUẢN LÝ KHO";
+            this.Text = "CHƯƠNG TRÌNH QUẢN LÝ TIỆM BÁNH MÌ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuanLyChung_FormClosing);
             this.Load += new System.EventHandler(this.QuanLyChung_Load);

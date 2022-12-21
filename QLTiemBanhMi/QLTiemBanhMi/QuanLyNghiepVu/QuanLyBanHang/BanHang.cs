@@ -29,9 +29,10 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             Program.FillData.LoadDS_Len_DataGridView(dgv_khachhang, sql1);
 
             //load lên datagridView hoá đơn
-            string sql2 = @"SELECT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen
+            string sql2 = @"SELECT DISTINCT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen, TenNV
                     FROM dbo.HoaDon JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.MaThanhToan = HoaDon.MaThanhToan 
-                    JOIN dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH WHERE HoaDon.Xoa = 0";
+                    JOIN dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH JOIN dbo.NhanVien ON NhanVien.MaNV = HoaDon.MaNV
+					WHERE HoaDon.Xoa = 0";
             Program.FillData.LoadDS_Len_DataGridView(dgv_hoadon, sql2);
         }
 

@@ -38,19 +38,19 @@
             this.lbUser = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditNhoMatKhau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditHienMatKhau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -58,10 +58,10 @@
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(215, 324);
+            this.btnCancel.Location = new System.Drawing.Point(227, 324);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(114, 30);
+            this.btnCancel.Size = new System.Drawing.Size(132, 49);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy bỏ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -73,10 +73,10 @@
             this.btnOK.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.Appearance.Options.UseFont = true;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(91, 324);
+            this.btnOK.Location = new System.Drawing.Point(71, 324);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(114, 30);
+            this.btnOK.Size = new System.Drawing.Size(134, 49);
             this.btnOK.TabIndex = 1;
             this.btnOK.Text = "Đăng nhập";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -169,6 +169,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Tiệm Bánh Mì Masstige";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QLTiemBanhMi.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 89);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(423, 357);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -188,16 +198,6 @@
             this.panel2.Size = new System.Drawing.Size(435, 446);
             this.panel2.TabIndex = 6;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Showcard Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(140, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 53);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Log In";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::QLTiemBanhMi.Properties.Resources.key_icon;
@@ -216,15 +216,15 @@
             this.panel3.Size = new System.Drawing.Size(37, 35);
             this.panel3.TabIndex = 6;
             // 
-            // pictureBox1
+            // label2
             // 
-            this.pictureBox1.Image = global::QLTiemBanhMi.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 89);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(423, 357);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Showcard Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(140, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(156, 53);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Log In";
             // 
             // DangNhap
             // 
@@ -245,10 +245,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
