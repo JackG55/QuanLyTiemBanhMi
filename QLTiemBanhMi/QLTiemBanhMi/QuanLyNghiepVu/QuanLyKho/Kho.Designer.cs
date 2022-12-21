@@ -29,24 +29,24 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_themPhieuNhapHang = new System.Windows.Forms.Button();
@@ -107,7 +107,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.sidePanel1.Controls.Add(this.btn_suaPhieuNhapHang);
             this.sidePanel1.Controls.Add(this.sidePanel2);
             this.sidePanel1.Controls.Add(this.dgv_DSPNH);
-            this.sidePanel1.Location = new System.Drawing.Point(716, 13);
+            this.sidePanel1.Location = new System.Drawing.Point(656, 21);
             this.sidePanel1.Margin = new System.Windows.Forms.Padding(4);
             this.sidePanel1.Name = "sidePanel1";
             this.sidePanel1.Size = new System.Drawing.Size(939, 651);
@@ -216,8 +216,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MSNVLL
             // 
             this.MSNVLL.DataPropertyName = "MSNVL";
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MSNVLL.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MSNVLL.DefaultCellStyle = dataGridViewCellStyle1;
             this.MSNVLL.Frozen = true;
             this.MSNVLL.HeaderText = "MSNVL";
             this.MSNVLL.MinimumWidth = 6;
@@ -227,8 +227,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // TenNVLL
             // 
             this.TenNVLL.DataPropertyName = "TenNVL";
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenNVLL.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenNVLL.DefaultCellStyle = dataGridViewCellStyle2;
             this.TenNVLL.Frozen = true;
             this.TenNVLL.HeaderText = "Tên Nguyên Vật Liệu";
             this.TenNVLL.MinimumWidth = 6;
@@ -238,8 +238,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // DonGia
             // 
             this.DonGia.DataPropertyName = "DonGia";
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonGia.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonGia.DefaultCellStyle = dataGridViewCellStyle3;
             this.DonGia.Frozen = true;
             this.DonGia.HeaderText = "Đơn giá";
             this.DonGia.MinimumWidth = 6;
@@ -249,8 +249,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // SL
             // 
             this.SL.DataPropertyName = "SL";
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SL.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SL.DefaultCellStyle = dataGridViewCellStyle4;
             this.SL.Frozen = true;
             this.SL.HeaderText = "Số Lượng";
             this.SL.MinimumWidth = 6;
@@ -289,8 +289,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // dgv_DSPNH
             // 
             this.dgv_DSPNH.AllowUserToAddRows = false;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.dgv_DSPNH.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
+            this.dgv_DSPNH.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_DSPNH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSPNH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhieuNhap,
@@ -304,8 +304,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.dgv_DSPNH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv_DSPNH.Name = "dgv_DSPNH";
             this.dgv_DSPNH.RowHeadersWidth = 51;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.dgv_DSPNH.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
+            this.dgv_DSPNH.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_DSPNH.RowTemplate.Height = 24;
             this.dgv_DSPNH.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgv_DSPNH.Size = new System.Drawing.Size(925, 278);
@@ -315,8 +315,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MaPhieuNhap
             // 
             this.MaPhieuNhap.DataPropertyName = "MaPhieuNhap";
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaPhieuNhap.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaPhieuNhap.DefaultCellStyle = dataGridViewCellStyle6;
             this.MaPhieuNhap.Frozen = true;
             this.MaPhieuNhap.HeaderText = "Mã Phiếu Nhập";
             this.MaPhieuNhap.MinimumWidth = 6;
@@ -326,8 +326,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // TenNhaCC
             // 
             this.TenNhaCC.DataPropertyName = "TenNCC";
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenNhaCC.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenNhaCC.DefaultCellStyle = dataGridViewCellStyle7;
             this.TenNhaCC.Frozen = true;
             this.TenNhaCC.HeaderText = "Nhà Cung Cấp";
             this.TenNhaCC.MinimumWidth = 6;
@@ -337,8 +337,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MaNhaCC
             // 
             this.MaNhaCC.DataPropertyName = "MaNCC";
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaNhaCC.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaNhaCC.DefaultCellStyle = dataGridViewCellStyle8;
             this.MaNhaCC.Frozen = true;
             this.MaNhaCC.HeaderText = "Mã NCC";
             this.MaNhaCC.MinimumWidth = 6;
@@ -358,8 +358,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MaNV
             // 
             this.MaNV.DataPropertyName = "MaNV";
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaNV.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaNV.DefaultCellStyle = dataGridViewCellStyle9;
             this.MaNV.Frozen = true;
             this.MaNV.HeaderText = "MaNV";
             this.MaNV.MinimumWidth = 6;
@@ -392,7 +392,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.sidePanel3.Controls.Add(this.dgv_DSNCC);
             this.sidePanel3.Controls.Add(this.btn_themncc);
             this.sidePanel3.Controls.Add(this.btn_suancc);
-            this.sidePanel3.Location = new System.Drawing.Point(109, 13);
+            this.sidePanel3.Location = new System.Drawing.Point(49, 21);
             this.sidePanel3.Name = "sidePanel3";
             this.sidePanel3.Size = new System.Drawing.Size(604, 323);
             this.sidePanel3.TabIndex = 54;
@@ -445,8 +445,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MaNCC
             // 
             this.MaNCC.DataPropertyName = "MaNCC";
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaNCC.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaNCC.DefaultCellStyle = dataGridViewCellStyle11;
             this.MaNCC.Frozen = true;
             this.MaNCC.HeaderText = "Mã NCC";
             this.MaNCC.MinimumWidth = 6;
@@ -456,8 +456,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // TenNCC
             // 
             this.TenNCC.DataPropertyName = "TenNCC";
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenNCC.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenNCC.DefaultCellStyle = dataGridViewCellStyle12;
             this.TenNCC.Frozen = true;
             this.TenNCC.HeaderText = "Tên NCC";
             this.TenNCC.MinimumWidth = 6;
@@ -467,8 +467,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // DiaChi
             // 
             this.DiaChi.DataPropertyName = "DiaChi";
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DiaChi.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DiaChi.DefaultCellStyle = dataGridViewCellStyle13;
             this.DiaChi.HeaderText = "Địa Chỉ";
             this.DiaChi.MinimumWidth = 6;
             this.DiaChi.Name = "DiaChi";
@@ -477,8 +477,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // SDT
             // 
             this.SDT.DataPropertyName = "SDT";
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SDT.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SDT.DefaultCellStyle = dataGridViewCellStyle14;
             this.SDT.HeaderText = "Số Điện Thoại";
             this.SDT.MinimumWidth = 6;
             this.SDT.Name = "SDT";
@@ -520,7 +520,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.sidePanel4.Controls.Add(this.dgv_DSNVL);
             this.sidePanel4.Controls.Add(this.btn_themnvl);
             this.sidePanel4.Controls.Add(this.btn_suanvl);
-            this.sidePanel4.Location = new System.Drawing.Point(109, 338);
+            this.sidePanel4.Location = new System.Drawing.Point(49, 346);
             this.sidePanel4.Name = "sidePanel4";
             this.sidePanel4.Size = new System.Drawing.Size(604, 347);
             this.sidePanel4.TabIndex = 55;
@@ -575,8 +575,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MSNVL
             // 
             this.MSNVL.DataPropertyName = "MSNVL";
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MSNVL.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MSNVL.DefaultCellStyle = dataGridViewCellStyle15;
             this.MSNVL.Frozen = true;
             this.MSNVL.HeaderText = "Mã số NVL";
             this.MSNVL.MinimumWidth = 6;
@@ -586,8 +586,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // TenNVL
             // 
             this.TenNVL.DataPropertyName = "TenNVL";
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenNVL.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenNVL.DefaultCellStyle = dataGridViewCellStyle16;
             this.TenNVL.Frozen = true;
             this.TenNVL.HeaderText = "Tên NVL";
             this.TenNVL.MinimumWidth = 6;
@@ -597,8 +597,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // MoTa
             // 
             this.MoTa.DataPropertyName = "MoTa";
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoTa.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoTa.DefaultCellStyle = dataGridViewCellStyle17;
             this.MoTa.HeaderText = "Mô Tả";
             this.MoTa.MinimumWidth = 6;
             this.MoTa.Name = "MoTa";
@@ -607,8 +607,8 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             // DVT
             // 
             this.DVT.DataPropertyName = "DVT";
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DVT.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DVT.DefaultCellStyle = dataGridViewCellStyle18;
             this.DVT.HeaderText = "Đơn Vị Tính";
             this.DVT.MinimumWidth = 6;
             this.DVT.Name = "DVT";
@@ -656,7 +656,7 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyKho
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(1724, 721);
+            this.ClientSize = new System.Drawing.Size(1612, 721);
             this.Controls.Add(this.sidePanel4);
             this.Controls.Add(this.sidePanel3);
             this.Controls.Add(this.sidePanel1);
