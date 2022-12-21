@@ -29,7 +29,11 @@ namespace QLTiemBanhMi.QuanLyNghiepVu.QuanLyBanHang
             Program.FillData.LoadDS_Len_DataGridView(dgv_khachhang, sql1);
 
             //load lên datagridView hoá đơn
+<<<<<<< Updated upstream:QLTiemBanhMi/QLTiemBanhMi/QuanLyNghiepVu/QuanLyBanHang/BanHang.cs
             string sql2 = @"SELECT DISTINCT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen, TenNV
+=======
+            string sql2 = @"SELECT dbo.HoaDon.*, dbo.HinhThucThanhToan.*,dbo.KhachHang.HoTen, TenNV
+>>>>>>> Stashed changes:QLTiemBanhMi/QuanLyNghiepVu/QuanLyBanHang/BanHang.cs
                     FROM dbo.HoaDon JOIN dbo.HinhThucThanhToan ON HinhThucThanhToan.MaThanhToan = HoaDon.MaThanhToan 
                     JOIN dbo.KhachHang ON KhachHang.MaKH = HoaDon.MaKH JOIN dbo.NhanVien ON NhanVien.MaNV = HoaDon.MaNV
 					WHERE HoaDon.Xoa = 0";
